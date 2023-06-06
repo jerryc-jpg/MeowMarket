@@ -4,8 +4,8 @@ const { Product } = require('../db');
 
   app.get('/', async(req, res, next)=> {
     try {
-      const cats = await Product.findAll();
-      res.send(cats);
+      const products = await Product.findAll();
+      res.send(products);
     }
     catch(ex){
       next(ex);
@@ -14,4 +14,5 @@ const { Product } = require('../db');
   
   module.exports = app;
  
+  
   
