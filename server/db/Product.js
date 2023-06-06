@@ -14,6 +14,10 @@ const Product = conn.define('product', {
       notEmpty: true
     }
   },
+  productType: {
+    type: STRING,
+    allowNull: false,
+  },
   price:{
     type: FLOAT,  
     allowNull: false
@@ -24,7 +28,6 @@ const Product = conn.define('product', {
   },
   breed: {
     type: STRING,
-    allowNull: false,
   },
   description:{
     type: TEXT,
