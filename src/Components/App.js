@@ -25,10 +25,9 @@ const App = ()=> {
   return (
     <div>
       <Navbar/>
-      <h1>MeowMarket</h1>
-       <Home />
         <div>
           <Routes>
+            <Route path='/' element={<Home />} /> 
             <Route path='/login' element={<Login />} />
             <Route path='/cart' element={ <Cart /> } />
             <Route path='/:id' element={<SingleProduct/>} />

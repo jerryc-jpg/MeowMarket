@@ -8,7 +8,7 @@ const Home = ()=> {
   const dispatch = useDispatch();
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Meow Market</h1>
       <div>
         Welcome { auth.username }!!
         <button onClick={()=> dispatch(logout())}>Logout</button>
