@@ -19,6 +19,11 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
   }
 })
 
+export const updateCart = createAsyncThunk('updateCart', async(request) =>{
+  const response = await axios.put('/api/orders/cart',request);
+  return response.data;
+})
+
 const cartSlice = createSlice({
   name:"cart",
   initialState,
@@ -27,6 +32,7 @@ const cartSlice = createSlice({
     builder.addCase(fetchCart.fulfilled, (state, action)=>{
       return action.payload;
     })
+   
   }
 })
 

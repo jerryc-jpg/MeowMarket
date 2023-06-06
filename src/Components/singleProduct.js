@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const SingleProduct = () => {
+
   const { products } = useSelector((state) => state);
 
   const { id } = useParams();
@@ -19,3 +20,4 @@ const SingleProduct = () => {
 };
 
 export default SingleProduct;
+

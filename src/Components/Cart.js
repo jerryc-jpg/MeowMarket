@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../store';
 import { Link } from 'react-router-dom';
@@ -6,14 +6,34 @@ import { Link } from 'react-router-dom';
 const Cart = ()=> {
   const { cart } = useSelector(state => state);
   const dispatch = useDispatch();
+  const [items,setItems] = useState([]);
+
+  React.useEffect(() => {
+      setItems(cart.lineItems);
+  },[cart])
+  
+  console.log(items);
   return (
     <div>
       <h1>Cart</h1>
-      <pre>
-        {
+      <div>
+        {items.map((item) => {
+          return(
+          <div>
+            <p>name: {item.product.name}</p>
+            <p>quantity: {item.quantity}</p>
+            <button>remove</button>
+            <hr/>
+          </div>
+          )
+        })}
+        
+      </div>
+      <>
+        {/*
           JSON.stringify(cart, null, 2)
-        }
-      </pre>
+      */}
+      </>
     </div>
   );
 };
