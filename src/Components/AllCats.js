@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const AllCats = ()=> {
     
     const {products} = useSelector(state => state);
-    console.log(products);
     const allCats = products.filter((product) => product.productType === 'cat');
     return (
         <div>
