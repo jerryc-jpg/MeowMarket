@@ -11,6 +11,20 @@ const { Product } = require('../db');
       next(ex);
     }
   });
+
+  app.get('/:id', async(req, res, next)=> {
+    try {
+      console.log('print');
+      console.log(typeof req.params.id,'line18');
+      const product = await Product.findOne(req.params.id);
+      console.log(product);
+      res.send(product);
+      
+    }
+    catch(ex){
+      next(ex);
+    }
+  });
   
   module.exports = app;
  
