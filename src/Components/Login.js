@@ -13,7 +13,7 @@ const Login = ()=> {
   });
 =======
 import React, { useState } from "react";
-import { attemptLogin } from "../store";
+import { attemptLogin, Register } from "../store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -68,9 +68,13 @@ const Login = () => {
 =======
    const login = (ev) => {
       ev.preventDefault();
-
       dispatch(attemptLogin(credentials));
+      navigate("/");
+   };
 
+   const register = (ev) => {
+      ev.preventDefault();
+      dispatch(Register(credentials));
       navigate("/");
    };
 
@@ -83,7 +87,7 @@ const Login = () => {
             <input placeholder="username" value={credentials.username} name="username" onChange={onChange} />
             <input placeholder="password" name="password" value={credentials.password} onChange={onChange} />
             <button disabled={isLoginValid}>Login</button>
-            <button>Register</button>
+            <button onClick={register}>Register</button>
          </form>
       </div>
    );
