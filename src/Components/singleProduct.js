@@ -4,8 +4,12 @@ import { useParams } from "react-router-dom";
 
 const SingleProduct = () => {
     const {products} = useSelector(state => state);
+
     const {id} = useParams();
     const oneProd = products.find(product => product.id === id);
+    if (!oneProd) {
+        return null;
+    }
     return(<h1>{oneProd.name}</h1>)
 }
 
