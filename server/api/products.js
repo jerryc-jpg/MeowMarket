@@ -19,7 +19,6 @@ const { Product } = require('../db');
       const product = await Product.findOne(req.params.id);
       console.log(product);
       res.send(product);
-      
     }
     catch(ex){
       next(ex);
