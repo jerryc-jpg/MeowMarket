@@ -15,7 +15,7 @@ const AllCats = ()=> {
             allCats.map((cat) => {
                 return (
                     <div key={cat.id}>   
-                        <img class = "w-50" src = {cat.images[0]} />
+                        <img className = "w-50" src = {cat.images[0]} />
                         <Link to ={`/${cat.id}`} >{cat.name}</Link>
                         <button onClick={() => dispatch(addToCart({product:cat,quantity:1}))}>Add to Cart</button>
                     </div>
