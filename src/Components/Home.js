@@ -5,7 +5,6 @@ import AllCats from "./AllCats";
 
 const Home = () => {
    const { auth } = useSelector((state) => state);
-   console.log(auth);
    const dispatch = useDispatch();
    return (
       <div>
