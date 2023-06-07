@@ -80,5 +80,6 @@ const Login = () => {
       {loginError && <div>{loginError}</div>}
     </div>
   );
+};
 
 export default Login;
