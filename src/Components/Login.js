@@ -3,7 +3,6 @@ import { attemptLogin, Register } from "../store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ const Login = () => {
 
   const onChange = (ev) => {
     setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
-    setLoginError(""); 
+    setLoginError("");
   };
 
   const login = async (ev) => {
@@ -55,29 +54,49 @@ const Login = () => {
     credentials.username === "" || credentials.password === "";
 
   return (
-    <div>
-      <h2>Login</h2>
-
-      <form onSubmit={login}>
-        <input
-          placeholder="username"
-          value={credentials.username}
-          name="username"
-          onChange={onChange}
-        />
-        <input
-          placeholder="password"
-          type="password"
-          name="password"
-          value={credentials.password}
-          onChange={onChange}
-        />
-        <button disabled={invalidCredentials}>Login</button>
-        <button onClick={register} disabled={invalidCredentials}>
-          Register
-        </button>
-      </form>
-      {loginError && <div>{loginError}</div>}
+    <div className="container py-5 h-100">
+      <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div
+            className="card shadow-2-strong"
+            style={{ borderRadius: "1rem" }}
+          >
+            <div className="card-body p-5 text-center">
+              <h2 className="mb-5">Login</h2>
+              <form onSubmit={login}>
+                <div className="form-outline mb-4">
+                  <input
+                    placeholder="Username"
+                    value={credentials.username}
+                    name="username"
+                    onChange={onChange}
+                    className="form-control form-control-lg"
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <input
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    value={credentials.password}
+                    onChange={onChange}
+                    className="form-control form-control-lg"
+                  />
+                </div>
+                <div className="mb-2">
+                  <button disabled={invalidCredentials} className="btn btn-primary btn-lg btn-block">Login</button>
+                </div>
+                <div>
+                  <button onClick={register} disabled={invalidCredentials} className="btn btn-primary btn-lg btn-block">
+                    Register
+                  </button>
+                </div>
+              </form>
+              {loginError && <div>{loginError}</div>}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
