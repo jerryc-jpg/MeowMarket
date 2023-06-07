@@ -36,17 +36,39 @@ const SingleProduct = () => {
         }
         
     }
-
-
-    return(
-    <>
-        <h1>{oneProd.name}</h1>
-        <button onClick={()=>decrementQ(quantity)}>-</button>
-        <input type="number" value={quantity} min="1" max="5"/>
-        <button onClick={()=>incrementQ(quantity)}>+</button>
-        <button onClick={() => {console.log(1); dispatch(addToCart({product:oneProd,quantity}))}}>Add Cart</button>
-    </>
-    )
+    const handleQuantityChange = (ev) => {
+        const value = Number(ev.target.value);
+        if ( value >= 1 && value <= 5) {
+           setQuantity(value);
+        }
+     };
+    
+    if(oneProd.producttype === 'cat'){
+        return(
+            <>
+                <h1>cat</h1>
+                <h1>{oneProd.name}</h1>
+                <img src = {oneProd.images} />
+                <button onClick={()=>decrementQ(quantity)}>-</button>
+                <input type="number" value={quantity} min="1" max="5" onChange={handleQuantityChange}/>
+                <button onClick={()=>incrementQ(quantity)}>+</button>
+                <button onClick={() => {console.log(1); dispatch(addToCart({product:oneProd,quantity}))}}>Add Cart</button>
+            </>
+            )
+    } else{
+        return(
+            <>  
+                <h1>accessory</h1>
+                <h1>{oneProd.name}</h1>
+                <img src = {oneProd.images} />
+                <button onClick={()=>decrementQ(quantity)}>-</button>
+                <input type="number" value={quantity} min="1" max="5" onChange={handleQuantityChange}/>
+                <button onClick={()=>incrementQ(quantity)}>+</button>
+                <button onClick={() => {console.log(1); dispatch(addToCart({product:oneProd,quantity}))}}>Add Cart</button>
+            </>
+            )
+    }
+    
 }
 
 export default SingleProduct;
