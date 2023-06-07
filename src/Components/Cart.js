@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../store';
 import { Link } from 'react-router-dom';
-import { addToCart } from "../store";
+import { addToCart,removeFromCart } from "../store";
 
 const Cart = ()=> {
   const { cart } = useSelector(state => state);
@@ -25,6 +25,8 @@ const Cart = ()=> {
             <p>quantity: {item.quantity}</p>
             <button>-</button>
             <input type="number" value={item.quantity} min="1" max="5"/>
+            <button onClick={()=>dispatch(removeFromCart({product:item.product,quantity:1}))}>-</button>
+            <input type="number" Value={item.quantity} min="1" max="5"/>
             <button onClick={()=>dispatch(addToCart({product:item.product,quantity:1}))}>+</button>
             <hr/>
           </div>
