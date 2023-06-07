@@ -14,9 +14,9 @@ const AllCats = ()=> {
             {
             allCats.map((cat) => {
                 return (
-                    <div>   
+                    <div key={cat.id}>   
                         <img src = {cat.images} />
-                        <Link to ={`/${cat.id}`} key={cat.id}>{cat.name}</Link>
+                        <Link to ={`/${cat.id}`} >{cat.name}</Link>
                         <button onClick={() => dispatch(addToCart({product:cat,quantity:1}))}>Add to Cart</button>
                     </div>
                 )
