@@ -2,10 +2,12 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
 import AllCats from "./AllCats";
+import AllAccess from "./AllAccess";
 
 const Home = () => {
    const { auth } = useSelector((state) => state);
    const dispatch = useDispatch();
+   console.log(auth);
    return (
       <div>
          <h1>Meow Market</h1>
