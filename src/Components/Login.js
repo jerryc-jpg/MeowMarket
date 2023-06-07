@@ -43,7 +43,7 @@ const Login = () => {
       if (success) {
         navigate("/");
       } else {
-        setLoginError("Invalid credentials. Please try again.");
+        setLoginError("Username already in use. Please try again.");
       }
     } catch (error) {
       console.error("Error during registration:", error);
