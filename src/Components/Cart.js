@@ -22,7 +22,8 @@ const Cart = ()=> {
           <div>
             <p>name: {item.product.name}</p>
             <p>quantity: {item.quantity}</p>
-            <button>remove</button>
+            <button>remove one</button>
+            <button>add one</button>
             <hr/>
           </div>
           )
