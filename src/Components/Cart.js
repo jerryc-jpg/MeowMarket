@@ -10,7 +10,21 @@ const Cart = ()=> {
   const [items,setItems] = useState([]);
 
   React.useEffect(() => {
-      setItems(cart.lineItems);
+    const list = [...cart.lineItems];
+    if(list){
+      list.sort(function(a,b){
+      if (a.product.name < b.product.name) {
+        return -1;
+      }
+      if (a.product.name > b.product.name) {
+        return 1;
+      }
+      return 0;
+    })
+    console.log(list,'line24');
+  }
+    
+    setItems(list);
   },[cart])
   
   console.log(items);
@@ -23,10 +37,8 @@ const Cart = ()=> {
           <div key={item.id}>
             <p>name: {item.product.name}</p>
             <p>quantity: {item.quantity}</p>
-            <button>-</button>
+            <button onClick={()=>dispatch(removeFromCart({product:item.product,quantityToRemove:1}))}>-</button>
             <input type="number" value={item.quantity} min="1" max="5"/>
-            <button onClick={()=>dispatch(removeFromCart({product:item.product,quantity:1}))}>-</button>
-            <input type="number" Value={item.quantity} min="1" max="5"/>
             <button onClick={()=>dispatch(addToCart({product:item.product,quantity:1}))}>+</button>
             <hr/>
           </div>
