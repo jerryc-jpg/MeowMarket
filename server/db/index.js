@@ -11,13 +11,10 @@ LineItem.belongsTo(Product);
 
 const syncAndSeed = async()=> {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, foo, bar, bazz, ethyl] = await Promise.all([
+  const [moe, lucy, larry, ethyl, marge, homer] = await Promise.all([
     User.create({ username: 'moe', password: '123' }),
     User.create({ username: 'lucy', password: '123' }),
     User.create({ username: 'larry', password: '123' }),
-    Product.create({ productType: 'cat', name: 'foo' ,price:113, breed:'siamese'}),
-    Product.create({ productType: 'cat', name: 'bar' ,price:113, breed:'siamese'}),
-    Product.create({ productType: 'cat',name: 'bazz',price:113, breed:'siamese'} ),
     User.create({ username: 'ethyl', password: '123' }),
     Product.create({ 
       productType: 'cat', 
@@ -111,13 +108,19 @@ const syncAndSeed = async()=> {
       description:"Prairie was trapped with her , mom, dad, bother and sisters july 4th weekend 2021. She and siblings were about 6 weeks and feral. They’ve slowly come around over 2 years but will require someone with extreme patience. Prairie is still the most timid of the bunch. "}),
     Product.create({ 
       productType: 'accessory', 
-      images:["https://image.chewy.com/is/image/catalog/777974_MAIN._AC_SL1200_V1676565789_.jpg"],
+      images:[
+        "https://image.chewy.com/is/image/catalog/777974_MAIN._AC_SL1200_V1676565789_.jpg",
+        "https://image.chewy.com/is/image/catalog/777974_PT1._AC_SL1200_V1676653965_.jpg"
+      ],
       name: 'Raw Paws Compressed Catnip Ball Cat Toy, 6 count' , 
       price:14.99,  
       description:'Give your kitty the catnip she craves! Raw Paws Compressed Catnip Ball Cat Toy is made with 100% natural, fully digestible catnip with no preservatives, chemicals or toxins. When your favorite feline smells the solid catnip ball, it acts as a stimulant that encourages her to exercise and play. But when she licks and ingests it, the ball becomes a sedative that calms and relaxes her, melting away her stress. The compressed, purr-fectly safe to eat, catnip ball can also serve as a digestive aid reducing discomfort and helping your fur-iend feel her best.'}),
      Product.create({ 
       productType: 'accessory', 
-      images: ["https://image.chewy.com/is/image/catalog/282263_MAIN._AC_SL1200_V1636497397_.jpg"],
+      images: [
+        "https://image.chewy.com/is/image/catalog/282263_MAIN._AC_SL1200_V1636497397_.jpg",
+        "https://image.chewy.com/is/image/catalog/282263_PT1._AC_SL1200_V1636506120_.jpg",
+      ],
       name: 'Squeak Squeak Mouse Cat Toy', 
       price:14.99,  
       description:'If your cat is a born mouser but your home is mouse-free (which is good), she’ll love the Petstages Squeak Squeak Mouse Cat Toy. This toy has the look and feel of a real mouse, with detailed embroidery and faux fur to excite and encourage your cat to play. The touch-activated squeaker goes off for one second before turning off automatically, and this toy is sized for easy carrying and batting.'}),
@@ -147,7 +150,10 @@ const syncAndSeed = async()=> {
       description:'If there was an amusement park for kitties, this toy would be the main attraction. That’s because this interactive triple-decker tower from Frisco by Chewy has everything cats love—a ball to bat and chase around the tracks, the excitement of hearing the sound of the balls roll along the tracks, and even a fluttery butterfly on top! There are three levels for even more play, each with its own rolling ball, so more than one kitty can get in on the fun. Go ahead, let them go wild. The nonskid pads keep the track from sliding around when playtime goes into overtime.'}),
     Product.create({ 
       productType: 'accessory', 
-      imgUrl: "https://image.chewy.com/is/image/catalog/166382_MAIN._AC_SL1200_V1668737518_.jpg ",
+      imgUrl: [
+        "https://image.chewy.com/is/image/catalog/166382_MAIN._AC_SL1200_V1668737518_.jpg",
+        "https://image.chewy.com/is/image/catalog/166382_PT2._AC_SL1200_V1682976333_.jpg"
+      ],
       name: 'Frisco Foldable Play Tri-Tunnel Cat Toy, Colorful', 
       price:11.35,  
       description:'Get ready for some pop-up fun with your kitty with this colorful, pop-open play tunnel from Frisco by Chewy. Every cat loves exploring a tunnel, so give your feline all the fun and feels of spending the day as a furry cave explorer. Just pop it open and then fold it down when you need to store it. Cats also love hiding and napping inside it, so you might want to leave it around so they always have the option of tucking in for a nap.'}),
@@ -159,21 +165,30 @@ const syncAndSeed = async()=> {
       description:'SmartyKat Multi-Surface Scratch Scroll Curred Cat Scratcher offers a combination of sisal and carpeted scratching surfaces to fulfill your cat’s instinctual desire to scratch. It’s the perfect outlet for your kitty, keeping furniture, drapes, carpets and walls safe. The scratching surfaces and unique shape attract cats. And it’s durable enough to withstand rigorous scratching. It’s covered in attractive fabric that looks great in any home. SmartyKat Multi-Surface Scratch Scroll Curred Cat Scratcher even has a dangling feather toy your cat will love to bat, bite, claw and swipe at.'}),
     Product.create({ 
       productType: 'accessory', 
-      images: ["https://image.chewy.com/is/image/catalog/66578_MAIN._AC_SL1200_V1539004918_.jpg"],
+      images: [
+        "https://image.chewy.com/is/image/catalog/66578_MAIN._AC_SL1200_V1539004918_.jpg",
+        "https://image.chewy.com/is/image/catalog/66578_PT1._AC_SL1200_V1539006139_.jpg",
+        "https://image.chewy.com/is/image/catalog/66578_PT2._AC_SL1200_V1603135292_.jpg"
+      ],
       name: 'KONG Active Feather Teaser Cat Toy, Color Varies', 
       price: 6.99,  
       description:'Make playtime a priority with the KONG Active Feather Teaser Cat Toy! This interactive toy is great for playing one-on-one with your favorite feline. Bright feathers and a crinkle sound tempt your lil tiger to hunt. Each toy is stuffed with KONG Premium North American Catnip for even more stimulation. Each order includes one randomly selected character—see which one you get!'}),
     Product.create({ 
       productType: 'accessory', 
-      imgaes: ["https://image.chewy.com/is/image/catalog/282263_MAIN._AC_SL1200_V1636497397_.jpg"],
-      name: 'Squeak Squeak Mouse Cat Toy', 
-      price:14.99,  
-      description:'If your cat is a bor'}),
+      images: [
+        "https://image.chewy.com/is/image/catalog/139111_MAIN._AC_SL1200_V1589230979_.jpg",
+        "https://image.chewy.com/is/image/catalog/139111_PT2._AC_SL1200_V1589230985_.jpg",
+        "https://image.chewy.com/is/image/catalog/139111_PT1._AC_SL1200_V1589230979_.jpg"
+
+      ],
+      name: 'Hartz Just for Cats Toy Variety Pack, 13 count', 
+      price:5.99,  
+      description:'Give your kitty the playtime variety he loves with the Hartz Just For Cats Toy Variety Pack. It’s a purr-pourri of fun for your pal, with a kitty-approved combo of lightweight toys like catnip mice, pompoms, balls and more. It even comes with catnip to add a boost of excitement to playtime. The toys are perfect for independent play, yet are lightweight enough so you can toss them and watch your little hunter go! Plus, they’re made with pet-safe materials and help provide daily exercise and mental stimulation for your pal.'}),
     ]); 
 
   const cart = await ethyl.getCart();
-  await ethyl.addToCart({ product: bazz, quantity: 3});
-  await ethyl.addToCart({ product: foo, quantity: 2});
+  await ethyl.addToCart({ product: marge, quantity: 3});
+  await ethyl.addToCart({ product: homer, quantity: 2});
   return {
     users: {
       moe,
@@ -181,9 +196,8 @@ const syncAndSeed = async()=> {
       larry
     },
     products: {
-      foo,
-      bar,
-      bazz
+      marge,
+      homer,
     }
   };
 };
