@@ -15,3 +15,10 @@ nav {
   display: flex;
   justify-content: space-around;
 }
+.has-bg-img {
+   background-image: url("https://img.freepik.com/free-psd/beautiful-cat-portrait-isolated_23-2150186004.jpg?w=2000&t=st=1686159153~exp=1686159753~hmac=55cacc987ed5649f31f537a3ee80ee494f1e725719fa01098512919b67fc0e30");
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
+   height: 100vh;
+}
