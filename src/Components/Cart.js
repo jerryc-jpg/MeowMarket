@@ -24,7 +24,7 @@ const Cart = ()=> {
             <p>name: {item.product.name}</p>
             <p>quantity: {item.quantity}</p>
             <button>-</button>
-            <input type="number" Value={item.quantity} min="1" max="5"/>
+            <input type="number" value={item.quantity} min="1" max="5"/>
             <button onClick={()=>dispatch(addToCart({product:item.product,quantity:1}))}>+</button>
             <hr/>
           </div>
