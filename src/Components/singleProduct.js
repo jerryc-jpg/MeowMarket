@@ -43,19 +43,17 @@ const SingleProduct = () => {
         }
      };
     
-    if(oneProd.producttype === 'cat'){
+    if(oneProd.productType === 'cat'){
+        console.log 
         return(
             <>
                 <h1>cat</h1>
                 <h1>{oneProd.name}</h1>
                 <img src = {oneProd.images} />
-                <button onClick={()=>decrementQ(quantity)}>-</button>
-                <input type="number" value={quantity} min="1" max="5" onChange={handleQuantityChange}/>
-                <button onClick={()=>incrementQ(quantity)}>+</button>
                 <button onClick={() => {console.log(1); dispatch(addToCart({product:oneProd,quantity}))}}>Add Cart</button>
             </>
             )
-    } else{
+    }else{
         return(
             <>  
                 <h1>accessory</h1>
