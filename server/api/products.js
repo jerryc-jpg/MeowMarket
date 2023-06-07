@@ -14,16 +14,15 @@ const { Product } = require('../db');
 
   app.get('/:id', async(req, res, next)=> {
     try {
-      console.log('print');
-      console.log(typeof req.params.id,'line18');
-      const product = await Product.findOne(req.params.id);
-      console.log(product);
+      const product = await Product.findByPk(req.params.id);
       res.send(product);
     }
     catch(ex){
       next(ex);
     }
   });
+  
+
   
   module.exports = app;
  

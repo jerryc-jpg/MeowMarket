@@ -26,7 +26,7 @@ const User = conn.define('user', {
       notEmpty: true
     }
   },
-  adminstrator: {
+  isAdmin: {
     type: BOOLEAN,
     default: false
   }

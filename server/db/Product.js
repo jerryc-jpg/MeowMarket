@@ -36,6 +36,10 @@ const Product = conn.define('product', {
   age:{
     type: INTEGER,
   },
+  quantity:{
+    type: INTEGER,
+    default: 1
+  }
 
 });
 
