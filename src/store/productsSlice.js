@@ -39,7 +39,7 @@ export const createProduct = createAsyncThunk("createProduct", async (product, {
   export const deleteProduct = createAsyncThunk("deleteProduct", async (product, {rejectWithValue}) => {
     const token = window.localStorage.getItem('token');
     if(token){
-      const response = await axios.delete(`/api/admin/products/${product.Id}`, {
+      const response = await axios.delete(`/api/admin/products/${product.id}`, {
         headers: {
           authorization: token
         }
