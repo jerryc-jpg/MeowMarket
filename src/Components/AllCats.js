@@ -37,7 +37,7 @@ const AllCats = () => {
                               }
                               }}
                            className="btn btn-primary">
-                           Add to Cart
+                           TAKE ME HOME
                         </button>
                      </div>
                   </div>
