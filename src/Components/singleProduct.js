@@ -110,6 +110,9 @@ const SingleProduct = () => {
                }}>
                Add Cart
             </button>
+         </>
+      );
+   }
 };
 
 export default SingleProduct;
