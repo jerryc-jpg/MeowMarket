@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
-import { Link } from "react-router-dom";
-import { addToCart, removeFromCart } from "../store";
+import { Link, useNavigate } from "react-router-dom";
+import { addToCart, removeFromCart, checkoutCart } from "../store";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [items,setItems] = useState([]);
+  const navigate = useNavigate();
+  const handleCheckout = () => {
+    dispatch(checkoutCart());
+    navigate('/cart/checkout');
+    
+  }
 
   React.useEffect(() => {
     const list = [...cart.lineItems];
@@ -63,7 +69,7 @@ const Cart = () => {
               </div>
             );
           })}
-          <button>Checkout</button>
+          <button onClick={()=>handleCheckout()}>Checkout</button>
         </div>
         </div>
       </div>
