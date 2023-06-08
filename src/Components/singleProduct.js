@@ -75,7 +75,7 @@ const SingleProduct = () => {
               dispatch(addToCart({ product: oneProd, quantity }));
             }}
           >
-            Add Cart
+            TAKE ME HOME
           </button>
         )}
       </>
