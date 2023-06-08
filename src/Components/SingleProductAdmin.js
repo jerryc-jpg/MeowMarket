@@ -66,7 +66,6 @@ const SingleProductAdmin = () =>{
                     <label htmlFor="image URL">image</label>
                     <input placeholder="image" />
                 </div>
-                
                 {isCat?
                     <> 
                         <div>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate, Link } from "react-router-dom"
 import { addToCart } from "../store";
 import SingleProductAdmin from "./SingleProductAdmin";
+import { deleteProduct } from "../store";
 
 const SingleProduct = () => {
     const {products, auth} = useSelector(state => state);
@@ -51,7 +52,9 @@ const SingleProduct = () => {
                     <h1>cat</h1>
                     <h1>{oneProd.name}</h1>
                     <img src = {oneProd.images} /> 
-                    {isAdmin? <Link to={`/admin/${oneProd.id}`}><button>Edit</button></Link>:
+                    {isAdmin?<> <Link to={`/admin/${oneProd.id}`}><button>Edit</button></Link><button onClick={()=>{console.log('delete');
+                        dispatch(deleteProduct(oneProd))
+                    }}>Delete</button></>:
                             <button onClick={() => {console.log(1); dispatch(addToCart({product:oneProd,quantity}))}}>Add Cart</button>}
                 </>
                 )
