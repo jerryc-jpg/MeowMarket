@@ -11,12 +11,11 @@ LineItem.belongsTo(Product);
 
 const syncAndSeed = async()=> {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, admin, marge, homer] = await Promise.all([
+  const [moe, lucy, larry, admin, marge, homer,tunnel] = await Promise.all([
     User.create({ username: 'moe', password: '123' }),
     User.create({ username: 'lucy', password: '123' }),
     User.create({ username: 'larry', password: '123' }),
     User.create({ username: 'admin', password: '123', isAdmin: true }),
-
     Product.create({ 
       productType: 'cat', 
       name: 'Marge',
@@ -41,6 +40,16 @@ const syncAndSeed = async()=> {
       age: 1,
       breed:'Domestic Short Hair Mix ',
       description: "While Homer is best known for his role of the father on the \"Simpsons\", many do not know he was also a famous operatic singer in his past life and demonstrates his vocal technique when he is hungry, or to let you know when unwanted flies are in the home and that he will go chase them down for you.\n\nHomer did qualify for the 2020 Olympics in the sport of \"interactive-cat-toy-with-feather hunting\" but has chosen to remain a house cat and pursue this sport as a side hobby instead. If you bring out an interactive cat toy with a feather however, you may be lucky enough to witness his competitive, winning hunting moves.\n\nMost of all, Homer loves to cuddle on your lap, with his siblings, and to play. We always prefer the kittens to be adopted out in pairs, since they're still so young, have grown up together, and need the companionship of another kitten to help their development. Homer gets along with all his siblings and would like to be adopted with any one of the other Simpsons bunch: Bart, Marge, Lisa or Maggie."}),
+    Product.create({ 
+      productType: 'accessory', 
+      imgUrl: [
+        "https://image.chewy.com/is/image/catalog/166382_MAIN._AC_SL1200_V1668737518_.jpg",
+        "https://image.chewy.com/is/image/catalog/166382_PT2._AC_SL1200_V1682976333_.jpg"
+      ],
+      quantity: 15,
+      name: 'Frisco Foldable Play Tri-Tunnel Cat Toy, Colorful', 
+      price:11.35,  
+      description:'Get ready for some pop-up fun with your kitty with this colorful, pop-open play tunnel from Frisco by Chewy. Every cat loves exploring a tunnel, so give your feline all the fun and feels of spending the day as a furry cave explorer. Just pop it open and then fold it down when you need to store it. Cats also love hiding and napping inside it, so you might want to leave it around so they always have the option of tucking in for a nap.'}),
     Product.create({ 
       productType: 'cat', 
       name: 'Lisa', 
@@ -165,16 +174,6 @@ const syncAndSeed = async()=> {
       description:'If there was an amusement park for kitties, this toy would be the main attraction. That’s because this interactive triple-decker tower from Frisco by Chewy has everything cats love—a ball to bat and chase around the tracks, the excitement of hearing the sound of the balls roll along the tracks, and even a fluttery butterfly on top! There are three levels for even more play, each with its own rolling ball, so more than one kitty can get in on the fun. Go ahead, let them go wild. The nonskid pads keep the track from sliding around when playtime goes into overtime.'}),
     Product.create({ 
       productType: 'accessory', 
-      imgUrl: [
-        "https://image.chewy.com/is/image/catalog/166382_MAIN._AC_SL1200_V1668737518_.jpg",
-        "https://image.chewy.com/is/image/catalog/166382_PT2._AC_SL1200_V1682976333_.jpg"
-      ],
-      quantity: 15,
-      name: 'Frisco Foldable Play Tri-Tunnel Cat Toy, Colorful', 
-      price:11.35,  
-      description:'Get ready for some pop-up fun with your kitty with this colorful, pop-open play tunnel from Frisco by Chewy. Every cat loves exploring a tunnel, so give your feline all the fun and feels of spending the day as a furry cave explorer. Just pop it open and then fold it down when you need to store it. Cats also love hiding and napping inside it, so you might want to leave it around so they always have the option of tucking in for a nap.'}),
-    Product.create({ 
-      productType: 'accessory', 
       images:["https://image.chewy.com/is/image/catalog/107617_MAIN._AC_SL1200_V1527257529_.jpg"],
       name: 'SmartyKat Scratch Scroll Cat Scratcher with Feather Toy, Color Varies', 
       price:19.97, 
@@ -202,9 +201,21 @@ const syncAndSeed = async()=> {
       quantity: 3,
       name: 'Hartz Just for Cats Toy Variety Pack, 13 count', 
       price:5.99,  
-      description:'Give your kitty the playtime variety he loves with the Hartz Just For Cats Toy Variety Pack. It’s a purr-pourri of fun for your pal, with a kitty-approved combo of lightweight toys like catnip mice, pompoms, balls and more. It even comes with catnip to add a boost of excitement to playtime. The toys are perfect for independent play, yet are lightweight enough so you can toss them and watch your little hunter go! Plus, they’re made with pet-safe materials and help provide daily exercise and mental stimulation for your pal.'}),
-    ]); 
-  const cart = await moe.getCart();
+      description:'Give your kitty the playtime variety he loves with the Hartz Just For Cats Toy Variety Pack. It’s a purr-pourri of fun for your pal, with a kitty-approved combo of lightweight toys like catnip mice, pompoms, balls and more. It even comes with catnip to add a boost of excitement to playtime. The toys are perfect for independent play, yet are lightweight enough so you can toss them and watch your little hunter go! Plus, they’re made with pet-safe materials and help provide daily exercise and mental stimulation for your pal.'})
+    ]);
+    const order1 = await Order.create({ userId: moe.id , isCart: false});
+    const order2 = await Order.create({ userId: lucy.id, isCart: false });
+
+    await LineItem.bulkCreate([
+      { quantity: 3, productId: tunnel.id, orderId: order1.id },
+      { quantity: 1, productId: homer.id, orderId: order1.id },
+    ]);
+
+    await LineItem.bulkCreate([
+      { quantity: 1, productId: marge.id, orderId: order2.id },
+      { quantity: 2, productId: tunnel.id, orderId: order2.id },
+    ]);
+
   return {
     users: {
       moe,
@@ -215,6 +226,7 @@ const syncAndSeed = async()=> {
     products: {
       marge,
       homer,
+      tunnel
     }
   };
 };
@@ -223,6 +235,8 @@ const syncAndSeed = async()=> {
 module.exports = {
   syncAndSeed,
   User,
-  Product
+  Product,
+  Order,
+  LineItem
 };
 
