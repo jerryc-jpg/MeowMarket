@@ -6,8 +6,14 @@ import { addToCart } from "../store";
 
 const AllCats = () => {
    const dispatch = useDispatch();
-   const { products } = useSelector((state) => state);
+   const { products, cart } = useSelector((state) => state);
    const allCats = products.filter((product) => product.productType === "cat");
+   console.log(cart.lineItems,"allcats line11");
+
+   const isActiveAdd = (id) =>{
+      const activeAdd = cart.lineItems.reduce((acc,curr) =>{return acc && curr.productId!==id }, true)
+      return activeAdd;
+   }
 
    return (
       <div className="container text-center">
@@ -24,7 +30,12 @@ const AllCats = () => {
                            Details
                         </Link>
                         <button
-                           onClick={() => dispatch(addToCart({ product: cat, quantity: 1 }))}
+                           onClick={() =>{if(isActiveAdd(cat.id)){dispatch(addToCart({ product: cat, quantity: 1 }))}
+                           else{
+                              window.alert("Maximum quantity reached!");
+                              console.log("Maximum quantity reached!");
+                              }
+                              }}
                            className="btn btn-primary">
                            Add to Cart
                         </button>
