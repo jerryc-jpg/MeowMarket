@@ -80,30 +80,32 @@ const SingleProduct = () => {
                   <p className="cat-detail">
                      <strong>Price:</strong> ${oneProd.price}
                   </p>
-                  {isAdmin ? (
-                     <div className="mt-3">
-                        <Link to={`/admin/${oneProd.id}`} className="btn btn-primary me-2">
-                           Edit
-                        </Link>
-                        <button onClick={handleDelete} className="btn btn-danger">
-                           Delete
+                  {isAdmin ? 
+                     (  <div className="mt-3">
+                           <Link to={`/admin/${oneProd.id}`} className="btn btn-primary me-2">
+                              Edit
+                           </Link>
+                           <button onClick={handleDelete} className="btn btn-danger">
+                              Delete
+                           </button>
+                        </div>
+                     ) : (
+                        <button
+                           className="btn btn-success mt-3"
+                           onClick={() => {
+                                 if(isActiveAdd(id)){
+                                    dispatch(addToCart({ product: oneProd, quantity }))
+                                 }
+                                 else{
+                                    window.alert("Maximum quantity reached!");
+                                 }
+                              }
+                           }
+                        >
+                           Add Cart
                         </button>
-                     </div>
-                  ) : (
-                     <button
-                        className="btn btn-success mt-3"
-                        onClick={() => {
-                           if(isActiveAdd(id)){
-                              dispatch(addToCart({ product: oneProd, quantity }))
-                           }
-                           else{
-                              window.alert("Maximum quantity reached!");
-                              console.log("Maximum quantity reached!");
-                           }
-                        }}>
-                        Add Cart
-                     </button>
-                  )}
+                     )
+                  }
                </div>
             </div>
          </div>

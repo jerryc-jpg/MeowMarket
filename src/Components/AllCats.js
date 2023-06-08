@@ -33,7 +33,6 @@ const AllCats = () => {
                            onClick={() =>{if(isActiveAdd(cat.id)){dispatch(addToCart({ product: cat, quantity: 1 }))}
                            else{
                               window.alert("Maximum quantity reached!");
-                              console.log("Maximum quantity reached!");
                               }
                               }}
                            className="btn btn-primary">
