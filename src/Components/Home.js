@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch, } from "react-redux";
 import { logout } from "../store";
 import AllCats from "./AllCats";
+import Profile from "./Profile"
 import AllAccess from "./AllAccess";
 
 const Home = () => {
@@ -31,6 +32,7 @@ const Home = () => {
             <h1 className="text-center mb-3">FEATURED CATS</h1>
             <AllCats />
          </div>
+         <Profile />
       </div>
    );
 };

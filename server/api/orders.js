@@ -1,8 +1,23 @@
 const express = require('express');
 const app = express.Router();
-const { User } = require('../db');
-
+const { Order, User, LineItem, Product } = require('../db');
 module.exports = app;
+
+app.get('/', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const orders = await Order.findAll({
+      where: { isCart: false, userId: user.id },
+      include: [{
+        model: LineItem,
+        include: [Product]
+      }]
+    });
+    res.send(orders);
+  } catch (ex) {
+    next(ex);
+  }
+});
 
 app.post('/', async(req, res, next)=> {
   try {
