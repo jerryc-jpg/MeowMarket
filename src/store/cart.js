@@ -19,6 +19,9 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
   }
 })
 
+
+
+
 export const addToCart = createAsyncThunk('addToCart', async({product,quantity}) =>{
   try{
     const token = window.localStorage.getItem('token');
@@ -51,6 +54,23 @@ export const removeFromCart = createAsyncThunk('removeFromCart', async({product,
   
 })
 
+export const checkoutCart = createAsyncThunk('checkoutCart', async()=>{
+  try{
+    const token = window.localStorage.getItem('token');
+    const response = await axios.post('/api/orders/',null,{
+      headers: {
+        authorization: token
+      }
+    })
+    console.log(response.data,'checkout')
+  return response.data;
+  }catch(err){
+    console.log(err);
+  }
+  
+})
+
+
 const cartSlice = createSlice({
   name:"cart",
   initialState,
@@ -64,6 +84,9 @@ const cartSlice = createSlice({
     })
     builder.addCase(removeFromCart.fulfilled, (state, action)=>{
       return action.payload;
+    })
+    builder.addCase(checkoutCart.fulfilled, (state,action)=>{
+      return initialState;
     })
    
   }

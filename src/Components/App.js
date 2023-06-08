@@ -10,6 +10,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SingleProduct from "./singleProduct";
 import SingleProductAdmin from "./SingleProductAdmin";
+import Checkout from "./Checkout";
 
 const App = () => {
    const { auth } = useSelector((state) => state);
@@ -33,6 +34,7 @@ const App = () => {
                <Route path="/" element={<Home />} />
                <Route path="/login" element={<Login />} />
                <Route path="/cart" element={<Cart />} />
+               <Route path="/cart/checkout" element={<Checkout />} />
                <Route path="/:id" element={<SingleProduct />} />
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
