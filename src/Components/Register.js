@@ -9,6 +9,7 @@ const Register = () => {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
+    email: "",
   });
   const [registerError, setRegisterError] = useState("");
 
@@ -22,7 +23,7 @@ const Register = () => {
     try {
       const registrationResult = await dispatch(registerUser(credentials));
       if (registrationResult.payload.error) {
-        setRegisterError("Username already in use. Please try again.");
+        setRegisterError("Username or Email already in use. Please try again.");
         return;
       }
   
@@ -40,7 +41,7 @@ const Register = () => {
   
 
   const invalidCredentials =
-    credentials.username === "" || credentials.password === "";
+    credentials.username === "" || credentials.password === "" || credentials.email === "";
 
   return (
     <div className="container py-5 h-100">
@@ -65,6 +66,16 @@ const Register = () => {
                         placeholder="Username"
                         value={credentials.username}
                         name="username"
+                        onChange={onChange}
+                        className="form-control form-control-lg"
+                      />
+                    </div>
+                    <div className="form-outline mb-4">
+                      <input
+                        placeholder="Email" 
+                        type="email" 
+                        name="email" 
+                        value={credentials.email}
                         onChange={onChange}
                         className="form-control form-control-lg"
                       />
