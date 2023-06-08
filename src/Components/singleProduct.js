@@ -6,13 +6,14 @@ import SingleProductAdmin from "./SingleProductAdmin";
 import { deleteProduct } from "../store";
 
 const SingleProduct = () => {
-   const { products, auth } = useSelector((state) => state);
-   const dispatch = useDispatch();
+   const { products, auth, cart } = useSelector((state) => state);
    const { id } = useParams();
+   const dispatch = useDispatch();
    const navigate = useNavigate();
    const [quantity, setQuantity] = useState(1);
    const [oneProd, setOneProd] = useState({});
    const isAdmin = auth.isAdmin;
+
    React.useEffect(() => {
       const foundProd = products.find((product) => product.id === id);
       if (!foundProd) {
@@ -45,6 +46,12 @@ const SingleProduct = () => {
       dispatch(deleteProduct(oneProd));
       navigate("/");
    };
+
+   const isActiveAdd = (inputId) =>{
+      const activeAdd = cart.lineItems.reduce((acc,curr) =>{return acc && curr.productId!==inputId }, true)
+      return activeAdd;
+   }
+
 
    if (oneProd.productType === "cat") {
       return (
@@ -86,7 +93,13 @@ const SingleProduct = () => {
                      <button
                         className="btn btn-success mt-3"
                         onClick={() => {
-                           dispatch(addToCart({ product: oneProd, quantity }));
+                           if(isActiveAdd(id)){
+                              dispatch(addToCart({ product: oneProd, quantity }))
+                           }
+                           else{
+                              window.alert("Maximum quantity reached!");
+                              console.log("Maximum quantity reached!");
+                           }
                         }}>
                         Add Cart
                      </button>
