@@ -33,7 +33,7 @@ export const attemptLogin = createAsyncThunk("attemptLogin", async (cred, { reje
   }
 });
 
-export const Register = createAsyncThunk("Register", async (cred, { rejectWithValue }) => {
+export const registerUser = createAsyncThunk("Register", async (cred, { rejectWithValue }) => {
   try {
     let response = await axios.post('/api/auth/register', cred);
     window.localStorage.setItem('token', response.data);
@@ -66,7 +66,7 @@ const authSlice = createSlice({
     builder.addCase(attemptLogin.fulfilled, (state, action)=>{
       return action.payload;
     })
-    builder.addCase(Register.fulfilled, (state, action)=>{
+    builder.addCase(registerUser.fulfilled, (state, action)=>{
       return action.payload;
     }
     )
