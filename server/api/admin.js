@@ -26,7 +26,7 @@ const checkIsAdmin = async (req, res, next) => {
   };
   
 
-app.post('/products', checkIsAdmin, async (req, res, next) => {
+app.post('/products', async (req, res, next) => {
   try {
     res.status(201).send(await Product.create(req.body));
   } catch(e){
@@ -34,7 +34,17 @@ app.post('/products', checkIsAdmin, async (req, res, next) => {
   }
 });
 
-app.put('/products/:id', checkIsAdmin, async (req, res, next) => {
+app.get('/products', async (req, res, next) => {
+  try {
+    const products = await Product.findAll();
+    res.send(products);
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
+app.put('/products/:id', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
     res.send(await product.update(req.body));
@@ -43,7 +53,7 @@ app.put('/products/:id', checkIsAdmin, async (req, res, next) => {
   }
 });
 
-app.delete('/products/:id', checkIsAdmin, async (req, res, next) => {
+app.delete('/products/:id', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
     product.destroy();
