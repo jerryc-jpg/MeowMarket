@@ -20,13 +20,18 @@ const Register = () => {
   const handleRegister = async (ev) => {
     ev.preventDefault();
     try {
-      await dispatch(registerUser(credentials));
-      const resultAction = await dispatch(attemptLogin(credentials));
-      const success = resultAction.type.endsWith("/fulfilled");
+      const registrationResult = await dispatch(registerUser(credentials));
+      if (registrationResult.error) {
+        setRegisterError("Username already in use. Please try again.");
+        return;
+      }
+  
+      const loginResult = await dispatch(attemptLogin(credentials));
+      const success = loginResult.payload;
       if (success) {
         navigate("/");
       } else {
-        setRegisterError("Username already in use. Please try again.");
+        setRegisterError("An error occurred during login. Please try again.");
       }
     } catch (error) {
       console.error("Error during registration:", error);
