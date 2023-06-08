@@ -21,14 +21,13 @@ const Register = () => {
     ev.preventDefault();
     try {
       const registrationResult = await dispatch(registerUser(credentials));
-      if (registrationResult.error) {
+      if (registrationResult.payload.error) {
         setRegisterError("Username already in use. Please try again.");
         return;
       }
   
       const loginResult = await dispatch(attemptLogin(credentials));
-      const success = loginResult.payload;
-      if (success) {
+      if (loginResult.payload) {
         navigate("/");
       } else {
         setRegisterError("An error occurred during login. Please try again.");
@@ -38,6 +37,7 @@ const Register = () => {
       setRegisterError("An error occurred during registration. Please try again.");
     }
   };
+  
 
   const invalidCredentials =
     credentials.username === "" || credentials.password === "";
