@@ -8,7 +8,6 @@ const AllCats = () => {
    const dispatch = useDispatch();
    const { products, cart } = useSelector((state) => state);
    const allCats = products.filter((product) => product.productType === "cat");
-   console.log(cart.lineItems,"allcats line11");
 
    const isActiveAdd = (id) =>{
       const activeAdd = cart.lineItems.reduce((acc,curr) =>{return acc && curr.productId!==id }, true)
