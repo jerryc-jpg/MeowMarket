@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch, } from "react-redux";
 import { logout } from "../store";
 import AllCats from "./AllCats";
 import Profile from "./Profile"
 import AllAccess from "./AllAccess";
 
+
 const Home = () => {
    const { auth } = useSelector((state) => state);
    const dispatch = useDispatch();
+   const [activeTab, setActiveTab] = useState(0);
+
+   const handleTabClick = (index) => {
+      setActiveTab(index);
+   }
+
    console.log(auth);
    return (
       <div>
@@ -30,7 +37,10 @@ const Home = () => {
          </div>
          <div>
             <h1 className="text-center mb-3">FEATURED CATS</h1>
-            <AllCats />
+            <span onClick={()=>handleTabClick(0)}>FEATURED CATS</span>
+            <span onClick={()=>handleTabClick(1)}>FEATURED ACCESS</span>
+            {activeTab === 0? <AllCats />:<AllAccess/>}
+            
          </div>
          <Profile />
       </div>

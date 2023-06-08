@@ -9,7 +9,7 @@ import { addToCart } from "../store";
 const AllAccess = ()=> {
     const dispatch = useDispatch();
     const {products} = useSelector(state => state);
-    const allAccess = products.filter((product) => product.productType === 'access');
+    const allAccess = products.filter((product) => product.productType !== 'cat');
     return (
         <div>
             {
