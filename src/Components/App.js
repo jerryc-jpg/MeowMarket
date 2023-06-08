@@ -35,11 +35,8 @@ const App = () => {
                <Route path="/cart" element={<Cart />} />
                <Route path="/:id" element={<SingleProduct />} />
                <Route path="/about" element={<About />} />
-<<<<<<< HEAD
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
-=======
                <Route path="/register" element={<RegisterAcc />} />
->>>>>>> 1eb441ee66d427af2680141b13d7547de4bd8eb8
             </Routes>
          </div>
       </div>
