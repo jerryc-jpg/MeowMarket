@@ -7,7 +7,7 @@ import { addToCart,removeFromCart } from "../store";
 const Cart = ()=> {
   const { cart } = useSelector(state => state);
   const dispatch = useDispatch();
-  const [items,setItems] = useState([]);
+  const [items,setItem] = useState([]);
 
   React.useEffect(() => {
     const list = [...cart.lineItems];
@@ -24,7 +24,7 @@ const Cart = ()=> {
     console.log(list,'line24');
   }
     
-    setItems(list);
+    setItem(list);
   },[cart])
   
   console.log(items);

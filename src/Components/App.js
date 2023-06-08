@@ -8,6 +8,7 @@ import { loginWithToken, fetchCart, fetchProducts } from "../store";
 import { Link, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SingleProduct from "./singleProduct";
+import SingleProductAdmin from "./SingleProductAdmin";
 
 const App = () => {
    const { auth } = useSelector((state) => state);
@@ -33,6 +34,7 @@ const App = () => {
                <Route path="/cart" element={<Cart />} />
                <Route path="/:id" element={<SingleProduct />} />
                <Route path="/about" element={<About />} />
+               <Route path="/admin/:id" element={<SingleProductAdmin />} />
             </Routes>
          </div>
       </div>

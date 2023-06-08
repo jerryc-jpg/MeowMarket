@@ -205,6 +205,7 @@ const syncAndSeed = async()=> {
       price:5.99,  
       description:'Give your kitty the playtime variety he loves with the Hartz Just For Cats Toy Variety Pack. It’s a purr-pourri of fun for your pal, with a kitty-approved combo of lightweight toys like catnip mice, pompoms, balls and more. It even comes with catnip to add a boost of excitement to playtime. The toys are perfect for independent play, yet are lightweight enough so you can toss them and watch your little hunter go! Plus, they’re made with pet-safe materials and help provide daily exercise and mental stimulation for your pal.'}),
     ]); 
+    
 
   const cart = await ethyl.getCart();
   await ethyl.addToCart({ product: marge, quantity: 1});
