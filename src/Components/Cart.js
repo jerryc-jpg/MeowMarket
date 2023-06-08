@@ -9,13 +9,14 @@ const Cart = () => {
   const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [items,setItems] = useState([]);
-  const [total,setTotal] = useState(0);
+  const [totalPrice,setTotalPrice] = useState(0);
+  const [totalQ,setTotalQ] = useState(0);
+
   const navigate = useNavigate();
 
   const handleCheckout = () => {
     dispatch(checkoutCart());
-    navigate('/cart/checkout');
-    
+    navigate('/cart/checkout'); 
   }
 
   React.useEffect(() => {
@@ -32,17 +33,23 @@ const Cart = () => {
         }
         return 0;
       });
-      console.log(list, "line24");
     }
-    setItems(list);
-    
-    const totalPrice = list.reduce((acc,curr)=>{
+
+    const sumPrice = list.reduce((acc,curr)=>{
       acc = acc + curr.product.price * curr.quantity;
       return acc;
     },0)
-    setTotal(totalPrice);
+    const sumQ = list.reduce((acc,curr)=>{
+      acc = acc+curr.quantity;
+      return acc;
+    },0)
+
+    setItems(list);
+    setTotalPrice(sumPrice);
+    setTotalQ(sumQ);
+
   }, [cart]);
-  console.log(items,"line46");
+ 
   return (
     <div className="container py-5 h-100">
       <div className="row d-flex justify-content-center align-items-center h-100">
@@ -91,14 +98,22 @@ const Cart = () => {
               </div>
             );
           })}
+          </div>
           <div>
-            <div>
-              <span>ORDER TOTAL</span>
-              <span>{total}</span>
-            </div>
+
+
+            <p>
+              <span>QUANTITY TOTAL: </span>
+              <span>{totalQ}</span>
+            </p>
+            <p>
+              <span>ORDER TOTAL: </span>
+              <span>{totalPrice}</span>
+            </p>
             <button onClick={()=>handleCheckout()}>Checkout</button>
           </div>
-        </div>
+          
+        
         </div>
       </div>
     </div>
