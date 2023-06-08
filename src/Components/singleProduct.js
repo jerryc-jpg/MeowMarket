@@ -56,7 +56,6 @@ const SingleProduct = () => {
         <p>Age:{oneProd.age}</p>
         <p>Description:{oneProd.description}</p>
         <p>Price:{oneProd.price}</p>
-        <p>Quantity:{oneProd.quantity}</p>
         <img src={oneProd.images[0]} />
         {isAdmin ? (
           <>

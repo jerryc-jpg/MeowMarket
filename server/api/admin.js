@@ -63,6 +63,26 @@ app.delete('/products/:id', async (req, res, next) => {
   }
 });
 
+app.get('/users', async (req, res, next) => {
+  try {
+    const users = await User.findAll();
+    res.send(users);
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
+app.delete('/users/:id', checkIsAdmin, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    user.destroy();
+    res.send(user)
+  } catch (e) {
+    next(e);
+  }
+});
+
 app.get('/users/:id', checkIsAdmin, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id);
