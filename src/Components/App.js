@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import Home from "./Home";
 import Login from "./Login";
+import RegisterAcc from "./Register";
 import Cart from "./Cart";
 import About from "./About";
 import { useSelector, useDispatch } from "react-redux";
-import { loginWithToken, fetchCart, fetchProducts } from "../store";
+import { loginWithToken, fetchCart, fetchProducts, Register } from "../store";
 import { Link, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import SingleProduct from "./singleProduct";
@@ -34,7 +35,11 @@ const App = () => {
                <Route path="/cart" element={<Cart />} />
                <Route path="/:id" element={<SingleProduct />} />
                <Route path="/about" element={<About />} />
+<<<<<<< HEAD
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
+=======
+               <Route path="/register" element={<RegisterAcc />} />
+>>>>>>> 1eb441ee66d427af2680141b13d7547de4bd8eb8
             </Routes>
          </div>
       </div>

@@ -1,35 +1,41 @@
 import React, { useState } from "react";
-import { attemptLogin, Register } from "../store";
+import { attemptLogin, registerUser } from "../store";
 import { useDispatch } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   });
-  const [loginError, setLoginError] = useState("");
+  const [registerError, setRegisterError] = useState("");
 
   const onChange = (ev) => {
     setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
-    setLoginError("");
+    setRegisterError("");
   };
 
-  const login = async (ev) => {
+  const handleRegister = async (ev) => {
     ev.preventDefault();
     try {
-      const resultAction = await dispatch(attemptLogin(credentials));
-      const success = resultAction.type.endsWith("/fulfilled");
+      const registrationResult = await dispatch(registerUser(credentials));
+      if (registrationResult.error) {
+        setRegisterError("Username already in use. Please try again.");
+        return;
+      }
+  
+      const loginResult = await dispatch(attemptLogin(credentials));
+      const success = loginResult.payload;
       if (success) {
         navigate("/");
       } else {
-        setLoginError("Invalid credentials. Please try again.");
+        setRegisterError("An error occurred during login. Please try again.");
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      setLoginError("An error occurred during login. Please try again.");
+      console.error("Error during registration:", error);
+      setRegisterError("An error occurred during registration. Please try again.");
     }
   };
 
@@ -50,10 +56,10 @@ const Login = () => {
                   style={{ borderRadius: "1rem 0 0 1rem" }}
                 />
               </div>
-              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div className="col-md-6 col-lg-7 d-flex align-items-center">
                 <div className="card-body p-4 p-lg-5 text-black">
-                  <h2 className="mb-5 d-flex justify-content-center align-items-center">Login</h2>
-                  <form onSubmit={login}>
+                  <h2 className="mb-5 text-center">Create an Account</h2>
+                  <form onSubmit={handleRegister}>
                     <div className="form-outline mb-4">
                       <input
                         placeholder="Username"
@@ -73,19 +79,17 @@ const Login = () => {
                         className="form-control form-control-lg"
                       />
                     </div>
-                    <div className="mb-2 d-flex justify-content-center align-items-center">
+                    <div className="mb-2 d-grid">
                       <button
                         disabled={invalidCredentials}
-                        className="btn btn-primary btn-lg btn-block w-100"
+                        className="btn btn-primary btn-lg"
+                        type="submit"
                       >
-                        Login
+                        Register
                       </button>
                     </div>
-                    <div className="d-flex justify-content-center align-items-center">
-                      <p>Don't have an account? <Link to="/register">Create an Account</Link></p> 
-                    </div>
                   </form>
-                  {loginError && <div>{loginError}</div>}
+                  {registerError && <div>{registerError}</div>}
                 </div>
               </div>
             </div>
@@ -96,4 +100,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
