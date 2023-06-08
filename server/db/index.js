@@ -11,11 +11,10 @@ LineItem.belongsTo(Product);
 
 const syncAndSeed = async()=> {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, ethyl, admin, marge, homer] = await Promise.all([
+  const [moe, lucy, larry, admin, marge, homer] = await Promise.all([
     User.create({ username: 'moe', password: '123' }),
     User.create({ username: 'lucy', password: '123' }),
     User.create({ username: 'larry', password: '123' }),
-    User.create({ username: 'ethyl', password: '123' }),
     User.create({ username: 'admin', password: '123', isAdmin: true }),
 
     Product.create({ 
@@ -112,9 +111,9 @@ const syncAndSeed = async()=> {
     Product.create({ 
       productType: 'cat', 
       name: 'Prairie', 
-      images:['https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64496290/1/?bust=1684286645&width=1080'],
+      images:['https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64447970/1/?bust=1684179102&width=1080'],
       price:113, 
-      breed:'Dilute Calico ',
+      breed:'Dilute Calico',
       age: 3,
       description:"Prairie was trapped with her , mom, dad, bother and sisters july 4th weekend 2021. She and siblings were about 6 weeks and feral. They’ve slowly come around over 2 years but will require someone with extreme patience. Prairie is still the most timid of the bunch. "}),
     Product.create({ 
@@ -205,10 +204,7 @@ const syncAndSeed = async()=> {
       price:5.99,  
       description:'Give your kitty the playtime variety he loves with the Hartz Just For Cats Toy Variety Pack. It’s a purr-pourri of fun for your pal, with a kitty-approved combo of lightweight toys like catnip mice, pompoms, balls and more. It even comes with catnip to add a boost of excitement to playtime. The toys are perfect for independent play, yet are lightweight enough so you can toss them and watch your little hunter go! Plus, they’re made with pet-safe materials and help provide daily exercise and mental stimulation for your pal.'}),
     ]); 
-
-  const cart = await ethyl.getCart();
-  await ethyl.addToCart({ product: marge, quantity: 1});
-  await ethyl.addToCart({ product: homer, quantity: 1});
+  const cart = await moe.getCart();
   return {
     users: {
       moe,
