@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOrders } from "../store";
+import { fetchOrders, loginWithToken } from "../store";
 import { Link } from "react-router-dom";
 
 const Orders = () => {
@@ -9,7 +9,12 @@ const Orders = () => {
 
    useEffect(() => {
       dispatch(fetchOrders());
+      dispatch(loginWithToken()); 
    }, [dispatch]);
+
+   if (!auth.username) {
+      return <p>Please <Link to='/login'>login</Link> to view the your orders.</p>;
+    }
 
    return (
       <div>
