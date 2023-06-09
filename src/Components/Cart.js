@@ -6,7 +6,7 @@ import { addToCart, removeFromCart, checkoutCart, updateProductQuantity } from "
 
 
 const Cart = () => {
-  const { cart } = useSelector((state) => state);
+  const { prooducts,cart } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [items,setItems] = useState([]);
   const [totalPrice,setTotalPrice] = useState(0);
@@ -50,7 +50,7 @@ const Cart = () => {
     setTotalQ(sumQ);
 
   }, [cart]);
- 
+ console.log(items,'items');
   return (
     <div className="container py-5">
       <div className="row">
@@ -64,12 +64,17 @@ const Cart = () => {
                 </div>
                 <div className="col">
                   <p className="mb-0">Name: {item.product.name}</p>
-                  <p className="mb-0">Quantity: {item.quantity}</p>
+                  <p className="mb-0">
+                    Quantity: {item.quantity}
+                    {item.product.quantity===0?(<span>(limit reached)</span>):null}
+                  </p>
+
                   {item.product.productType !== "cat" && (
                     <>
                       <button
                         className="btn btn-sm btn-outline-primary me-1"
                         onClick={() => {
+                          dispatch(updateProductQuantity({ product: item.product, quantity: -1 }));
                           dispatch(removeFromCart({ product: item.product, quantityToRemove: 1 }));
                         }}
                       >
@@ -85,9 +90,10 @@ const Cart = () => {
                       <button
                         className="btn btn-sm btn-outline-primary me-1"
                         onClick={() => {
-                          dispatch(updateProductQuantity({ product: item.product, quantity: -1 }));
+                          dispatch(updateProductQuantity({ product: item.product, quantity: 1 }));
                           dispatch(addToCart({ product: item.product, quantity: 1 }));
                         }}
+                        disabled={item.product.quantity===0}
                       >
                         +
                       </button>

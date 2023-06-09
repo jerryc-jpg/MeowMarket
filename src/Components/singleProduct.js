@@ -99,7 +99,10 @@ const SingleProduct = () => {
                               }
                               disabled={oneProd.quantity===0} 
                            >
-                              TAKE ME HOME
+                              {
+                                 oneProd.quantity>0?(<span>TAKE ME HOME</span>):(<span>LIMIT EXCEEDED</span>)
+                              }
+            
                            </button>
                            <button >CONTINUE SHOPPING</button>
                         </div>
@@ -170,8 +173,12 @@ const SingleProduct = () => {
                               className="btn btn-success"
                               onClick={() => {
                                  dispatch(addToCart({ product: oneProd, quantity }));
-                              }}>
-                              Add Cart
+                              }}
+                              >
+                               {
+                                 oneProd.quantity>0?(<span>TAKE ME HOME</span>):(<span>LIMIT EXCEEDED</span>)
+                              }
+            
                            </button>
                         </div>
                      </div>

@@ -1,13 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../store";
+import { addToCart, updateProductQuantity } from "../store";
 
 const AllAccess = () => {
    const dispatch = useDispatch();
    const { products } = useSelector((state) => state);
-   const allAccess = products.filter((product) => product.productType !== "cat");
+   const [allAccess,setAllAccess] = useState([]);
+   
 
    const isActiveAdd = (id) => {
       const activeAdd = cart.lineItems.reduce((acc, curr) => {
@@ -15,6 +16,24 @@ const AllAccess = () => {
       }, true);
       return activeAdd;
    };
+
+
+   React.useEffect(()=>{
+      let access = products.filter((product) => product.productType !== "cat");
+      let accesslist = [...access];
+      if (accesslist) {
+         accesslist.sort(function (a, b) {
+         if (a.name > b.name) {
+            return -1;
+         }
+         if (a.name < b.name) {
+            return 1;
+         }
+         return 0;
+         });
+      }
+      setAllAccess(accesslist);
+   },[products]);
 
    return (
       <div className="container text-center">
@@ -33,15 +52,13 @@ const AllAccess = () => {
                            </Link>
                            <button
                               onClick={() => {
-                                 if (isActiveAdd(cat.id)) {
-                                    dispatch(addToCart({ product: access, quantity: 1 }));
-                                 } else {
-                                    window.alert("Maximum quantity reached!");
-                                    console.log("Maximum quantity reached!");
-                                 }
+                                 dispatch(updateProductQuantity({product:access,quantity:1}))
+                                 dispatch(addToCart({ product: access, quantity: 1 }))
                               }}
                               className="btn btn-primary">
-                              Add to Cart
+                                 {
+                                    access.quantity>0?(<span>Add to Cart</span>):(<span>Opps! Sold</span>)
+                                 }
                            </button>
                         </div>
                      </div>
