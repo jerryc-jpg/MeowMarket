@@ -26,12 +26,17 @@ const Navbar = () => {
                      Welcome Back, {user.username.toUpperCase()}
                   </a>
                   <div className="dropdown-menu text-center">
-                     <a className="dropdown-item" href="#">
+                     {user.isAdmin && ( 
+                        <Link to="/users" className="dropdown-item">
+                           Manage Users
+                           </Link>
+                           )}
+                     <Link to="/profile" className="dropdown-item" href="#">
                         Profile
-                     </a>
-                     <a className="dropdown-item" href="#">
+                     </Link>
+                     <Link to="/orders" className="dropdown-item" href="#">
                         Orders
-                     </a>
+                     </Link>
                   </div>
                </div>
                <li className="nav-item">

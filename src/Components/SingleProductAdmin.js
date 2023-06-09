@@ -58,77 +58,104 @@ const SingleProductAdmin = () => {
     navigate(`/${id}`);
     };
 
-  return (
-    <div>
-      <form onSubmit={updateProduct}>
-        <div>
-          <label htmlFor="name">Name:</label>
+    return (
+      <div className="m-3">
+        <form onSubmit={updateProduct}>
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label">Name:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="name"
+              value={name}
+              onChange={(ev) => setName(ev.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="productType" className="form-label">Type:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="product type"
+              value={productType}
+              onChange={(ev) => setProductType(ev.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="price" className="form-label">Price:</label>
+            <input
+              type="number"
+              step="0.01"
+              className="form-control"
+              placeholder="price"
+              value={price}
+              onChange={(ev) => setPrice(ev.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+          <label htmlFor="image" className="form-label">Image URL:</label>
           <input
-            placeholder="name"
-            value={name}
-            onChange={(ev) => setName(ev.target.value)}
+            type="text"
+            className="form-control"
+            id="image"
+            placeholder="Image URL"
+            value={image}
+            onChange={(ev) => setImage(ev.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="productType">Type:</label>
-          <input
-            placeholder="product type"
-            value={productType}
-            onChange={(ev) => setProductType(ev.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="price">Price:</label>
-          <input
-            placeholder="price"
-            value={price}
-            onChange={(ev) => setPrice(ev.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="image URL">image</label>
-          <input placeholder="image" />
-        </div>
-        {isCat ? (
-          <>
-            <div>
-              <label htmlFor="breed">Breed:</label>
-              <input
-                placeholder="breed"
-                value={breed}
-                onChange={(ev) => setBreed(ev.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="age">age</label>
-              <input
-                placeholder="age"
-                value={age}
-                onChange={(ev) => setAge(ev.target.value)}
-              />
-            </div>
-          </>
-        ) : null}
-        <div>
-          <label htmlFor="description">description:</label>
-          <input
-            placeholder="description"
-            value={description}
-            onChange={(ev) => setDescription(ev.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="quantity">quantity</label>
-          <input
-            placeholder="quantity"
-            value={quantity}
-            onChange={(ev) => setQuantity(ev.target.value)}
-          />
-        </div>
-        <button disabled={name === ""}>update</button>
-      </form>
-    </div>
-  );
-};
-
-export default SingleProductAdmin;
+          {isCat ? (
+            <>
+              <div className="mb-3">
+                <label htmlFor="breed" className="form-label">Breed:</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="breed"
+                  value={breed}
+                  onChange={(ev) => setBreed(ev.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="age" className="form-label">Age:</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="age"
+                  value={age}
+                  onChange={(ev) => setAge(ev.target.value)}
+                />
+              </div>
+            </>
+          ) : null}
+          <div className="mb-3">
+            <label htmlFor="description" className="form-label">Description:</label>
+            <textarea
+              className="form-control"
+              placeholder="description"
+              value={description}
+              onChange={(ev) => setDescription(ev.target.value)}
+              style={{ whiteSpace: "pre-wrap" }}
+            ></textarea>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="quantity" className="form-label">Quantity:</label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="quantity"
+              value={quantity}
+              onChange={(ev) => setQuantity(ev.target.value)}
+            />
+          </div>
+          <button className="btn btn-primary" disabled={name === ""}>Update</button>
+        </form>
+      </div>
+    );
+  };
+  
+  export default SingleProductAdmin;
+  
+  
+  
+  
+  

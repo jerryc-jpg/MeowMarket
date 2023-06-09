@@ -11,7 +11,9 @@ import Navbar from "./Navbar";
 import SingleProduct from "./singleProduct";
 import SingleProductAdmin from "./SingleProductAdmin";
 import Checkout from "./Checkout";
-import Users from "./users";
+import Users from "./Users";
+import Profile from "./Profile";
+import Orders from "./Orders";
 
 const App = () => {
    const { auth } = useSelector((state) => state);
@@ -44,7 +46,8 @@ const App = () => {
                <Route path="*" element={<Home />} />
 
                <Route path="/users" element={<Users />} />
-
+               <Route path="/profile" element={<Profile />} />
+               <Route path="/orders" element={<Orders />} />
             </Routes>
          </div>
       </div>
