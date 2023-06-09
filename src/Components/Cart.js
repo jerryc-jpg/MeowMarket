@@ -92,14 +92,16 @@ const Cart = () => {
                                        alt={item.product.name}
                                     />
                                     <div className="media-body">
-                                       <a href="#" className="d-block text-dark">
+                                       <Link to={`/${item.product.id}`} href="#" className="d-block text-dark">
                                           {item.product.name}
-                                       </a>
-                                       <small>
-                                          <span className="text-muted">Breed: {item.product.breed}</span>
-                                          <span className="text-muted"></span> &nbsp;
-                                          <span className="text-muted">Age: </span> {item.product.age}
-                                       </small>
+                                       </Link>
+                                       {item.product.productType === "cat" ? (
+                                          <small>
+                                             <span className="text-muted">Breed: {item.product.breed}</span>
+                                             <span className="text-muted"></span> &nbsp;
+                                             <span className="text-muted">Age: </span> {item.product.age}
+                                          </small>
+                                       ) : null}
                                     </div>
                                  </div>
                               </td>
@@ -107,37 +109,49 @@ const Cart = () => {
                                  ${item.product.price}
                               </td>
                               <td className="align-items-middle p-5 d-flex justify-content-between">
-                                 <button
-                                    className="btn btn-sm btn-outline-dark me-1"
-                                    onClick={() => {
-                                       if (item.quantity > 1) {
-                                          dispatch(removeFromCart({ product: item.product, quantityToRemove: 1 }));
-                                       }
-                                    }}>
-                                    -
-                                 </button>
-                                 <input
-                                    type="text"
-                                    min="1"
-                                    max="5"
-                                    className="form-control text-center me-1"
-                                    style={{ width: "60px" }}
-                                    value={item.quantity}
-                                    onChange={(e) => {
-                                       const newQuantity = parseInt(e.target.value);
-                                       dispatch(
-                                          updateProductQuantity({ product: item.product, quantity: newQuantity })
-                                       );
-                                    }}
-                                 />
-                                 <button
-                                    className="btn btn-sm btn-outline-dark me-1"
-                                    onClick={() => {
-                                       dispatch(updateProductQuantity({ product: item.product, quantity: -1 }));
-                                       dispatch(addToCart({ product: item.product, quantity: 1 }));
-                                    }}>
-                                    +
-                                 </button>
+                                 {item.product.productType === "cat" ? (
+                                    <div className="text-center" style={{ width: "100%" }}>
+                                       <span className="d-block mx-auto" style={{ width: "30px" }}>
+                                          1
+                                       </span>
+                                    </div>
+                                 ) : (
+                                    <>
+                                       <button
+                                          className="btn btn-sm btn-outline-dark me-1"
+                                          onClick={() => {
+                                             if (item.quantity > 1) {
+                                                dispatch(
+                                                   removeFromCart({ product: item.product, quantityToRemove: 1 })
+                                                );
+                                             }
+                                          }}>
+                                          -
+                                       </button>
+                                       <input
+                                          type="text"
+                                          min="1"
+                                          max="5"
+                                          className="form-control text-center me-1"
+                                          style={{ width: "60px" }}
+                                          value={item.quantity}
+                                          onChange={(e) => {
+                                             const newQuantity = parseInt(e.target.value);
+                                             dispatch(
+                                                updateProductQuantity({ product: item.product, quantity: newQuantity })
+                                             );
+                                          }}
+                                       />
+                                       <button
+                                          className="btn btn-sm btn-outline-dark me-1"
+                                          onClick={() => {
+                                             dispatch(updateProductQuantity({ product: item.product, quantity: -1 }));
+                                             dispatch(addToCart({ product: item.product, quantity: 1 }));
+                                          }}>
+                                          +
+                                       </button>
+                                    </>
+                                 )}
                               </td>
                               <td className="text-right font-weight-semibold align-middle p-4">
                                  ${item.product.price * item.quantity}
