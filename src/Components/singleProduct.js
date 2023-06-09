@@ -10,7 +10,7 @@ const SingleProduct = () => {
    const { id } = useParams();
    const dispatch = useDispatch();
    const navigate = useNavigate();
-   const [quantity, setQuantity] = useState(0);
+   const [quantity, setQuantity] = useState(1);
    const [inventory, setInvetory] = useState(0);
    const [oneProd, setOneProd] = useState({});
    const isAdmin = auth.isAdmin;
@@ -152,18 +152,15 @@ const SingleProduct = () => {
                                  -
                               </button>
                               <input
-                                 type="number"
                                  value={quantity}
                                  onChange={handleQuantityChange}
                                  className="form-control border-0 text-center"
-                                 style={{ maxWidth: "35px" }}
+                                 style={{ maxWidth: "40px" }}
                               />
                               <button
                                  className="btn btn-outline-secondary"
                                  type="button"
-                                 onClick={() => incrementQ(quantity)}
-                                 disabled={quantity===oneProd.quantity}
-                              >
+                                 onClick={() => incrementQ(quantity)}>
                                  +
                               </button>
                            </div>
@@ -172,9 +169,10 @@ const SingleProduct = () => {
                            <button
                               className="btn btn-success"
                               onClick={() => {
-                                 dispatch(updateProductQuantity({ product: oneProd, quantity:quantity}))
                                  dispatch(addToCart({ product: oneProd, quantity }));
-       </button>
+                              }}>
+                              Add to Cart
+                           </button>
                         </div>
                      </div>
                   )}
