@@ -1,10 +1,27 @@
-/* ----- Home Page -----*/
-.has-bg-img {
+/* -----About Page -----*/
+.about-page {
+   min-height: 100vh;
+   padding: 100px 0;
+}
+
+.about-page.bg-image {
    background-image: url("https://img.freepik.com/free-psd/beautiful-cat-portrait-isolated_23-2150186004.jpg?w=2000&t=st=1686159153~exp=1686159753~hmac=55cacc987ed5649f31f537a3ee80ee494f1e725719fa01098512919b67fc0e30");
    background-repeat: no-repeat;
-   background-position: center center;
+   background-position: center;
    background-size: cover;
-   height: 100vh;
+   background-attachment: fixed; /* Optional: Ensures the background stays fixed while scrolling */
+}
+
+.about-page h1 {
+   font-size: 3rem;
+   margin-bottom: 20px;
+}
+
+.about-page .grid-container {
+   max-width: 800px;
+   margin: 0 auto;
+   color: #000000;
+   text-indent: 2rem;
 }
 
 .custom-pointer:hover {
