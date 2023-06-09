@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch, } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
 import AllCats from "./AllCats";
-import Profile from "./Profile"
+import Profile from "./Profile";
 import AllAccess from "./AllAccess";
-
 
 const Home = () => {
    const { auth } = useSelector((state) => state);
@@ -13,19 +12,19 @@ const Home = () => {
 
    const handleTabClick = (index) => {
       setActiveTab(index);
-   }
+   };
 
-   console.log(auth);
    return (
       <div>
          <div className="text-center position-relative">
             <h1
-               className="position-absolute start-50"
+               className="fas fa-cat position-absolute start-50"
                style={{
                   top: "10%",
                   transform: "translateX(-50%)",
                   fontSize: "5rem",
-                  opacity: "0.80"
+                  opacity: "0.80",
+                  letterSpacing: "3px"
                }}>
                Meow Market
             </h1>
@@ -35,13 +34,20 @@ const Home = () => {
                className="img-fluid w-100 opacity-85 mb-5"
             />
          </div>
-         <div>
-            <h1 className="text-center mb-3">FEATURED CATS</h1>
-            <span onClick={()=>handleTabClick(0)}>FEATURED CATS</span>
-            <span onClick={()=>handleTabClick(1)}>FEATURED ACCESS</span>
-            {activeTab === 0? <AllCats />:<AllAccess/>}
-            
+         <br />
+         <div className="d-flex justify-content-center mb-3">
+            <h2
+               className={`text-center mb-3 me-3 custom-pointer ${activeTab === 0 ? "active" : ""}`}
+               onClick={() => handleTabClick(0)}>
+               FEATURED CATS
+            </h2>
+            <h2
+               className={`text-center mb-3 custom-pointer ${activeTab === 1 ? "active" : ""}`}
+               onClick={() => handleTabClick(1)}>
+               FEATURED ACCESSORIES
+            </h2>
          </div>
+         {activeTab === 0 ? <AllCats /> : <AllAccess />}
          <Profile />
       </div>
    );
