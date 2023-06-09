@@ -34,9 +34,9 @@ const Navbar = () => {
                      <Link to="/profile" className="dropdown-item" href="#">
                         Profile
                      </Link>
-                     <a className="dropdown-item" href="#">
+                     <Link to="/orders" className="dropdown-item" href="#">
                         Orders
-                     </a>
+                     </Link>
                   </div>
                </div>
                <li className="nav-item">
