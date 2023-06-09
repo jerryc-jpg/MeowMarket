@@ -10,7 +10,7 @@ const SingleProduct = () => {
    const { id } = useParams();
    const dispatch = useDispatch();
    const navigate = useNavigate();
-   const [quantity, setQuantity] = useState(1);
+   const [quantity, setQuantity] = useState(0);
    const [inventory, setInvetory] = useState(0);
    const [oneProd, setOneProd] = useState({});
    const isAdmin = auth.isAdmin;
@@ -161,7 +161,9 @@ const SingleProduct = () => {
                               <button
                                  className="btn btn-outline-secondary"
                                  type="button"
-                                 onClick={() => incrementQ(quantity)}>
+                                 onClick={() => incrementQ(quantity)}
+                                 disabled={quantity===oneProd.quantity}
+                              >
                                  +
                               </button>
                            </div>
@@ -170,10 +172,9 @@ const SingleProduct = () => {
                            <button
                               className="btn btn-success"
                               onClick={() => {
+                                 dispatch(updateProductQuantity({ product: oneProd, quantity:quantity}))
                                  dispatch(addToCart({ product: oneProd, quantity }));
-                              }}>
-                              {oneProd.quantity > 0 ? <span>TAKE ME HOME</span> : <span>LIMIT EXCEEDED</span>}
-                           </button>
+       </button>
                         </div>
                      </div>
                   )}
