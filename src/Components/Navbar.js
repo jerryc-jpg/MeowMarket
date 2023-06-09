@@ -26,6 +26,11 @@ const Navbar = () => {
                      Welcome Back, {user.username.toUpperCase()}
                   </a>
                   <div className="dropdown-menu text-center">
+                     {user.isAdmin && ( 
+                        <Link to="/users" className="dropdown-item">
+                           Manage Users
+                           </Link>
+                           )}
                      <a className="dropdown-item" href="#">
                         Profile
                      </a>
