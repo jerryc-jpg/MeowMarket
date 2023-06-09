@@ -48,7 +48,6 @@ const Home = () => {
             </h2>
          </div>
          {activeTab === 0 ? <AllCats /> : <AllAccess />}
-         <Profile />
       </div>
    );
 };

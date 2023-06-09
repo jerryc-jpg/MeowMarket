@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrders } from "../store";
+import { Link } from "react-router-dom";
 
 const Orders = () => {
    const dispatch = useDispatch();
@@ -16,20 +17,22 @@ const Orders = () => {
          {orders.length === 0 ? (
             <p>No past orders</p>
          ) : (
-            orders.map((order) => (
-               <div key={order.id}>
-                  <>{console.log(order)}</>
+            <div>
+               <h2>Past Orders: </h2>
+               {orders.map((order) => (
+                  <div key={order.id}>
                   <p>Order ID: {order.id}</p>
                   <p>Total: {order.total}</p>
                   <ul>
                      {order.lineItems.map((item) => (
                         <li key={item.id}>
-                           {item.product.name} - Quantity: {item.quantity}
+                        <Link to={`/${item.product.id}`}>{item.product.name}</Link>- Quantity: {item.quantity}
                         </li>
                      ))}
                   </ul>
-               </div>
-            ))
+                  </div>
+               ))}
+            </div>
          )}
       </div>
    );
