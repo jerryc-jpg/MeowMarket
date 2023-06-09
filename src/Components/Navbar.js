@@ -79,7 +79,7 @@ const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                <div className="mx-auto">
-                  <ul className="navbar-nav text-center fw-bold fs-5">
+                  <ul className="navbar-nav text-center fw-bold fs-5 align-items-center">
                      <li className="nav-item">
                         <Link className="nav-link active" aria-current="page" to="/">
                            Home
@@ -89,6 +89,14 @@ const Navbar = () => {
                         <Link className="nav-link" to="/about">
                            About
                         </Link>
+                     </li>
+                     <li className="nav-item ms-4">
+                        <div className="input-group">
+                           <input type="search" className="form-control rounded-end" placeholder="Search" />
+                           <button className="btn btn-outline-secondary" type="button">
+                              <i className="fa fa-search"></i>
+                           </button>
+                        </div>
                      </li>
                   </ul>
                </div>
