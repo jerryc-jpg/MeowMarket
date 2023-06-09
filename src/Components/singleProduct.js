@@ -70,32 +70,29 @@ const SingleProduct = () => {
                   <p className="cat-detail">
                      <strong>Description:</strong>
                   </p>
-                  <p class="description">{oneProd.description}</p>
+                  <p className="description">{oneProd.description}</p>
                   <p className="cat-detail">
                      <strong>Price:</strong> ${oneProd.price}
                   </p>
-                  {isAdmin ? 
-                     (  <div className="mt-3">
-                           <Link to={`/admin/${oneProd.id}`} className="btn btn-primary me-2">
-                              Edit
-                           </Link>
-                           <button onClick={handleDelete} className="btn btn-danger">
-                              Delete
-                           </button>
-                        </div>
-                     ) : (
-                        <button
-                           className="btn btn-success mt-3"
-                           onClick={() => {
-                                 dispatch(updateProductQuantity({product:oneProd,quantity}))
-                                 dispatch(addToCart({ product: oneProd, quantity }))
-                              }   
-                           }
-                        >
-                           TAKE ME HOME
+                  {isAdmin ? (
+                     <div className="mt-3">
+                        <Link to={`/admin/${oneProd.id}`} className="btn btn-primary me-2">
+                           Edit
+                        </Link>
+                        <button onClick={handleDelete} className="btn btn-danger">
+                           Delete
                         </button>
-                     )
-                  }
+                     </div>
+                  ) : (
+                     <button
+                        className="btn btn-success mt-3"
+                        onClick={() => {
+                           dispatch(updateProductQuantity({ product: oneProd, quantity }));
+                           dispatch(addToCart({ product: oneProd, quantity }));
+                        }}>
+                        TAKE ME HOME
+                     </button>
+                  )}
                </div>
             </div>
          </div>

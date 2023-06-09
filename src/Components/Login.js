@@ -50,7 +50,7 @@ const Login = () => {
                   style={{ borderRadius: "1rem 0 0 1rem" }}
                 />
               </div>
-              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div className="col-md-6 col-lg-7 d-flex align-items-center">
                 <div className="card-body p-4 p-lg-5 text-black">
                   <h2 className="mb-5 d-flex justify-content-center align-items-center">Login</h2>
                   <form onSubmit={login}>
