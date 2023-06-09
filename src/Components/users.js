@@ -17,7 +17,7 @@ const Users = () => {
     <div className="container">
       <h1 className="mt-4">Users</h1>
       <div className="row">
-        {users.map((user) => (
+        {users.filter(user => !user.isAdmin).map((user) => (
           <div className="col-lg-4 mt-4" key={user.id}>
             <div className="card">
               <div className="card-body">
