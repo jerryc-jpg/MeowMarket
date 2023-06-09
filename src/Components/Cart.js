@@ -63,7 +63,8 @@ const Cart = () => {
                 <img src={item.product.images[0]} />
                 <p>name: {item.product.name}</p>
                 <p>quantity: {item.quantity}</p>
-                {item.product.productType!=='cat'?
+                {
+                item.product.productType!=='cat'?
                   <>
                     <button
                       onClick={() =>{
@@ -103,7 +104,9 @@ const Cart = () => {
                       }))
                     }
                   }
-                      >remove from cart</button>
+                >
+                  remove from cart
+                </button>
                 <hr />
               </div>
             );
