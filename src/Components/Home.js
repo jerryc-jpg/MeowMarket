@@ -23,7 +23,8 @@ const Home = () => {
                   top: "10%",
                   transform: "translateX(-50%)",
                   fontSize: "5rem",
-                  opacity: "0.80"
+                  opacity: "0.80",
+                  letterSpacing: "3px"
                }}>
                Meow Market
             </h1>
