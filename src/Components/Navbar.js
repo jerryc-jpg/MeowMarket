@@ -1,11 +1,25 @@
-import React from "react";
+import React,{ useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
 
 const Navbar = () => {
    const user = useSelector((state) => state.auth);
+   const cart = useSelector((state) => state.cart );
    const dispatch = useDispatch();
+   const [sum,setSum] = useState(0);
+   
+   React.useEffect(() => {
+      let list =[... cart.lineItems];
+      if(list){
+         const totalQ = list.reduce((acc,curr)=>{
+            return acc = acc+curr.quantity;
+         },0)
+         setSum(totalQ);
+      }
+      
+
+   },[cart]);
 
    const handleLogout = () => {
       dispatch(logout());
@@ -103,7 +117,11 @@ const Navbar = () => {
                <ul className="navbar-nav align-items-center">
                   <li className="nav-item d-flex align-items-center">
                      <Link to="/cart" className="nav-link">
-                        <i className="fas fa-shopping-cart fs-3 align-middle" style={{ color: "#ffffff" }}></i>
+                        <i className="fas fa-shopping-cart fs-3 align-middle" style={{ color: "#ffffff" }}>
+                           {
+                              sum?(<span>({sum})</span>):null
+                           }
+                        </i>
                      </Link>
                   </li>
                   {renderAuthButtons()}
