@@ -180,9 +180,7 @@ const SingleProduct = () => {
                               >
                                {
                                  oneProd.quantity>0?(<span>TAKE ME HOME</span>):(<span>LIMIT EXCEEDED</span>)
-                              }
-                              <span>({quantity})</span>
-            
+                              }          
                            </button>
                         </div>
                      </div>
