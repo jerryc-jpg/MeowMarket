@@ -16,25 +16,25 @@ const Orders = () => {
       return <p>Please <Link to='/login'>login</Link> to view the your orders.</p>;
     }
 
-   return (
-      <div>
-         <h2>Past Orders for {auth.username}</h2>
+    return (
+      <div className="container">
+         <h2 className="mt-3">Past Orders for {auth.username}</h2>
          {orders.length === 0 ? (
             <p>No past orders</p>
          ) : (
             <div>
-               <h2>Past Orders: </h2>
+               <h2>Past Orders:</h2>
                {orders.map((order) => (
-                  <div key={order.id}>
-                  <p>Order ID: {order.id}</p>
-                  <p>Total: {order.total}</p>
-                  <ul>
-                     {order.lineItems.map((item) => (
-                        <li key={item.id}>
-                        <Link to={`/${item.product.id}`}>{item.product.name}</Link>- Quantity: {item.quantity}
-                        </li>
-                     ))}
-                  </ul>
+                  <div key={order.id} className="mb-4">
+                     <p>Order ID: {order.id}</p>
+                     <p>Total: {order.total}</p>
+                     <ul className="list-unstyled">
+                        {order.lineItems.map((item) => (
+                           <li key={item.id}>
+                              <Link to={`/${item.product.id}`}>{item.product.name}</Link> - Quantity: {item.quantity}
+                           </li>
+                        ))}
+                     </ul>
                   </div>
                ))}
             </div>

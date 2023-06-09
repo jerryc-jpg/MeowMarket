@@ -3,12 +3,12 @@ import "../../static/styles.css";
 
 const About = () => {
    return (
-      <div className="has-bg-img d-flex justify-content-center align-items-center">
+      <div className="about-page bg-image d-flex justify-content-center align-items-center">
          <div className="container">
             <div className="row">
-               <div className="col-lg-8 offset-lg-0 text-lg-center">
-                  <h1 className="display-1">About Us</h1>
-                  <div className="grid-container fs-5">
+               <div className="col-lg-8 offset-lg-2">
+                  <h1 className="display-1 text-center mb-4">About Us</h1>
+                  <div className="grid-container fs-5 text-start px-4 custom-about-text">
                      <p>
                         At Meow Market, we are passionate about connecting adorable kittens with loving families. We
                         understand the joy and companionship that kittens bring into our lives, and we strive to make

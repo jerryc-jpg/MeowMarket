@@ -40,11 +40,11 @@ const Navbar = () => {
                      Welcome Back, {user.username.toUpperCase()}
                   </a>
                   <div className="dropdown-menu text-center">
-                     {user.isAdmin && ( 
+                     {user.isAdmin && (
                         <Link to="/users" className="dropdown-item">
                            Manage Users
-                           </Link>
-                           )}
+                        </Link>
+                     )}
                      <Link to="/profile" className="dropdown-item" href="#">
                         Profile
                      </Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
 
    return (
       <nav
-         className="navbar navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark d-flex"
+         className="navbar navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark d-flex sticky-top"
          data-bs-theme="dark">
          <div className="container-fluid">
             <div className="navbar-brand">
@@ -93,7 +93,7 @@ const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                <div className="mx-auto">
-                  <ul className="navbar-nav text-center fw-bold fs-5">
+                  <ul className="navbar-nav text-center fw-bold fs-5 align-items-center">
                      <li className="nav-item">
                         <Link className="nav-link active" aria-current="page" to="/">
                            Home
@@ -103,6 +103,14 @@ const Navbar = () => {
                         <Link className="nav-link" to="/about">
                            About
                         </Link>
+                     </li>
+                     <li className="nav-item ms-4">
+                        <div className="input-group">
+                           <input type="search" className="form-control rounded-end" placeholder="Search" />
+                           <button className="btn btn-outline-secondary" type="button">
+                              <i className="fa fa-search"></i>
+                           </button>
+                        </div>
                      </li>
                   </ul>
                </div>
