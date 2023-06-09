@@ -42,39 +42,40 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <h1>Profile Page for {auth.username}</h1>
-      <div>
+    <div className="container">
+      <h1 className="mt-3">Profile Page for {auth.username}</h1>
+      <div className="mt-4">
         <h2>Edit Profile</h2>
         <form onSubmit={handleSubmit}>
-          <label>
-            Username:
-            <input type="text" value={username} onChange={(e) => handleChange(e, setUsername)} />
-          </label>
-          <br />
-          <label>
-            Email:
-            <input type="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
-          </label>
-          <br />
-          <label>
-            Password:
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label">Username:</label>
+            <input type="text" className="form-control" id="username" value={username} onChange={(e) => handleChange(e, setUsername)} />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email:</label>
+            <input type="email" className="form-control" id="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Password:</label>
             <input
               type={showPassword ? "text" : "password"}
+              className="form-control"
+              id="password"
               value={password}
               onChange={(e) => handleChange(e, setPassword)}
             />          
-          </label>
-          <label>
-            Show Password
+          </div>
+          <div className="form-check mb-3">
             <input
               type="checkbox"
+              className="form-check-input"
+              id="showPassword"
               checked={showPassword}
               onChange={handleShowPasswordChange}
             />
-          </label>
-          <br />
-          <button type="submit">Save Changes</button>
+            <label className="form-check-label" htmlFor="showPassword">Show Password</label>
+          </div>
+          <button type="submit" className="btn btn-primary">Save Changes</button>
         </form>
       </div>
     </div>
