@@ -18,6 +18,7 @@ import Orders from "./Orders";
 const App = () => {
    const { auth } = useSelector((state) => state);
    const dispatch = useDispatch();
+
    useEffect(() => {
       dispatch(loginWithToken());
       dispatch(fetchProducts());
@@ -38,16 +39,15 @@ const App = () => {
                <Route path="/login" element={<Login />} />
                <Route path="/cart" element={<Cart />} />
                <Route path="/cart/checkout" element={<Checkout />} />
-               <Route path="/:id" element={<SingleProduct />} />
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
                <Route path="/register" element={<RegisterAcc />} />
-
-               <Route path="*" element={<Home />} />
-
                <Route path="/users" element={<Users />} />
                <Route path="/profile" element={<Profile />} />
                <Route path="/orders" element={<Orders />} />
+
+               <Route path="/:id" element={<SingleProduct />} />
+               <Route path="*" element={<Home />} />
             </Routes>
          </div>
       </div>

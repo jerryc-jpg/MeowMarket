@@ -11,7 +11,7 @@ const SingleProduct = () => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
    const [quantity, setQuantity] = useState(1);
-   const [inventory, setInvetory] = useState(0);
+   const [inventory, setInventory] = useState(0);
    const [oneProd, setOneProd] = useState({});
    const isAdmin = auth.isAdmin;
    const [limitExceeded, setLimiteExceeded] = useState(false);
@@ -20,15 +20,37 @@ const SingleProduct = () => {
       setLimiteExceeded(true);
    };
 
-   React.useEffect(() => {
-      const foundProd = products.find((product) => product.id === id);
-      if (!foundProd) {
-         navigate("/");
-      } else {
-         setOneProd(foundProd);
-         setInvetory(foundProd.quantity);
-      }
-   }, [products, id]);
+   // I wrote the code that fetch the product data from the server inside of 'useEffect' instead of doing it on redux store, this fix the bug where refreshing page takes user back to home page
+
+   useEffect(() => {
+      const fetchProducts = async () => {
+         try {
+            const response = await fetch(`/api/products/${id}`);
+            if (response.ok) {
+               const product = await response.json();
+               setOneProd(product);
+               setInventory(product.quantity);
+            } else {
+               navigate("/");
+            }
+         } catch (error) {
+            console.log(error);
+            navigate("/");
+         }
+      };
+
+      fetchProducts();
+   }, [id, navigate]);
+
+   //    useEffect(() => {
+   //       const foundProd = products.find((product) => product.id === id);
+   //       if (!foundProd) {
+   //          navigate("/");
+   //       } else {
+   //          setOneProd(foundProd);
+   //          setInvetory(foundProd.quantity);
+   //       }
+   //    }, [products, id]);
 
    const decrementQ = (value) => {
       if (value > 1) {
@@ -78,7 +100,7 @@ const SingleProduct = () => {
                      <strong>Description:</strong>
                   </p>
 
-                  <p class="description">{oneProd.description}</p>
+                  <p className="description">{oneProd.description}</p>
                   {oneProd.quantity === 0 ? <p>Not Availale</p> : null}
                   <p className="cat-detail">
                      <strong>Price:</strong> ${oneProd.price}
@@ -122,9 +144,8 @@ const SingleProduct = () => {
                   </div>
                </div>
                <div className="col-md-6">
-                  <p className="product-detail">
-                     <strong>Name:</strong> {oneProd.name}
-                  </p>
+                  <h2> {oneProd.name}</h2>
+
                   <p className="product-detail">
                      <strong>Description:</strong>
                   </p>
@@ -165,13 +186,14 @@ const SingleProduct = () => {
                               </button>
                            </div>
                         </div>
-                        <div className="mt-3 ms-2 d-flex justify-content-center">
-                           <button
-                              className="btn btn-success"
-                              onClick={() => {
-                                 dispatch(addToCart({ product: oneProd, quantity }));
-                              }}>
+                        <div className="d-flex justify-content-start">
+                           <button className="btn mt-3 btn-success me-2 ms-2" onClick={handleTakeMeHomeClick}>
                               Add to Cart
+                           </button>
+                           <button className="btn btn-primary mt-3">
+                              <Link to="/" className="text-decoration-none text-white">
+                                 CONTINUE SHOPPING
+                              </Link>
                            </button>
                         </div>
                      </div>
