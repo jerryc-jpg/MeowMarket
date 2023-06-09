@@ -11,6 +11,7 @@ const SingleProduct = () => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
    const [quantity, setQuantity] = useState(1);
+   const [inventory, setInvetory] = useState(0);
    const [oneProd, setOneProd] = useState({});
    const isAdmin = auth.isAdmin;
 
@@ -20,6 +21,7 @@ const SingleProduct = () => {
          navigate("/");
       } else {
          setOneProd(foundProd);
+         setInvetory(foundProd.quantity);
       }
    }, [products, id]);
 
@@ -71,9 +73,11 @@ const SingleProduct = () => {
                      <strong>Description:</strong>
                   </p>
                   <p class="description">{oneProd.description}</p>
+                  {oneProd.quantity === 0?(<p>Not Availale</p>):null}
                   <p className="cat-detail">
                      <strong>Price:</strong> ${oneProd.price}
                   </p>
+                  
                   {isAdmin ? 
                      (  <div className="mt-3">
                            <Link to={`/admin/${oneProd.id}`} className="btn btn-primary me-2">
@@ -84,18 +88,23 @@ const SingleProduct = () => {
                            </button>
                         </div>
                      ) : (
-                        <button
-                           className="btn btn-success mt-3"
-                           onClick={() => {
-                                 dispatch(updateProductQuantity({product:oneProd,quantity}))
-                                 dispatch(addToCart({ product: oneProd, quantity }))
-                              }   
-                           }
-                        >
-                           TAKE ME HOME
-                        </button>
+                        <div>
+                           <button
+                              className="btn btn-success mt-3"
+                              onClick={() => {
+                                    dispatch(updateProductQuantity({product:oneProd,quantity}))
+                                    dispatch(addToCart({ product: oneProd, quantity }))
+                                 }  
+                              }
+                              disabled={oneProd.quantity===0} 
+                           >
+                              TAKE ME HOME
+                           </button>
+                           <button >CONTINUE SHOPPING</button>
+                        </div>
                      )
                   }
+                  
                </div>
             </div>
          </div>
@@ -108,13 +117,15 @@ const SingleProduct = () => {
             <img src={oneProd.images} />
             <button onClick={() => decrementQ(quantity)}>-</button>
             <input type="number" value={quantity} min="1" max="5" onChange={handleQuantityChange} />
-            <button onClick={() => incrementQ(quantity)}>+</button>
+            <button onClick={() =>{console.log("hi"); dispatch(updateProductQuantity({product:item.product,quantity:-1}));
+                          dispatch(addToCart({ product: item.product, quantity: 1 }))}}>+</button>
             <button
                onClick={() => {
                   dispatch(addToCart({ product: oneProd, quantity }));
                }}>
                Add Cart
             </button>
+            <span>{inventory}</span>
          </>
       );
    }

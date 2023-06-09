@@ -14,7 +14,8 @@ const AllCats = () => {
 
 
    React.useEffect(()=>{
-      let Cats = products.filter((product) => product.productType === "cat" && product.quantity > 0);
+      let Cats = products.filter((product) => product.productType === "cat");
+
       setAllCats(Cats);
    },[products,cart])
 
@@ -39,8 +40,11 @@ const AllCats = () => {
                                  dispatch(addToCart({ product: cat, quantity: 1 }))
                               }
                            }
+                           disabled={cat.quantity === 0}
                            className="btn btn-primary">
-                           TAKE ME HOME
+                              {
+                                 cat.quantity>0?(<span>TAKE ME HOME</span>):(<span>NOT AVALABLE</span>)
+                              }
                         </button>
                      </div>
                   </div>
