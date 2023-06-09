@@ -14,6 +14,11 @@ const SingleProduct = () => {
    const [inventory, setInvetory] = useState(0);
    const [oneProd, setOneProd] = useState({});
    const isAdmin = auth.isAdmin;
+   const [limitExceeded, setLimiteExceeded] = useState(false);
+
+   const handleTakeMeHomeClick = () => {
+      setLimiteExceeded(true);
+   };
 
    React.useEffect(() => {
       const foundProd = products.find((product) => product.id === id);
@@ -74,48 +79,41 @@ const SingleProduct = () => {
                   </p>
 
                   <p class="description">{oneProd.description}</p>
-                  {oneProd.quantity === 0?(<p>Not Availale</p>):null}
+                  {oneProd.quantity === 0 ? <p>Not Availale</p> : null}
                   <p className="cat-detail">
                      <strong>Price:</strong> ${oneProd.price}
                   </p>
-                  
-                  {isAdmin ? 
-                     (  <div className="mt-3">
-                           <Link to={`/admin/${oneProd.id}`} className="btn btn-primary me-2">
-                              Edit
+
+                  {isAdmin ? (
+                     <div className="mt-3">
+                        <Link to={`/admin/${oneProd.id}`} className="btn btn-primary me-2">
+                           Edit
+                        </Link>
+                        <button onClick={handleDelete} className="btn btn-danger">
+                           Delete
+                        </button>
+                     </div>
+                  ) : (
+                     <div className="d-flex justify-content-start">
+                        <button
+                           className={`btn mt-3 ${limitExceeded ? "btn-secondary" : "btn-success"} me-2`}
+                           onClick={handleTakeMeHomeClick}
+                           disabled={limitExceeded}>
+                           {limitExceeded ? <span>Limit Exceeded</span> : <span>Take Me Home</span>}
+                        </button>
+                        <button className="btn btn-primary mt-3">
+                           <Link to="/" className="text-decoration-none text-white">
+                              CONTINUE SHOPPING
                            </Link>
-                           <button onClick={handleDelete} className="btn btn-danger">
-                              Delete
-                           </button>
-                        </div>
-                     ) : (
-                        <div>
-                           <button
-                              className="btn btn-success mt-3"
-                              onClick={() => {
-                                    dispatch(updateProductQuantity({product:oneProd,quantity}))
-                                    dispatch(addToCart({ product: oneProd, quantity }))
-                                 }  
-                              }
-                              disabled={oneProd.quantity===0} 
-                           >
-                              {
-                                 oneProd.quantity>0?(<span>TAKE ME HOME</span>):(<span>LIMIT EXCEEDED</span>)
-                              }
-            
-                           </button>
-                           <button >CONTINUE SHOPPING</button>
-                        </div>
-                     )
-                  }
-     
+                        </button>
+                     </div>
+                  )}
                </div>
             </div>
          </div>
       );
    } else {
       return (
-
          <div className="container vertical-center">
             <div className="row justify-content-center">
                <div className="col-md-6">
@@ -173,12 +171,8 @@ const SingleProduct = () => {
                               className="btn btn-success"
                               onClick={() => {
                                  dispatch(addToCart({ product: oneProd, quantity }));
-                              }}
-                              >
-                               {
-                                 oneProd.quantity>0?(<span>TAKE ME HOME</span>):(<span>LIMIT EXCEEDED</span>)
-                              }
-            
+                              }}>
+                              {oneProd.quantity > 0 ? <span>TAKE ME HOME</span> : <span>LIMIT EXCEEDED</span>}
                            </button>
                         </div>
                      </div>
@@ -186,7 +180,6 @@ const SingleProduct = () => {
                </div>
             </div>
          </div>
-
       );
    }
 };
