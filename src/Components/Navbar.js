@@ -25,7 +25,6 @@ const Navbar = () => {
                      aria-expanded="false">
                      Welcome Back, {user.username.toUpperCase()}
                   </a>
-                  {/* <span className="nav-link">Welcome, {user.username}</span> */}
                   <div className="dropdown-menu text-center">
                      <a className="dropdown-item" href="#">
                         Profile
@@ -54,7 +53,9 @@ const Navbar = () => {
    };
 
    return (
-      <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark" data-bs-theme="dark">
+      <nav
+         className="navbar navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark d-flex"
+         data-bs-theme="dark">
          <div className="container-fluid">
             <div className="navbar-brand">
                <Link to="/" className="d-inline-block align-text-top text-decoration-none text-white">
@@ -71,7 +72,7 @@ const Navbar = () => {
                aria-label="Toggle navigation">
                <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <div className="collapse navbar-collapse" id="navbarNav">
                <div className="mx-auto">
                   <ul className="navbar-nav text-center fw-bold fs-5">
                      <li className="nav-item">
@@ -86,7 +87,7 @@ const Navbar = () => {
                      </li>
                   </ul>
                </div>
-               <ul className="navbar-nav">
+               <ul className="navbar-nav align-items-center">
                   <li className="nav-item d-flex align-items-center">
                      <Link to="/cart" className="nav-link">
                         <i className="fas fa-shopping-cart fs-3 align-middle" style={{ color: "#ffffff" }}></i>
