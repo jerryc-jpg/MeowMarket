@@ -53,7 +53,12 @@ export const createProduct = createAsyncThunk("createProduct", async (product, {
 
   export const updateProductQuantity = createAsyncThunk("updateProductQuantity",async({product,quantity})=>{
     try{
-      const response  = await axios.put(`/api/products/${product.id}`,{product,quantity});
+      const token = window.localStorage.getItem('token');
+      const response  = await axios.put(`/api/products/${product.id}`,{product,quantity},{
+        headers: {
+          authorization: token
+        }
+      });
       return response.data;
     }catch(err){
       console.log(err);
