@@ -7,18 +7,48 @@ import { addToCart, updateProductQuantity } from "../store";
 const AllCats = () => {
    const dispatch = useDispatch();
    const { products, cart } = useSelector((state) => state);
-
    const [allCats,setAllCats] = useState([]);
    
    console.log(cart.lineItems,"allcats line11");
 
+   const sortProduct = (list) =>{
+      if (list) {
+         list.sort(function (a, b) {
+         if (a.quantity > b.quantity) {
+            return -1;
+         }
+         if (a.quantity < b.quantity) {
+            return 1;
+         }
+         return 0;
+         });
+      }
+   }
+
+
+
 
    React.useEffect(()=>{
-      let Cats = products.filter((product) => product.productType === "cat");
+      let cats = products.filter((product) => product.productType === "cat");
+      console.log(cats,'cats');
+      let catlist = [...cats];
+      if (catlist) {
+         console.log('works');
+         catlist.sort(function (a, b) {
+         if (a.quantity > b.quantity) {
+            return -1;
+         }
+         if (a.quantity < b.quantity) {
+            return 1;
+         }
+         return 0;
+         });
+      }
+      setAllCats(catlist);
+   },[products,cart]);
 
-      setAllCats(Cats);
-   },[products,cart])
 
+   console.log(allCats,'allcats');
 
    return (
       <div className="container text-center">
@@ -43,7 +73,7 @@ const AllCats = () => {
                            disabled={cat.quantity === 0}
                            className="btn btn-primary">
                               {
-                                 cat.quantity>0?(<span>TAKE ME HOME</span>):(<span>NOT AVALABLE</span>)
+                                 cat.quantity>0?(<span>TAKE ME HOME</span>):(<span>TAKEN</span>)
                               }
                         </button>
                      </div>
