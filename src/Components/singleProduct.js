@@ -99,20 +99,72 @@ const SingleProduct = () => {
       );
    } else {
       return (
-         <>
-            <h1>accessory</h1>
-            <h1>{oneProd.name}</h1>
-            <img src={oneProd.images} />
-            <button onClick={() => decrementQ(quantity)}>-</button>
-            <input type="number" value={quantity} min="1" max="5" onChange={handleQuantityChange} />
-            <button onClick={() => incrementQ(quantity)}>+</button>
-            <button
-               onClick={() => {
-                  dispatch(addToCart({ product: oneProd, quantity }));
-               }}>
-               Add Cart
-            </button>
-         </>
+         <div className="container vertical-center">
+            <div className="row justify-content-center">
+               <div className="col-md-6">
+                  <div className="card">
+                     <img src={oneProd.images} alt="Access Image" className="card-img-top img-fluid" />
+                  </div>
+               </div>
+               <div className="col-md-6">
+                  <p className="product-detail">
+                     <strong>Name:</strong> {oneProd.name}
+                  </p>
+                  <p className="product-detail">
+                     <strong>Description:</strong>
+                  </p>
+                  <p className="description">{oneProd.description}</p>
+                  <p className="product-detail">
+                     <strong>Price:</strong> ${oneProd.price}
+                  </p>
+                  {isAdmin ? (
+                     <div className="mt-3">
+                        <Link to={`/admin/${oneProd.id}`} className="btn btn-primary me-2">
+                           Edit
+                        </Link>
+                        <button onClick={handleDelete} className="btn btn-danger">
+                           Delete
+                        </button>
+                     </div>
+                  ) : (
+                     <div className="d-flex justify-content-start">
+                        <div className="mt-3">
+                           <div className="input-group text-center">
+                              <button
+                                 className="btn btn-outline-secondary"
+                                 type="button"
+                                 onClick={() => decrementQ(quantity)}>
+                                 -
+                              </button>
+                              <input
+                                 type="number"
+                                 value={quantity}
+                                 onChange={handleQuantityChange}
+                                 className="form-control border-0 text-center"
+                                 style={{ maxWidth: "35px" }}
+                              />
+                              <button
+                                 className="btn btn-outline-secondary"
+                                 type="button"
+                                 onClick={() => incrementQ(quantity)}>
+                                 +
+                              </button>
+                           </div>
+                        </div>
+                        <div className="mt-3 ms-2 d-flex justify-content-center">
+                           <button
+                              className="btn btn-success"
+                              onClick={() => {
+                                 dispatch(addToCart({ product: oneProd, quantity }));
+                              }}>
+                              Add Cart
+                           </button>
+                        </div>
+                     </div>
+                  )}
+               </div>
+            </div>
+         </div>
       );
    }
 };
