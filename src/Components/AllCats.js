@@ -7,9 +7,11 @@ import { addToCart, updateProductQuantity } from "../store";
 const AllCats = () => {
    const dispatch = useDispatch();
    const { products, cart } = useSelector((state) => state);
+
    const [allCats,setAllCats] = useState([]);
    
    console.log(cart.lineItems,"allcats line11");
+
 
    React.useEffect(()=>{
       let Cats = products.filter((product) => product.productType === "cat" && product.quantity > 0);
