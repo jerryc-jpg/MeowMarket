@@ -11,6 +11,7 @@ import Navbar from "./Navbar";
 import SingleProduct from "./singleProduct";
 import SingleProductAdmin from "./SingleProductAdmin";
 import Checkout from "./Checkout";
+import Users from "./users";
 
 const App = () => {
    const { auth } = useSelector((state) => state);
@@ -39,6 +40,11 @@ const App = () => {
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
                <Route path="/register" element={<RegisterAcc />} />
+
+               <Route path="*" element={<Home />} />
+
+               <Route path="/users" element={<Users />} />
+
             </Routes>
          </div>
       </div>
