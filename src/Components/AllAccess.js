@@ -1,15 +1,23 @@
-import React from "react";
+import React,{useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../store";
+import { addToCart, updateProductQuantity } from "../store";
 
 
 
 const AllAccess = ()=> {
     const dispatch = useDispatch();
-    const {products} = useSelector(state => state);
-    const allAccess = products.filter((product) => product.productType !== 'cat');
+    const {products, cart} = useSelector(state => state);
+    const [allAccess,setAllAccess] = useState([]);
+    
+    
+    React.useEffect(()=>{
+        let Access = products.filter((product) => product.productType !== 'cat' && product.quantity >0);
+        setAllAccess(Access);
+     },[products,cart])
+    
+    
     return (
         <div>
             {
@@ -18,7 +26,14 @@ const AllAccess = ()=> {
                     <div key={access.id}>   
                         <img src = {access.images} />
                         <Link to ={`/${access.id}`} >{access.name}</Link>
-                        <button onClick={() => dispatch(addToCart({product:access,quantity:1}))}>Add to Cart</button>
+                        <button 
+                            onClick={() => {
+                                dispatch(updateProductQuantity({product:access,quantity:1}))
+                                dispatch(addToCart({product:access,quantity:1}))
+                                }
+                            }
+                        >Add to Cart
+                        </button>
                     </div>
                 )
             })

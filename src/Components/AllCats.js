@@ -14,13 +14,8 @@ const AllCats = () => {
    React.useEffect(()=>{
       let Cats = products.filter((product) => product.productType === "cat" && product.quantity > 0);
       setAllCats(Cats);
-
    },[products,cart])
 
-   const isActiveAdd = (id) =>{
-      const activeAdd = cart.lineItems.reduce((acc,curr) =>{return acc && curr.productId!==id }, true)
-      return activeAdd;
-   }
 
    return (
       <div className="container text-center">
@@ -38,12 +33,8 @@ const AllCats = () => {
                         </Link>
                         <button
                            onClick={() =>{
-                                 if(isActiveAdd(cat.id)){
-                                    dispatch(updateProductQuantity({product:cat,quantity:1}))
-                                    dispatch(addToCart({ product: cat, quantity: 1 }))
-                                 }else{
-                                 window.alert("Maximum quantity reached!");
-                                 }
+                                 dispatch(updateProductQuantity({product:cat,quantity:1}))
+                                 dispatch(addToCart({ product: cat, quantity: 1 }))
                               }
                            }
                            className="btn btn-primary">
