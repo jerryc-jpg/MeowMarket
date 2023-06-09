@@ -1,14 +1,21 @@
-import React from "react";
+import React,{useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../store";
+import { addToCart, updateProductQuantity } from "../store";
 
 const AllCats = () => {
    const dispatch = useDispatch();
    const { products, cart } = useSelector((state) => state);
-   const allCats = products.filter((product) => product.productType === "cat");
+   const [allCats,setAllCats] = useState([]);
+   
    console.log(cart.lineItems,"allcats line11");
+
+   React.useEffect(()=>{
+      let Cats = products.filter((product) => product.productType === "cat" && product.quantity > 0);
+      setAllCats(Cats);
+
+   },[products,cart])
 
    const isActiveAdd = (id) =>{
       const activeAdd = cart.lineItems.reduce((acc,curr) =>{return acc && curr.productId!==id }, true)
@@ -30,11 +37,15 @@ const AllCats = () => {
                            Details
                         </Link>
                         <button
-                           onClick={() =>{if(isActiveAdd(cat.id)){dispatch(addToCart({ product: cat, quantity: 1 }))}
-                           else{
-                              window.alert("Maximum quantity reached!");
+                           onClick={() =>{
+                                 if(isActiveAdd(cat.id)){
+                                    dispatch(updateProductQuantity({product:cat,quantity:1}))
+                                    dispatch(addToCart({ product: cat, quantity: 1 }))
+                                 }else{
+                                 window.alert("Maximum quantity reached!");
+                                 }
                               }
-                              }}
+                           }
                            className="btn btn-primary">
                            TAKE ME HOME
                         </button>

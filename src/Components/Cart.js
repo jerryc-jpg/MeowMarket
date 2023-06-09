@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
 import { Link, useNavigate } from "react-router-dom";
-import { addToCart, removeFromCart, checkoutCart } from "../store";
+import { addToCart, removeFromCart, checkoutCart, updateProductQuantity } from "../store";
 
 
 const Cart = () => {
@@ -16,6 +16,7 @@ const Cart = () => {
 
   const handleCheckout = () => {
     dispatch(checkoutCart());
+
     navigate('/cart/checkout'); 
   }
 
@@ -65,21 +66,24 @@ const Cart = () => {
                 {item.product.productType!=='cat'?
                   <>
                     <button
-                    onClick={() =>
-                      dispatch(
-                        removeFromCart({
-                          product: item.product,
-                          quantityToRemove: 1,
-                        })
-                      )
-                    }
+                      onClick={() =>{
+                          dispatch(
+                            removeFromCart({
+                              product: item.product,
+                              quantityToRemove: 1,
+                            })
+                          )
+                        }  
+                      }
                     >
                       -
                     </button>
                     <input type="number" value={item.quantity} min="1" max="5" />
                     <button
-                      onClick={() =>
-                        dispatch(addToCart({ product: item.product, quantity: 1 }))
+                      onClick={() =>{
+                          dispatch(updateProductQuantity({product:item.product,quantity:-1}));
+                          dispatch(addToCart({ product: item.product, quantity: 1 }))
+                        }
                       }
                     >
                       +
@@ -87,12 +91,18 @@ const Cart = () => {
                   </>:null
                 }
                
-                <button onClick={() =>
-                      dispatch(
-                        removeFromCart({
-                          product: item.product,
-                          quantityToRemove: item.quantity,
-                        }))}
+                <button 
+                  onClick={() =>{
+                    dispatch(updateProductQuantity({
+                      product:item.product,
+                      quantity:item.quantity*-1}));
+                    dispatch(
+                      removeFromCart({
+                        product: item.product,
+                        quantityToRemove: item.quantity,
+                      }))
+                    }
+                  }
                       >remove from cart</button>
                 <hr />
               </div>

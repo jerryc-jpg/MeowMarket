@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { addToCart } from "../store";
 import SingleProductAdmin from "./SingleProductAdmin";
-import { deleteProduct } from "../store";
+import { deleteProduct, updateProductQuantity } from "../store";
 
 const SingleProduct = () => {
    const { products, auth, cart } = useSelector((state) => state);
@@ -47,12 +47,6 @@ const SingleProduct = () => {
       navigate("/");
    };
 
-   const isActiveAdd = (inputId) =>{
-      const activeAdd = cart.lineItems.reduce((acc,curr) =>{return acc && curr.productId!==inputId }, true)
-      return activeAdd;
-   }
-
-
    if (oneProd.productType === "cat") {
       return (
          <div className="container vertical-center">
@@ -93,16 +87,12 @@ const SingleProduct = () => {
                         <button
                            className="btn btn-success mt-3"
                            onClick={() => {
-                                 if(isActiveAdd(id)){
-                                    dispatch(addToCart({ product: oneProd, quantity }))
-                                 }
-                                 else{
-                                    window.alert("Maximum quantity reached!");
-                                 }
-                              }
+                                 dispatch(updateProductQuantity({product:oneProd,quantity}))
+                                 dispatch(addToCart({ product: oneProd, quantity }))
+                              }   
                            }
                         >
-                           Add Cart
+                           TAKE ME HOME
                         </button>
                      )
                   }
