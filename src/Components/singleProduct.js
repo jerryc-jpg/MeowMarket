@@ -171,7 +171,7 @@ const SingleProduct = () => {
                               onClick={() => {
                                  dispatch(addToCart({ product: oneProd, quantity }));
                               }}>
-                              {oneProd.quantity > 0 ? <span>TAKE ME HOME</span> : <span>LIMIT EXCEEDED</span>}
+                              Add to Cart
                            </button>
                         </div>
                      </div>
