@@ -21,6 +21,7 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Marge',
       images:[
+        "https://www.petful.com/wp-content/uploads/2016/06/american-shorthair-cat-750x434.jpg",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849147/1/?bust=1685903009&width=1080",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849147/3/?bust=1685903065&width=1080",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849147/2/?bust=1685903024&width=1080",
@@ -35,6 +36,7 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Homer', 
       images:[
+        "https://petkeen.com/wp-content/uploads/2022/02/American-shorthair-kitten_Top-Photo-Engineer-Shutterstock.jpg",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/3/?bust=1685904397&width=1080",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/1/?bust=1685904396&width=1080",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/2/?bust=1685904455&width=1080"
@@ -60,6 +62,7 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Lisa', 
       images:[
+        "https://cat-world.com/wp-content/uploads/2017/02/american-shorthair-breed-profile.jpg",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849348/3/?bust=1685903457&width=1080",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849348/1/?bust=1685903454&width=1080",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849348/3/?bust=1685903457&width=1080"
@@ -74,6 +77,7 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Maggie', 
       images:[
+        'https://www.thehappycatsite.com/wp-content/uploads/2017/06/tabby-kitten.jpg',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849146/2/?bust=1685903008&width=1080',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849146/1/?bust=1685903008&width=1080',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849146/3/?bust=1685903092&width=1080'
@@ -88,6 +92,7 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Bart', 
       images:[
+        'https://images.pexels.com/photos/2558605/pexels-photo-2558605.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64848945/1/?bust=1685901615&width=1080',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64848945/3/?bust=1685901619&width=1080',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64848945/2/?bust=1685901619&width=1080'
@@ -102,19 +107,24 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Ellen', 
       images:[
+        'https://petsnurturing.com/wp-content/uploads/2022/04/lynx-point-siamese-5.jpg',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/57428659/1/?bust=1685743719&width=1080',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/57428659/3/?bust=1686107976&width=1080'
       ],
       quantity:1,
       age: 8,
       price:113, 
-      breed:'Snowshoe & Siamese Mix',
+      breed:'Siamese Mix',
       description:"Ellen is a pretty funky cat. She likes to lay around and just hang out all day. She is an older cat, so she's not too huge on toys or being held a lot. She likes to find really dark areas to hide out in until there isn't a lot going on. Unfortunately, Ellen doesn't have many teeth left, so she loves her wet food! \n\nEven though she is one of the most gorgeous cats we've had, she's just not your social butterfly. She likes to hide away and keep to herself when given the chance. With her lack of teeth and not so friendly demeanor, she's proven to be a difficult cat to adopt. All Ellen really needs is a loving home with people that have the time and patience to acclimate a scared, older cat. Does that sound like you?"}),
 
     Product.create({ 
       productType: 'cat', 
       name: 'Morticia', 
-      images:['https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/52521655/1/?bust=1685943604&width=1080'],
+      images:[
+        'https://images.pexels.com/photos/1492219/pexels-photo-1492219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/9013023/pexels-photo-9013023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/52521655/1/?bust=1685943604&width=1080'
+      ],
       quantity:1,
       price:113, 
       age: 2,
@@ -125,6 +135,7 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Fiona', 
       images:[
+        'https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60652076/1/?bust=1685721039&width=1080',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60652076/2/?bust=1685721039&width=1080',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60652076/3/?bust=1685721039&width=1080'
@@ -138,7 +149,9 @@ const syncAndSeed = async()=> {
     Product.create({ 
       productType: 'cat', 
       name: 'Prairie', 
-      images:['https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64447970/1/?bust=1684179102&width=1080'],
+      images:[
+        'https://images.pexels.com/photos/266784/pexels-photo-266784.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64447970/1/?bust=1684179102&width=1080'],
       quantity:1,
       price:113, 
       breed:'Dilute Calico',
