@@ -21,6 +21,17 @@ const { Product } = require('../db');
       next(ex);
     }
   });
+
+  app.put('/:id', async(req, res, next)=> {
+    try {
+      const product = await Product.findByPk(req.params.id);
+      await product.update(req.body);
+      res.send(product);
+    }
+    catch(ex){
+      next(ex);
+    }
+  });
   
 
   

@@ -51,6 +51,15 @@ export const createProduct = createAsyncThunk("createProduct", async (product, {
     }
   });
 
+  export const updateProductQuantity = createAsyncThunk("updateProductQuantity",async({product,quantity})=>{
+    try{
+      const response  = await axios.put(`/api/products/${product.id}`,{product,quantity});
+      return response.data;
+    }catch(err){
+      console.log(err);
+    }
+  })
+  
    const productSlice = createSlice({
     name:"products",
     initialState: [],
@@ -68,7 +77,10 @@ export const createProduct = createAsyncThunk("createProduct", async (product, {
         });
         builder.addCase(deleteProduct.fulfilled, (state, action) => {
             return state.filter((product) => product.id !== action.payload.id)
-        })
+        });
+        builder.addCase(updateProductQuantity.fulfilled,(state,action) => {
+          return state.map(product => product.id === action.payload.id ? action.payload:product)
+        });
     }
 })
 
