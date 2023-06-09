@@ -31,9 +31,9 @@ const Navbar = () => {
                            Manage Users
                            </Link>
                            )}
-                     <a className="dropdown-item" href="#">
+                     <Link to="/profile" className="dropdown-item" href="#">
                         Profile
-                     </a>
+                     </Link>
                      <a className="dropdown-item" href="#">
                         Orders
                      </a>

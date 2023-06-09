@@ -12,6 +12,7 @@ import SingleProduct from "./singleProduct";
 import SingleProductAdmin from "./SingleProductAdmin";
 import Checkout from "./Checkout";
 import Users from "./users";
+import Profile from "./Profile";
 
 const App = () => {
    const { auth } = useSelector((state) => state);
@@ -44,7 +45,7 @@ const App = () => {
                <Route path="*" element={<Home />} />
 
                <Route path="/users" element={<Users />} />
-
+               <Route path="/profile" element={<Profile />} />
             </Routes>
          </div>
       </div>
