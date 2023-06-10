@@ -16,41 +16,41 @@ const SingleProduct = () => {
    const isAdmin = auth.isAdmin;
    const [limitExceeded, setLimiteExceeded] = useState(false);
 
+
+   
    const handleTakeMeHomeClick = () => {
       setLimiteExceeded(true);
    };
 
-   // I wrote the code that fetch the product data from the server inside of 'useEffect' instead of doing it on redux store, this fix the bug where refreshing page takes user back to home page
+   // // I wrote the code that fetch the product data from the server inside of 'useEffect' instead of doing it on redux store, this fix the bug where refreshing page takes user back to home page
 
-   useEffect(() => {
-      const fetchProducts = async () => {
-         try {
-            const response = await fetch(`/api/products/${id}`);
-            if (response.ok) {
-               const product = await response.json();
-               setOneProd(product);
-               setInventory(product.quantity);
-            } else {
-               navigate("/");
-            }
-         } catch (error) {
-            console.log(error);
-            navigate("/");
-         }
-      };
-
-      fetchProducts();
-   }, [id, navigate]);
-
-   //    useEffect(() => {
-   //       const foundProd = products.find((product) => product.id === id);
-   //       if (!foundProd) {
+   // useEffect(() => {
+   //    const fetchProducts = async () => {
+   //       try {
+   //          const response = await fetch(`/api/products/${id}`);
+   //          if (response.ok) {
+   //             const product = await response.json();
+   //             setOneProd(product);
+   //             setInventory(product.quantity);
+   //          } else {
+   //             navigate("/");
+   //          }
+   //       } catch (error) {
+   //          console.log(error);
    //          navigate("/");
-   //       } else {
-   //          setOneProd(foundProd);
-   //          setInvetory(foundProd.quantity);
    //       }
-   //    }, [products, id]);
+   //    };
+
+   //    fetchProducts();
+   // }, [id, navigate]);
+
+      React.useEffect(() => {
+         const foundProd = products.find((product) => product.id === id);
+         if (foundProd) {
+            setOneProd(foundProd);
+            setInventory(foundProd.quantity);
+         }
+      }, [products, id]);
 
    const decrementQ = (value) => {
       if (value > 1) {
@@ -115,21 +115,44 @@ const SingleProduct = () => {
                            Delete
                         </button>
                      </div>
-                  ) : (
-                     <div className="d-flex justify-content-start">
+                  ) : 
+                  // (
+                  //    <div className="d-flex justify-content-start">
+                  //       <button
+                  //          className={`btn mt-3 ${limitExceeded ? "btn-secondary" : "btn-success"} me-2`}
+                  //          onClick={handleTakeMeHomeClick}
+                  //          disabled={limitExceeded}>
+                  //          {limitExceeded ? <span>Limit Exceeded</span> : <span>Take Me Home</span>}
+                  //       </button>
+                  //       <button className="btn btn-primary mt-3">
+                  //          <Link to="/" className="text-decoration-none text-white">
+                  //             CONTINUE SHOPPING
+                  //          </Link>
+                  //       </button>
+                  //    </div>
+                  // )
+                  (
+                     <div>
                         <button
-                           className={`btn mt-3 ${limitExceeded ? "btn-secondary" : "btn-success"} me-2`}
-                           onClick={handleTakeMeHomeClick}
-                           disabled={limitExceeded}>
-                           {limitExceeded ? <span>Limit Exceeded</span> : <span>Take Me Home</span>}
+                           className="btn btn-success mt-3"
+                           onClick={() => {
+                                 dispatch(updateProductQuantity({product:oneProd,quantity}))
+                                 dispatch(addToCart({ product: oneProd, quantity }))
+                              }  
+                           }
+                           disabled={oneProd.quantity===0} 
+                        >
+                           {
+                              oneProd.quantity>0?(<span>TAKE ME HOME</span>):(<span>LIMIT EXCEEDED</span>)
+                           }
+         
                         </button>
                         <button className="btn btn-primary mt-3">
-                           <Link to="/" className="text-decoration-none text-white">
-                              CONTINUE SHOPPING
-                           </Link>
+                           <Link to="/" className="text-decoration-none text-white" >CONTINUE SHOPPING</Link>
                         </button>
                      </div>
-                  )}
+                  )
+                  }
                </div>
             </div>
          </div>
@@ -181,12 +204,14 @@ const SingleProduct = () => {
                               <button
                                  className="btn btn-outline-secondary"
                                  type="button"
-                                 onClick={() => incrementQ(quantity)}>
+                                 onClick={() => incrementQ(quantity)}
+                                 disabled={quantity>=oneProd.quantity}>
                                  +
                               </button>
                            </div>
                         </div>
 
+                     {/*
                         <div className="d-flex justify-content-start">
                            <button className="btn mt-3 btn-success me-2 ms-2" onClick={handleTakeMeHomeClick}>
                               Add to Cart
@@ -195,7 +220,18 @@ const SingleProduct = () => {
                               <Link to="/" className="text-decoration-none text-white">
                                  CONTINUE SHOPPING
                               </Link>
-
+                           */}
+                        <div className="mt-3 ms-2 d-flex justify-content-center">
+                           <button
+                              className="btn btn-success"
+                              onClick={() => {
+                                 dispatch(updateProductQuantity({ product: oneProd, quantity:quantity}))
+                                 dispatch(addToCart({ product: oneProd, quantity }));
+                              }}
+                              >
+                               {
+                                 oneProd.quantity>0?(<span>TAKE ME HOME</span>):(<span>LIMIT EXCEEDED</span>)
+                              }       
                            </button>
                         </div>
                      </div>

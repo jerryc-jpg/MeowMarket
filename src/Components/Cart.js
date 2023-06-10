@@ -121,9 +121,8 @@ const Cart = () => {
                                           className="btn btn-sm btn-outline-dark me-1"
                                           onClick={() => {
                                              if (item.quantity > 1) {
-                                                dispatch(
-                                                   removeFromCart({ product: item.product, quantityToRemove: 1 })
-                                                );
+                                                dispatch(updateProductQuantity({ product: item.product, quantity: -1 }));
+                          dispatch(removeFromCart({ product: item.product, quantityToRemove: 1 }));
                                              }
                                           }}>
                                           -
@@ -145,9 +144,11 @@ const Cart = () => {
                                        <button
                                           className="btn btn-sm btn-outline-dark me-1"
                                           onClick={() => {
-                                             dispatch(updateProductQuantity({ product: item.product, quantity: -1 }));
+                                             dispatch(updateProductQuantity({ product: item.product, quantity: 1 }));
                                              dispatch(addToCart({ product: item.product, quantity: 1 }));
-                                          }}>
+                                          }}
+                                          disabled={item.product.quantity<=0}
+                                          >
                                           +
                                        </button>
                                     </>
