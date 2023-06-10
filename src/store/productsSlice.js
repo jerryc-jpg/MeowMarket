@@ -54,17 +54,24 @@ export const deleteProduct = createAsyncThunk("deleteProduct", async (product, {
 
 export const updateProductQuantity = createAsyncThunk("updateProductQuantity", async ({ product, quantity }) => {
    try {
-      const token = window.localStorage.getItem("token");
-      const response = await axios.put(
-         `/api/products/${product.id}`,
-         { product, quantity },
-         {
-            headers: {
-               authorization: token
-            }
-         }
-      );
-      return response.data;
+      // const token = window.localStorage.getItem("token");
+      // const response = await axios.put(
+      //    `/api/products/${product.id}`,
+      //    { product, quantity },
+      //    {
+      //       headers: {
+      //          authorization: token
+      //       }
+      //    }
+      // );
+      // return response.data;
+     
+         const response = await axios.put(
+            `/api/products/${product.id}`,
+            { product, quantity },
+         );
+         return response.data;
+      
    } catch (err) {
       console.log(err);
    }

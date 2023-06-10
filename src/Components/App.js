@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginWithToken, fetchCart, fetchProducts, Register } from "../store";
 import { Link, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
-import SingleProduct from "./singleProduct";
+import SingleProduct from "./SingleProduct";
 import SingleProductAdmin from "./SingleProductAdmin";
 import Checkout from "./Checkout";
 import Users from "./Users";
@@ -42,7 +42,7 @@ const App = () => {
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
                <Route path="/register" element={<RegisterAcc />} />
-               {/*<Route path="/users" element={<Users />} /> yy: To aviod deploy issue, temperaty comment it out. feel free to add it back. */}
+               <Route path="/users" element={<Users />} /> 
                <Route path="/profile" element={<Profile />} />
                <Route path="/orders" element={<Orders />} />
 
