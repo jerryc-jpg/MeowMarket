@@ -33,9 +33,19 @@ export const addToCart = createAsyncThunk('addToCart', async({product,quantity})
       });
       return response.data;
     }else{
-      
+      const visitorOrderString = window.localStorage.getItem('visitorOrder');
+      if(visitorOrderString){
+        let visitorOrder = JSON.parse(visitorOrderString);
+        visitorOrder.push({product,quantity});
+        let updateVisitorOrderString = JSON.stringify(visitorOrder);
+        window.localStorage.setItem('visitorOrder',updateVisitorOrderString);
+      }else{
+        let visitorOrder=[{product,quantity}];
+        let updateVisitorOrderString = JSON.stringify(visitorOrder);
+        window.localStorage.setItem('visitorOrder',updateVisitorOrderString);
+      }
+      return visitorOrder;
     }
-    
   }catch(err){
     console.log(err);
   }

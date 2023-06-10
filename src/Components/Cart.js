@@ -5,6 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { addToCart, removeFromCart, checkoutCart, updateProductQuantity } from "../store";
 
 const Cart = () => {
+   const visitorOrderString=window.localStorage.getItem('visitorOrder');
+   if(visitorOrderString){
+      console.log('line10',JSON.parse(visitorOrderString));
+   }
+   console.log('line12');
    const { cart } = useSelector((state) => state);
    const dispatch = useDispatch();
    const [items, setItems] = useState([]);
@@ -46,7 +51,9 @@ const Cart = () => {
       setTotalPrice(sumPrice);
       setTotalQ(sumQ);
    }, [cart]);
-   console.log(items);
+   
+   console.log('items',items);
+
    return (
       <div className="container px-3 my-5 clearfix">
          <div className="card custom-card">
@@ -122,7 +129,7 @@ const Cart = () => {
                                           onClick={() => {
                                              if (item.quantity > 1) {
                                                 dispatch(updateProductQuantity({ product: item.product, quantity: -1 }));
-                          dispatch(removeFromCart({ product: item.product, quantityToRemove: 1 }));
+                                                dispatch(removeFromCart({ product: item.product, quantityToRemove: 1 }));
                                              }
                                           }}>
                                           -

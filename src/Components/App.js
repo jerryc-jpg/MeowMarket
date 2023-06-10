@@ -42,7 +42,7 @@ const App = () => {
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
                <Route path="/register" element={<RegisterAcc />} />
-               <Route path="/users" element={<Users />} />
+               {/*<Route path="/users" element={<Users />} /> yy: To aviod deploy issue, temperaty comment it out. feel free to add it back. */}
                <Route path="/profile" element={<Profile />} />
                <Route path="/orders" element={<Orders />} />
 
