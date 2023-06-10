@@ -5,6 +5,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { addToCart, removeFromCart, checkoutCart, updateProductQuantity } from "../store";
 
 const Cart = () => {
+   //test window.localStorage whether behave correctly, (stored item able to be retrieval between pages)
+   /*
+   console.log('try to find visitor order and token')
+   const visitorOrderString=window.localStorage.getItem('visitorOrder');
+   const token=window.localStorage.getItem('toekn');
+   if(visitorOrderString){
+      console.log('line12 visitor order:',JSON.parse(visitorOrderString));
+   }
+   if(token){
+      console.log('line15 token:',token)
+   }
+   console.log('line17,already check token and visitor order');}
+   */
+   const token = window.localStorage.getItem('token');
+   const visitorOrder= JSON.parse(window.localStorage.getItem('visitorOrder'));
+
    const { cart } = useSelector((state) => state);
    const dispatch = useDispatch();
    const [items, setItems] = useState([]);
@@ -19,8 +35,24 @@ const Cart = () => {
       navigate("/cart/checkout");
    };
 
+   
+   const handleClearLocalStorage = () => {
+      window.localStorage.clear(); // Remove all items from window.localStorage
+      console.log('empty');
+   };
+
    React.useEffect(() => {
-      let list = [...cart.lineItems];
+      let list;
+      if(token){
+         list = [...cart.lineItems];}
+      else{
+         if(visitorOrder){
+            list = [...visitorOrder];
+         }else{
+            list = [];
+         }
+         
+      }
       if (list) {
          list.sort(function (a, b) {
             if (a.product.name < b.product.name) {
@@ -46,12 +78,16 @@ const Cart = () => {
       setTotalPrice(sumPrice);
       setTotalQ(sumQ);
    }, [cart]);
-   console.log(items);
+   
+   console.log('token',token);
+   console.log('items',items);
+
    return (
       <div className="container px-3 my-5 clearfix">
          <div className="card custom-card">
             <div className="card-header">
                <h2>Shopping Cart</h2>
+               <button onClick={handleClearLocalStorage}>Empty Cart</button>
             </div>
             <div className="card-body">
                <div className="table-responsive">
@@ -122,7 +158,7 @@ const Cart = () => {
                                           onClick={() => {
                                              if (item.quantity > 1) {
                                                 dispatch(updateProductQuantity({ product: item.product, quantity: -1 }));
-                          dispatch(removeFromCart({ product: item.product, quantityToRemove: 1 }));
+                                                dispatch(removeFromCart({ product: item.product, quantityToRemove: 1 }));
                                              }
                                           }}>
                                           -

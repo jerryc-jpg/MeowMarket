@@ -9,7 +9,7 @@ const AllCats = () => {
    const { products, cart } = useSelector((state) => state);
    const [allCats,setAllCats] = useState([]);
    
-   console.log(cart.lineItems,"allcats line11");
+   //console.log(cart.lineItems,"allcats line11");
 
    const sortProduct = (list) =>{
       if (list) {
@@ -30,10 +30,10 @@ const AllCats = () => {
 
    React.useEffect(()=>{
       let cats = products.filter((product) => product.productType === "cat");
-      console.log(cats,'cats');
+      //console.log(cats,'cats');
       let catlist = [...cats];
       if (catlist) {
-         console.log('works');
+         //console.log('works');
          catlist.sort(function (a, b) {
          if (a.quantity > b.quantity) {
             return -1;
@@ -48,7 +48,7 @@ const AllCats = () => {
    },[products,cart]);
 
 
-   console.log(allCats,'allcats');
+   //console.log(allCats,'allcats');
 
    return (
       <div className="container text-center">
