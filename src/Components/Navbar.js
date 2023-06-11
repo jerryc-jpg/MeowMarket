@@ -22,7 +22,7 @@ const Navbar = () => {
    },[cart]);
 
    const handleLogout = () => {
-      dispatch(logout());
+      dispatch(logout());// addition to logout(), I think we also need to reset the state in the cart so we will not see the order user previous order after the user log out.
    };
 
    const renderAuthButtons = () => {

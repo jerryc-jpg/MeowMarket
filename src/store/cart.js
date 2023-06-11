@@ -22,10 +22,18 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
   }
 })
 
-// const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
-//  v
+const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
+  console.log('combine individual item');
+  let lineItem = visitorOrder.find(lineItem =>{
+    return lineItem.productId === productId;
+  })
+  if(lineItem){
+    lineItem.quantity+= quantity;
+  }else{
+    visitorOrder.push({product,quantity,productId,id});
+  }
 
-// }
+ }
 
 
 export const addToCart = createAsyncThunk('addToCart', async({product,quantity}) =>{
@@ -40,21 +48,23 @@ export const addToCart = createAsyncThunk('addToCart', async({product,quantity})
       return response.data;
     }else{
       const visitorOrderString = window.localStorage.getItem('visitorOrder');
+      let visitorOrder;
       if(visitorOrderString){
-        let visitorOrder = JSON.parse(visitorOrderString);
+        visitorOrder = JSON.parse(visitorOrderString);
         let productId = product.id;
         let id = visitorOrder.length;
-        visitorOrder.push({product,quantity,productId,id});
+        handelNewAddToCart(visitorOrder,{product,quantity,productId,id});
         let updateVisitorOrderString = JSON.stringify(visitorOrder);
         window.localStorage.setItem('visitorOrder',updateVisitorOrderString);
       }else{
-        let visitorOrder=[];
+        visitorOrder=[];
         let productId = product.id;
         let id = 0;
         visitorOrder.push({product,quantity,productId,id});
         let updateVisitorOrderString = JSON.stringify(visitorOrder);
         window.localStorage.setItem('visitorOrder',updateVisitorOrderString);
       }
+      return visitorOrder;
     }
   }catch(err){
     console.log(err);

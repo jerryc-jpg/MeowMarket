@@ -17,6 +17,7 @@ const Home = () => {
    //    console.log('line16 token:',token)
    // }
    // console.log('line17,already check token and visitor order');
+   
    const { auth } = useSelector((state) => state);
    const dispatch = useDispatch();
    const [activeTab, setActiveTab] = useState(0);
