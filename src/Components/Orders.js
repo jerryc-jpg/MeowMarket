@@ -14,9 +14,9 @@ const Orders = () => {
 
    if (!auth.username) {
       return (
-         <p>
+         <h2 className="justify-content-center text-center mt-5">
             Please <Link to="/login">login</Link> to view the your orders.
-         </p>
+         </h2>
       );
    }
 
