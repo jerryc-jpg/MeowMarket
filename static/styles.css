@@ -145,3 +145,9 @@
 .order-history-container .panel-order .panel-heading {
    margin-bottom: 0;
 }
+
+.search-bar-container {
+   width: 100%;
+   margin: 0 auto;
+   width: 350px;
+}
