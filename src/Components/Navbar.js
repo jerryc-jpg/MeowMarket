@@ -1,25 +1,23 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
 
 const Navbar = () => {
    const user = useSelector((state) => state.auth);
-   const cart = useSelector((state) => state.cart );
+   const cart = useSelector((state) => state.cart);
    const dispatch = useDispatch();
-   const [sum,setSum] = useState(0);
-   
+   const [sum, setSum] = useState(0);
+
    React.useEffect(() => {
-      let list =[... cart.lineItems];
-      if(list){
-         const totalQ = list.reduce((acc,curr)=>{
-            return acc = acc+curr.quantity;
-         },0)
+      let list = [...cart.lineItems];
+      if (list) {
+         const totalQ = list.reduce((acc, curr) => {
+            return (acc = acc + curr.quantity);
+         }, 0);
          setSum(totalQ);
       }
-      
-
-   },[cart]);
+   }, [cart]);
 
    const handleLogout = () => {
       dispatch(logout());
@@ -115,12 +113,14 @@ const Navbar = () => {
                   </ul>
                </div>
                <ul className="navbar-nav align-items-center">
-                  <li className="nav-item d-flex align-items-center">
+                  <li className="nav-item d-flex align-items-center position-relative me-3">
                      <Link to="/cart" className="nav-link">
                         <i className="fas fa-shopping-cart fs-3 align-middle" style={{ color: "#ffffff" }}>
-                           {
-                              sum?(<span>({sum})</span>):null
-                           }
+                           {sum ? (
+                              <span className="position-absolute top-5 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1 fs-6">
+                                 {sum}
+                              </span>
+                           ) : null}
                         </i>
                      </Link>
                   </li>
