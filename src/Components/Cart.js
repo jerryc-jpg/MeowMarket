@@ -37,7 +37,8 @@ const Cart = () => {
 
    
    const handleClearLocalStorage = () => {
-      window.localStorage.clear(); // Remove all items from window.localStorage
+      window.localStorage.clear(); 
+      navigate("/cart")// Remove all items from window.localStorage
       console.log('empty');
    };
 
@@ -47,7 +48,9 @@ const Cart = () => {
          list = [...cart.lineItems];}
       else{
          if(visitorOrder){
-            list = [...visitorOrder];
+            const listTemp = [...visitorOrder];
+            list = listTemp.filter(ele=>ele.quantity!==0);
+            list = visitorOrder;
          }else{
             list = [];
          }
@@ -64,6 +67,18 @@ const Cart = () => {
             return 0;
          });
       }
+      // let list = [...cart.lineItems];
+      // if (list) {
+      //    list.sort(function (a, b) {
+      //       if (a.product.name < b.product.name) {
+      //          return -1;
+      //       }
+      //       if (a.product.name > b.product.name) {
+      //          return 1;
+      //       }
+      //       return 0;
+      //    });
+      // }
 
       const sumPrice = list.reduce((acc, curr) => {
          acc = acc + curr.product.price * curr.quantity;
@@ -73,7 +88,8 @@ const Cart = () => {
          acc = acc + curr.quantity;
          return acc;
       }, 0);
-
+      console.log('visitorOrder:',visitorOrder)
+      console.log('did we update list:',list);
       setItems(list);
       setTotalPrice(sumPrice);
       setTotalQ(sumQ);
@@ -87,7 +103,11 @@ const Cart = () => {
          <div className="card custom-card">
             <div className="card-header">
                <h2>Shopping Cart</h2>
-               <button onClick={handleClearLocalStorage}>Empty Cart</button>
+               {
+                  !token?
+                  <button onClick={handleClearLocalStorage}>internal test,empty visitor history</button>:null
+               }
+               
             </div>
             <div className="card-body">
                <div className="table-responsive">
@@ -148,7 +168,7 @@ const Cart = () => {
                                  {item.product.productType === "cat" ? (
                                     <div className="text-center" style={{ width: "100%" }}>
                                        <span className="d-block mx-auto" style={{ width: "30px" }}>
-                                          1
+                                          {item.quantity}
                                        </span>
                                     </div>
                                  ) : (
@@ -182,6 +202,7 @@ const Cart = () => {
                                           onClick={() => {
                                              dispatch(updateProductQuantity({ product: item.product, quantity: 1 }));
                                              dispatch(addToCart({ product: item.product, quantity: 1 }));
+                                             console.log('item.product.quantity:', item.product.quantity)
                                           }}
                                           disabled={item.product.quantity<=0}
                                           >

@@ -1,26 +1,54 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../store";
+import { logoutHideCart, logout } from "../store";
 
 const Navbar = () => {
+   const token = window.localStorage.getItem('token');
+   const visitorOrder= JSON.parse(window.localStorage.getItem('visitorOrder'));
+
    const user = useSelector((state) => state.auth);
    const cart = useSelector((state) => state.cart);
    const dispatch = useDispatch();
    const [sum, setSum] = useState(0);
 
    React.useEffect(() => {
-      let list = [...cart.lineItems];
-      if (list) {
-         const totalQ = list.reduce((acc, curr) => {
-            return (acc = acc + curr.quantity);
-         }, 0);
-         setSum(totalQ);
+      //
+      let list;
+      if(token){
+         list = [... cart.lineItems]
+      }else{
+         if(visitorOrder){
+            list = [...visitorOrder];
+         }else{
+            list = [];
+         }
       }
-   }, [cart]);
+      if(list){
+            const totalQ = list.reduce((acc,curr)=>{
+               return acc = acc+curr.quantity;
+            },0)
+            setSum(totalQ);
+         }
+
+      
+      // let list =[... cart.lineItems];
+      // if(list){
+      //    const totalQ = list.reduce((acc,curr)=>{
+      //       return acc = acc+curr.quantity;
+      //    },0)
+      //    setSum(totalQ);
+      // }
+      
+
+   },[cart,user]);
+
 
    const handleLogout = () => {
       dispatch(logout());
+      const logouttoken = window.localStorage.getItem('token');
+      // addition to logout(), I think we also need to reset the state in the cart so we will not see the order user previous order after the user log out.
+      dispatch(logoutHideCart());
    };
 
    const renderAuthButtons = () => {

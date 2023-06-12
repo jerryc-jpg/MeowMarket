@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, updateProductQuantity } from "../store";
 
+
 const AllCats = ({filter}) => {
+
    const dispatch = useDispatch();
    const { products, cart } = useSelector((state) => state);
    const [allCats,setAllCats] = useState([]);
+   
    
    //console.log(cart.lineItems,"allcats line11");
 
@@ -44,9 +47,11 @@ const AllCats = ({filter}) => {
       setAllCats(catlist);
    },[products,cart]);
 
+
    const filteredCats = allCats.filter((cat) =>
     cat.name.toLowerCase().includes(filter.toLowerCase())
   );
+
 
    return (
       <div className="container text-center">

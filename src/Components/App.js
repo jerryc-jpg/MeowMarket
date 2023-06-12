@@ -24,10 +24,17 @@ const App = () => {
       dispatch(fetchProducts());
    }, []);
 
-   useEffect(() => {
-      if (auth.id) {
-         dispatch(fetchCart());
+   useEffect( () => {
+      async function fetchData(){
+         if (auth.id) {
+            await dispatch(fetchCart());
+         }
       }
+      console.log("app useEffect fetchData")
+      fetchData();
+      //if (auth.id) {
+      //   dispatch(fetchCart());
+     // }
    }, [auth]);
 
    return (

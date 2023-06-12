@@ -6,10 +6,25 @@ import Profile from "./Profile";
 import AllAccess from "./AllAccess";
 
 const Home = () => {
+
+   //test window.localStorage whether behave correctly, (stored item able to be retrieval between pages)
+   // console.log('home:try to find visitor order and token ')
+   // const visitorOrderString=window.localStorage.getItem('visitorOrder');
+   // const token=window.localStorage.getItem('toekn');
+   // if(visitorOrderString){
+   //    console.log('home:line13.home visitor order:',JSON.parse(visitorOrderString));
+   // }
+   // if(token){
+   //    console.log('line16 token:',token)
+   // }
+   // console.log('line17,already check token and visitor order');
+   
+
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState(0);
   const [filter, setFilter] = useState("");
+
 
   const handleTabClick = (index) => {
     setActiveTab(index);
