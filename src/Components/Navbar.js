@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutHideCart, logout } from "../store";
@@ -8,10 +8,10 @@ const Navbar = () => {
    const visitorOrder= JSON.parse(window.localStorage.getItem('visitorOrder'));
 
    const user = useSelector((state) => state.auth);
-   const cart = useSelector((state) => state.cart );
+   const cart = useSelector((state) => state.cart);
    const dispatch = useDispatch();
-   const [sum,setSum] = useState(0);
-   
+   const [sum, setSum] = useState(0);
+
    React.useEffect(() => {
       //
       let list;
@@ -42,6 +42,7 @@ const Navbar = () => {
       
 
    },[cart,user]);
+
 
    const handleLogout = () => {
       dispatch(logout());
@@ -129,23 +130,24 @@ const Navbar = () => {
                            About
                         </Link>
                      </li>
-                     <li className="nav-item ms-4">
-                        <div className="input-group">
-                           <input type="search" className="form-control rounded-end" placeholder="Search" />
-                           <button className="btn btn-outline-secondary" type="button">
-                              <i className="fa fa-search"></i>
-                           </button>
-                        </div>
-                     </li>
                   </ul>
                </div>
                <ul className="navbar-nav align-items-center">
-                  <li className="nav-item d-flex align-items-center">
+                  <li className="nav-item d-flex align-items-center position-relative me-3">
                      <Link to="/cart" className="nav-link">
                         <i className="fas fa-shopping-cart fs-3 align-middle" style={{ color: "#ffffff" }}>
-                           {
-                              sum?(<span>({sum})</span>):null
-                           }
+                           {sum ? (
+                              <span
+                                 className="position-absolute top-5 start-100 translate-middle badge border border-light rounded-circle bg-danger"
+                                 style={{
+                                    width: "20px",
+                                    height: "20px",
+                                    fontSize: "10px",
+                                    fontFamily: "arial"
+                                 }}>
+                                 {sum}
+                              </span>
+                           ) : null}
                         </i>
                      </Link>
                   </li>

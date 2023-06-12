@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 import { addToCart, updateProductQuantity } from "../store";
 
 
-const AllCats = () => {
+const AllCats = ({filter}) => {
+
    const dispatch = useDispatch();
    const { products, cart } = useSelector((state) => state);
    const [allCats,setAllCats] = useState([]);
@@ -27,9 +28,6 @@ const AllCats = () => {
       }
    }
 
-
-
-
    React.useEffect(()=>{
       let cats = products.filter((product) => product.productType === "cat");
       //console.log(cats,'cats');
@@ -50,12 +48,15 @@ const AllCats = () => {
    },[products,cart]);
 
 
-   //console.log('allcats',allCats);
+   const filteredCats = allCats.filter((cat) =>
+    cat.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
 
    return (
       <div className="container text-center">
          <div className="row">
-            {allCats.map((cat) => (
+            {filteredCats.map((cat) => (
                <div key={cat.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
                   <div className="card h-100">
                      <div className="ratio ratio-4x3">

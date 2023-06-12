@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, updateProductQuantity } from "../store";
 
-const AllAccess = () => {
+const AllAccess = ({filter}) => {
    const dispatch = useDispatch();
    const { products } = useSelector((state) => state);
    const [allAccess,setAllAccess] = useState([]);
@@ -35,10 +35,15 @@ const AllAccess = () => {
       setAllAccess(accesslist);
    },[products]);
 
+   const filteredAccess = allAccess.filter((access) =>
+      access.name.toLowerCase().includes(filter.toLowerCase())
+   );
+
+
    return (
       <div className="container text-center">
          <div className="row">
-            {allAccess.map((access) => {
+            {filteredAccess.map((access) => {
                return (
                   <div key={access.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
                      <div className="card h-100">
