@@ -45,6 +45,7 @@ const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
   if(lineItem){
     lineItem.quantity-= quantityToRemove;
   }
+  
  }
 
 
@@ -52,6 +53,7 @@ const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
 export const addToCart = createAsyncThunk('addToCart', async({product,quantity}) =>{
   try{
     const token = window.localStorage.getItem('token');
+    console.log('token line 56:', token);
     if(token){
       const response = await axios.post('/api/orders/cart',{product,quantity},{
         headers: {
@@ -144,7 +146,11 @@ export const checkoutCart = createAsyncThunk('checkoutCart', async()=>{
 const cartSlice = createSlice({
   name:"cart",
   initialState,
-  reducers: {},
+  reducers: {
+    logoutHideCart:(state)=>{
+      return {};
+    }
+  },
   extraReducers: (builder)=>{
     builder.addCase(fetchCart.fulfilled, (state, action)=>{
       return action.payload;
@@ -165,6 +171,6 @@ const cartSlice = createSlice({
   }
 })
 
-export const { calculateTotal } = cartSlice.actions;
+export const { logoutHideCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

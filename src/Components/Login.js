@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { attemptLogin, Register } from "../store";
+import { addToCart, attemptLogin, Register } from "../store";
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
+  const currentvisitorOrder = JSON.parse(window.localStorage.getItem('visitorOrder'));
+  console.log('before login visitorOrder:',currentvisitorOrder);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
@@ -11,6 +13,7 @@ const Login = () => {
     password: "",
   });
   const [loginError, setLoginError] = useState("");
+
 
   const onChange = (ev) => {
     setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
@@ -23,6 +26,18 @@ const Login = () => {
       const resultAction = await dispatch(attemptLogin(credentials));
       const success = resultAction.type.endsWith("/fulfilled");
       if (success) {
+        //yy: for visitor add to cart and then login, 
+        const visitorOrder = JSON.parse(window.localStorage.getItem('visitorOrder'));
+        console.log('after login currentvisitorOrder:',currentvisitorOrder);
+        console.log('after login visitorOrder:',visitorOrder);
+        const token = window.localStorage.getItem('token');
+        console.log('after login token:',token)
+        if(visitorOrder){
+          visitorOrder.forEach((ele)=>{console.log('element:',ele);dispatch(addToCart(ele));});
+          window.localStorage.removeItem('visitorOrder');
+        }
+        
+        //
         navigate("/");
       } else {
         setLoginError("Invalid credentials. Please try again.");
