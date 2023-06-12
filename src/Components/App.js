@@ -30,7 +30,7 @@ const App = () => {
             await dispatch(fetchCart());
          }
       }
-      console.log("app useEffect fetchData")
+      //console.log("app useEffect fetchData")
       fetchData();
       //if (auth.id) {
       //   dispatch(fetchCart());
