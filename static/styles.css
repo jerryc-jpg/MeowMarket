@@ -77,6 +77,13 @@
    vertical-align: middle;
 }
 
+
+.search-bar-container {
+   width: 300px;
+   max-width: 100%;
+   margin: 0 auto;
+}
+
 /* ----- NavBar Shopping Cart Page -----*/
 
 /* .badge {
@@ -98,3 +105,4 @@
    padding: 0 5px;
    vertical-align: top;
 } */
+
