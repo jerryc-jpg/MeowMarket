@@ -88,8 +88,8 @@ const Cart = () => {
          acc = acc + curr.quantity;
          return acc;
       }, 0);
-      console.log('visitorOrder:',visitorOrder)
-      console.log('did we update list:',list);
+      //console.log('visitorOrder:',visitorOrder)
+      //console.log('did we update list:',list);
       setItems(list);
       setTotalPrice(sumPrice);
       setTotalQ(sumQ);
