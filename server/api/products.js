@@ -39,7 +39,7 @@ const { Product } = require('../db');
         await product.save();
         console.log('connect to database');
         res.send(product);
-        }else{
+      }else{
         const{quantity} = req.body; 
         let product = await Product.findByPk(req.params.id);
         if (!product) {
@@ -48,10 +48,7 @@ const { Product } = require('../db');
         product.quantity -= quantity;
         await product.save();
         res.send(product);
-        }
-
-       
-      
+      }
     }
     catch(ex){
       next(ex);
