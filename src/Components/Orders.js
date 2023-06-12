@@ -20,7 +20,6 @@ const Orders = () => {
       );
    }
 
-   console.log(orders);
    return (
       <div className="container bootdev order-history-container my-5">
          <div className="container bootdey">
@@ -66,7 +65,11 @@ const Orders = () => {
                                              {order.status}
                                           </div>
                                           <span>
-                                             <strong>Order ID: {order.id}</strong>
+                                             <Link
+                                                to={`/order-history/${order.id}`}
+                                                className="text-decoration-none text-dark">
+                                                <strong>Order ID: {order.id}</strong>
+                                             </Link>
                                           </span>{" "}
                                           <br />
                                           Quantity: {totalQuantity}, cost: ${totalCost.toFixed(2)}
