@@ -42,17 +42,29 @@ const Cart = () => {
    };
 
    React.useEffect(() => {
-      let list;
-      if(token){
-         list = [...cart.lineItems];}
-      else{
-         if(visitorOrder){
-            list = [...visitorOrder];
-         }else{
-            list = [];
-         }
+      // let list;
+      // if(token){
+      //    list = [...cart.lineItems];}
+      // else{
+      //    if(visitorOrder){
+      //       list = [...visitorOrder];
+      //    }else{
+      //       list = [];
+      //    }
          
-      }
+      // }
+      // if (list) {
+      //    list.sort(function (a, b) {
+      //       if (a.product.name < b.product.name) {
+      //          return -1;
+      //       }
+      //       if (a.product.name > b.product.name) {
+      //          return 1;
+      //       }
+      //       return 0;
+      //    });
+      // }
+      let list = [...cart.lineItems];
       if (list) {
          list.sort(function (a, b) {
             if (a.product.name < b.product.name) {
@@ -182,6 +194,7 @@ const Cart = () => {
                                           onClick={() => {
                                              dispatch(updateProductQuantity({ product: item.product, quantity: 1 }));
                                              dispatch(addToCart({ product: item.product, quantity: 1 }));
+                                             console.log('item.product.quantity:', item.product.quantity)
                                           }}
                                           disabled={item.product.quantity<=0}
                                           >

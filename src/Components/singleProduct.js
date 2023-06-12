@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { addToCart } from "../store";
 import SingleProductAdmin from "./SingleProductAdmin";
+
 import { deleteProduct, updateProductQuantity } from "../store";
 
 const SingleProduct = () => {
@@ -15,6 +16,7 @@ const SingleProduct = () => {
    const [oneProd, setOneProd] = useState({});
    const isAdmin = auth.isAdmin;
    const [limitExceeded, setLimiteExceeded] = useState(false);
+   const [showPopUp, setShowPopUp] = useState(false);
 
 
    
@@ -75,6 +77,8 @@ const SingleProduct = () => {
       dispatch(deleteProduct(oneProd));
       navigate("/");
    };
+
+ 
 
    if (oneProd.productType === "cat") {
       return (
@@ -147,6 +151,7 @@ const SingleProduct = () => {
                            }
          
                         </button>
+                        
                         <button className="btn btn-primary mt-3">
                            <Link to="/" className="text-decoration-none text-white" >CONTINUE SHOPPING</Link>
                         </button>

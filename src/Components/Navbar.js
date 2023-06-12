@@ -4,19 +4,41 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
 
 const Navbar = () => {
+   const token = window.localStorage.getItem('token');
+   const visitorOrder= JSON.parse(window.localStorage.getItem('visitorOrder'));
+
    const user = useSelector((state) => state.auth);
    const cart = useSelector((state) => state.cart );
    const dispatch = useDispatch();
    const [sum,setSum] = useState(0);
    
    React.useEffect(() => {
-      let list =[... cart.lineItems];
-      if(list){
-         const totalQ = list.reduce((acc,curr)=>{
-            return acc = acc+curr.quantity;
-         },0)
-         setSum(totalQ);
+      //
+      let list;
+      if(token){
+         list = [... cart.lineItems]
+      }else{
+         if(visitorOrder){
+            list = [...visitorOrder];
+         }else{
+            list = [];
+         }
       }
+      if(list){
+            const totalQ = list.reduce((acc,curr)=>{
+               return acc = acc+curr.quantity;
+            },0)
+            setSum(totalQ);
+         }
+
+      
+      // let list =[... cart.lineItems];
+      // if(list){
+      //    const totalQ = list.reduce((acc,curr)=>{
+      //       return acc = acc+curr.quantity;
+      //    },0)
+      //    setSum(totalQ);
+      // }
       
 
    },[cart]);

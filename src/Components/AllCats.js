@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, updateProductQuantity } from "../store";
 
+
 const AllCats = () => {
    const dispatch = useDispatch();
    const { products, cart } = useSelector((state) => state);
    const [allCats,setAllCats] = useState([]);
+   
    
    //console.log(cart.lineItems,"allcats line11");
 
