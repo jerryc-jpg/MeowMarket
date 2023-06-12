@@ -105,7 +105,7 @@ const Cart = () => {
                <h2>Shopping Cart</h2>
                {
                   !token?
-                  <button onClick={handleClearLocalStorage}>Empty Cart</button>:null
+                  <button onClick={handleClearLocalStorage}>internal test,empty visitor history</button>:null
                }
                
             </div>
