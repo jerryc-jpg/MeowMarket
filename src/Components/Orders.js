@@ -22,11 +22,11 @@ const Orders = () => {
 
    console.log(orders);
    return (
-      <div className="container bootdev order-history-container">
+      <div className="container bootdev order-history-container my-5">
          <div className="container bootdey">
             <div className="panel panel-default panel-order">
                <div className="panel-heading">
-                  <strong>Order history</strong>
+                  <strong>Order History</strong>
                </div>
 
                <div className="panel-body">
