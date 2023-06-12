@@ -27,18 +27,26 @@ const Login = () => {
       const success = resultAction.type.endsWith("/fulfilled");
       if (success) {
         //yy: for visitor add to cart and then login, 
-        const visitorOrder = JSON.parse(window.localStorage.getItem('visitorOrder'));
-        // console.log('after login currentvisitorOrder:',currentvisitorOrder);
-        // console.log('after login visitorOrder:',visitorOrder);
-        // const token = window.localStorage.getItem('token');
-        // console.log('after login token:',token)
-        if(visitorOrder){
-          visitorOrder.forEach((ele)=>{console.log('element:',ele);dispatch(addToCart(ele));});
-          window.localStorage.removeItem('visitorOrder');
-        }
         
-        //
-        navigate("/");
+        
+        await navigate("/");
+        setTimeout(async() =>{ const visitorOrder = JSON.parse(window.localStorage.getItem('visitorOrder'));
+        // console.log('after login visitorOrder:',visitorOrder);
+          const token = window.localStorage.getItem('token');
+          // console.log('after login token:',token)
+          if(visitorOrder){
+          //await visitorOrder.forEach(async(ele)=>{console.log('element:',ele); await dispatch(addToCart(ele));});
+          
+          for (const ele of visitorOrder) {
+            console.log('element:', ele);
+            await dispatch(addToCart(ele));
+          }
+          window.localStorage.removeItem('visitorOrder');
+          }
+         },500)
+       
+       
+        
       } else {
         setLoginError("Invalid credentials. Please try again.");
       }

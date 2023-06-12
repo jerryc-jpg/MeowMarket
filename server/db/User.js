@@ -47,16 +47,19 @@ User.prototype.createOrder = async function(){
 }
 
 User.prototype.getCart = async function(){
+  console.log('Input for findOne: ', {where: {userId: this.id}});
   let cart = await conn.models.order.findOne({
     where: {
       userId: this.id,
       isCart: true
     }
   });
+  console.log('Cart found: ', cart);
   if(!cart){
     cart = await conn.models.order.create({
       userId: this.id
     });
+    console.log("new cart created: ", cart);
   }
   cart = await conn.models.order.findByPk(
     cart.id,
@@ -71,19 +74,23 @@ User.prototype.getCart = async function(){
       ]
     }
   );
+  console.log("final cart: ", cart);
   return cart;
 }
 
 User.prototype.addToCart = async function({ product, quantity}){
   const cart = await this.getCart();
-  let lineItem = cart.lineItems.find( lineItem => {
+  console.log('cart founded, start add lineItem')
+  let lineItem = await cart.lineItems.find( lineItem => {
     return lineItem.productId === product.id; 
   });
   if(lineItem){
+    console.log('found lineItem, start update number');
     lineItem.quantity += quantity;
     await lineItem.save();
   }
   else {
+    console.log('not found lineItem, start create new lineItem');
     await conn.models.lineItem.create({ orderId: cart.id, productId: product.id, quantity });
   }
   return this.getCart();

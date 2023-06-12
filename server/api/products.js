@@ -26,7 +26,7 @@ const { Product } = require('../db');
 
   app.put('/:id', async(req, res, next)=> {
     try {
-      console.log('connet with database');
+      console.log('connect with database, products.js');
       const token = req.headers.authorization;
       if (token){
         const{quantity} = req.body; 

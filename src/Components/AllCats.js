@@ -50,7 +50,7 @@ const AllCats = () => {
    },[products,cart]);
 
 
-   console.log('allcats',allCats);
+   //console.log('allcats',allCats);
 
    return (
       <div className="container text-center">
