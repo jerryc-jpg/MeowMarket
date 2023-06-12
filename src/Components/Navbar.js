@@ -109,7 +109,14 @@ const Navbar = () => {
                      <Link to="/cart" className="nav-link">
                         <i className="fas fa-shopping-cart fs-3 align-middle" style={{ color: "#ffffff" }}>
                            {sum ? (
-                              <span className="position-absolute top-5 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1 fs-6">
+                              <span
+                                 className="position-absolute top-5 start-100 translate-middle badge border border-light rounded-circle bg-danger"
+                                 style={{
+                                    width: "20px",
+                                    height: "20px",
+                                    fontSize: "10px",
+                                    fontFamily: "arial"
+                                 }}>
                                  {sum}
                               </span>
                            ) : null}

@@ -203,17 +203,6 @@ const SingleProduct = () => {
                               </button>
                            </div>
                         </div>
-
-                        {/*
-                        <div className="d-flex justify-content-start">
-                           <button className="btn mt-3 btn-success me-2 ms-2" onClick={handleTakeMeHomeClick}>
-                              Add to Cart
-                           </button>
-                           <button className="btn btn-primary mt-3">
-                              <Link to="/" className="text-decoration-none text-white">
-                                 CONTINUE SHOPPING
-                              </Link>
-                           */}
                         <div className="d-flex justify-content-start">
                            <button
                               className="btn mt-3 btn-success me-2 ms-2"
