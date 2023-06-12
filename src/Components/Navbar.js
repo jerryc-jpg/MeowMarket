@@ -102,14 +102,6 @@ const Navbar = () => {
                            About
                         </Link>
                      </li>
-                     <li className="nav-item ms-4">
-                        <div className="input-group">
-                           <input type="search" className="form-control rounded-end" placeholder="Search" />
-                           <button className="btn btn-outline-secondary" type="button">
-                              <i className="fa fa-search"></i>
-                           </button>
-                        </div>
-                     </li>
                   </ul>
                </div>
                <ul className="navbar-nav align-items-center">
