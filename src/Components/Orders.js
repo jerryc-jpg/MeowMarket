@@ -9,36 +9,82 @@ const Orders = () => {
 
    useEffect(() => {
       dispatch(fetchOrders());
-      dispatch(loginWithToken()); 
+      dispatch(loginWithToken());
    }, [dispatch]);
 
    if (!auth.username) {
-      return <p>Please <Link to='/login'>login</Link> to view the your orders.</p>;
-    }
+      return (
+         <p>
+            Please <Link to="/login">login</Link> to view the your orders.
+         </p>
+      );
+   }
 
-    return (
-      <div className="container">
-         <h2 className="mt-3">Past Orders for {auth.username}</h2>
-         {orders.length === 0 ? (
-            <p>No past orders</p>
-         ) : (
-            <div>
-               <h2>Past Orders:</h2>
-               {orders.map((order) => (
-                  <div key={order.id} className="mb-4">
-                     <p>Order ID: {order.id}</p>
-                     <p>Total: {order.total}</p>
-                     <ul className="list-unstyled">
-                        {order.lineItems.map((item) => (
-                           <li key={item.id}>
-                              <Link to={`/${item.product.id}`}>{item.product.name}</Link> - Quantity: {item.quantity}
-                           </li>
-                        ))}
-                     </ul>
-                  </div>
-               ))}
+   console.log(orders);
+   return (
+      <div className="container bootdev order-history-container">
+         <div className="container bootdey">
+            <div className="panel panel-default panel-order">
+               <div className="panel-heading">
+                  <strong>Order history</strong>
+               </div>
+
+               <div className="panel-body">
+                  {orders.length === 0 ? (
+                     <p>No past orders</p>
+                  ) : (
+                     <div>
+                        {orders.map((order) => {
+                           let totalQuantity = 0;
+                           let totalCost = 0;
+
+                           order.lineItems.forEach((item) => {
+                              totalQuantity += item.quantity;
+                              totalCost += item.quantity * item.product.price;
+                           });
+
+                           return (
+                              <div key={order.id} className="row">
+                                 <div className="col-md-1">
+                                    <img
+                                       src={order.lineItems[0].product.images[0]}
+                                       className="media-object img-thumbnail"
+                                    />
+                                 </div>
+                                 <div className="col-md-11">
+                                    <div className="row">
+                                       <div className="col-md-12">
+                                          <div
+                                             className={
+                                                "pull-right label " +
+                                                (order.status === "rejected"
+                                                   ? "label-danger"
+                                                   : order.status === "approved"
+                                                   ? "label-success"
+                                                   : "label-info")
+                                             }>
+                                             {order.status}
+                                          </div>
+                                          <span>
+                                             <strong>Order ID: {order.id}</strong>
+                                          </span>{" "}
+                                          <br />
+                                          Quantity: {totalQuantity}, cost: ${totalCost.toFixed(2)}
+                                          <br />
+                                       </div>
+                                       <div className="col-md-12">
+                                          order made on: {new Date(order.createdAt).toLocaleString()}
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           );
+                        })}
+                     </div>
+                  )}
+               </div>
             </div>
-         )}
+         </div>
       </div>
    );
 };
