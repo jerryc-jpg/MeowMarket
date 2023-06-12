@@ -15,8 +15,14 @@ const Navbar = () => {
    React.useEffect(() => {
       //
       let list;
+      console.log(token);
       if(token){
-         list = [... cart.lineItems]
+         if(cart.lineItems){
+            list = [... cart.lineItems]
+         }else{
+            list = [];
+         }
+         
       }else{
          if(visitorOrder){
             list = [...visitorOrder];
