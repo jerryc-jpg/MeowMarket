@@ -102,28 +102,23 @@ const Navbar = () => {
                            About
                         </Link>
                      </li>
-                     <li className="nav-item ms-4">
-                        <div className="input-group">
-                           <input type="search" className="form-control rounded-end" placeholder="Search" />
-                           <button className="btn btn-outline-secondary" type="button">
-                              <i className="fa fa-search"></i>
-                           </button>
-                        </div>
-                     </li>
                   </ul>
                </div>
                <ul className="navbar-nav align-items-center">
-                  <li className="nav-item d-flex align-items-center position-relative me-3">
+                  <li className="nav-item d-flex align-items-center me-3">
                      <Link to="/cart" className="nav-link">
-                        <i className="fas fa-shopping-cart fs-3 align-middle" style={{ color: "#ffffff" }}>
+                        <i
+                           className="fas fa-shopping-cart fs-3 align-middle position-relative"
+                           style={{ color: "#ffffff" }}>
                            {sum ? (
                               <span
-                                 className="position-absolute top-5 start-100 translate-middle badge border border-light rounded-circle bg-danger"
+                                 className="badge border border-light rounded-circle bg-danger"
                                  style={{
-                                    width: "20px",
-                                    height: "20px",
                                     fontSize: "10px",
-                                    fontFamily: "arial"
+                                    fontFamily: "tahoma",
+                                    position: "absolute",
+                                    top: "-40%",
+                                    right: "-50%"
                                  }}>
                                  {sum}
                               </span>

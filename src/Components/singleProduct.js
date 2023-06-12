@@ -210,7 +210,7 @@ const SingleProduct = () => {
                                  dispatch(updateProductQuantity({ product: oneProd, quantity: quantity }));
                                  dispatch(addToCart({ product: oneProd, quantity }));
                               }}>
-                              {oneProd.quantity > 0 ? <span>TAKE ME HOME</span> : <span>LIMIT EXCEEDED</span>}
+                              Add to Cart
                            </button>
                            <button className="btn btn-primary mt-3">
                               <Link to="/" className="text-decoration-none text-white">
