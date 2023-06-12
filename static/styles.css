@@ -76,3 +76,9 @@
    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
    vertical-align: middle;
 }
+
+.search-bar-container {
+   width: 300px;
+   max-width: 100%;
+   margin: 0 auto;
+}
