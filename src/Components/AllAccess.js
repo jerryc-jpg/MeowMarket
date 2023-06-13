@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist } from "../store";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllAccess = ({ filter }) => {
    const dispatch = useDispatch();
@@ -54,7 +56,12 @@ const AllAccess = ({ filter }) => {
 
    const totalPages = Math.ceil(allAccess.length / itemsPerPage);
 
-   console.log(wishlist);
+   const handleAddToCart = (access) => {
+      dispatch(updateProductQuantity({ product: access, quantity: 1 }));
+      dispatch(addToCart({ product: access, quantity: 1 }));
+
+      toast.success(`${access.name} added to cart!`);
+   };
 
    return (
       <div className="container text-center">
@@ -73,8 +80,7 @@ const AllAccess = ({ filter }) => {
                            </Link>
                            <button
                               onClick={() => {
-                                 dispatch(updateProductQuantity({ product: access, quantity: 1 }));
-                                 dispatch(addToCart({ product: access, quantity: 1 }));
+                                 handleAddToCart(access);
                               }}
                               className="btn btn-primary">
                               {access.quantity > 0 ? <span>Add to Cart</span> : <span>Opps! Sold</span>}
@@ -113,6 +119,18 @@ const AllAccess = ({ filter }) => {
                </li>
             </ul>
          </nav>
+         <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover
+            theme="light"
+         />
       </div>
    );
 };

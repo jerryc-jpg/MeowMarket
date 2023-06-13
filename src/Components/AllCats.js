@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist } from "../store";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllCats = ({ filter }) => {
    const dispatch = useDispatch();
@@ -60,6 +62,13 @@ const AllCats = ({ filter }) => {
       return wishlist.some((item) => item.product && item.product.id === productId);
    };
 
+   const handleAddToCart = (cat) => {
+      dispatch(updateProductQuantity({ product: cat, quantity: 1 }));
+      dispatch(addToCart({ product: cat, quantity: 1 }));
+
+      toast.success(`${cat.name} added to cart!`);
+   };
+
    return (
       <div className="container text-center">
          <div className="row">
@@ -76,8 +85,7 @@ const AllCats = ({ filter }) => {
                         </Link>
                         <button
                            onClick={() => {
-                              dispatch(updateProductQuantity({ product: cat, quantity: 1 }));
-                              dispatch(addToCart({ product: cat, quantity: 1 }));
+                              handleAddToCart(cat);
                            }}
                            disabled={cat.quantity === 0}
                            className="btn btn-primary">
@@ -118,6 +126,18 @@ const AllCats = ({ filter }) => {
                </li>
             </ul>
          </nav>
+         <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover
+            theme="light"
+         />
       </div>
    );
 };
