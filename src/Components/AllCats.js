@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist } from "../store";
+import {
+  addToCart,
+  updateProductQuantity,
+  addToWishlist,
+  deleteFromWishlist,
+} from "../store";
 
 const AllCats = ({ filter }) => {
   const dispatch = useDispatch();
@@ -13,14 +18,14 @@ const AllCats = ({ filter }) => {
   const [currentPageCats, setCurrentPageCats] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
-  
-  const hanelPreviousPage = () =>{
-   setCurrentPage((Page) => Page - 1);
-   handelUpdatePageList(allCats,currentPage);
+
+  const hanelPreviousPage = () => {
+    setCurrentPage((Page) => Page - 1);
+    handelUpdatePageList(allCats, currentPage);
   };
   const handelNextPage = () => {
-   setCurrentPage((Page) => Page + 1);
-   handelUpdatePageList(allCats,currentPage);
+    setCurrentPage((Page) => Page + 1);
+    handelUpdatePageList(allCats, currentPage);
   };
   ///////
 
@@ -39,14 +44,6 @@ const AllCats = ({ filter }) => {
   //   }
   // };
 
-  const addToWishlistHandler = (product) => {
-    dispatch(addToWishlist(product));
-    console.log("add to wishlist");
-  };
-  
-
-  
-  
   React.useEffect(() => {
     let cats = products.filter((product) => product.productType === "cat");
     //new///
@@ -68,42 +65,36 @@ const AllCats = ({ filter }) => {
     setAllCats(catlist);
   }, [products, cart]);
 
-
-
-
-
   //console.log('allCats:',allCats);
   const AllfilteredCats = allCats.filter((cat) =>
     cat.name.toLowerCase().includes(filter.toLowerCase())
   );
-  let filteredCats = [...AllfilteredCats].slice((currentPage-1)*itemsPerPage,currentPage*itemsPerPage);
-  let totalPages = Math.ceil(allCats.length/6);
-
+  let filteredCats = [...AllfilteredCats].slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  let totalPages = Math.ceil(allCats.length / 6);
 
   const addToWishlistHandler = (product) => {
-   const isCatInWishlist = wishlist.some((item) => item.product.id === product.id);
- 
-   if (isCatInWishlist) {
-     // Cat is already in the wishlist, remove it
-     dispatch(deleteFromWishlist(product));
-   } else {
-     // Cat is not in the wishlist, add it
-     dispatch(addToWishlist(product));
-   }
- };
+    const isCatInWishlist = wishlist.some(
+      (item) => item.product.id === product.id
+    );
 
-  
-  
- 
+    if (isCatInWishlist) {
+      // Cat is already in the wishlist, remove it
+      dispatch(deleteFromWishlist(product));
+    } else {
+      // Cat is not in the wishlist, add it
+      dispatch(addToWishlist(product));
+    }
+  };
+
   //new
-  console.log("AllCats.js totalPages:",totalPages);
-  console.log("AllCats.js allCats:", allCats)
-  console.log("AllCats.js current page cats:",currentPageCats);
-  
-
+  console.log("AllCats.js totalPages:", totalPages);
+  console.log("AllCats.js allCats:", allCats);
+  console.log("AllCats.js current page cats:", currentPageCats);
 
   return (
-
     <div className="container text-center">
       <div className="row">
         {filteredCats.map((cat) => (
@@ -148,20 +139,13 @@ const AllCats = ({ filter }) => {
           </div>
         ))}
       </div>
-      <button 
-        onClick={hanelPreviousPage}
-        disabled={currentPage<=0}
-      >
+      <button onClick={hanelPreviousPage} disabled={currentPage <= 0}>
         previous
       </button>
       <span>{currentPage}</span>
-      <button 
-        onClick={handelNextPage}
-        disabled={currentPage>=totalPages}
-      >
+      <button onClick={handelNextPage} disabled={currentPage >= totalPages}>
         next
       </button>
-     
     </div>
   );
 };
