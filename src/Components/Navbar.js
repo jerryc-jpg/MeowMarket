@@ -14,9 +14,7 @@ const Navbar = () => {
    const { userId } = useParams();
 
    React.useEffect(() => {
-      //
       let list;
-      console.log(token);
       if(token){
          if(cart.lineItems){
             list = [... cart.lineItems]

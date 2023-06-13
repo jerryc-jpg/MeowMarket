@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart, updateProductQuantity, addToWishlist } from "../store";
+import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist } from "../store";
 
 const AllCats = ({ filter }) => {
   const dispatch = useDispatch();
-  const { products, cart } = useSelector((state) => state);
+  const { products, cart, wishlist } = useSelector((state) => state);
   const [allCats, setAllCats] = useState([]);
 
   //console.log(cart.lineItems,"allcats line11");
@@ -49,9 +49,16 @@ const AllCats = ({ filter }) => {
   );
 
   const addToWishlistHandler = (product) => {
-    dispatch(addToWishlist(product));
-    console.log("add to wishlist");
-  };
+   const isCatInWishlist = wishlist.some((item) => item.product.id === product.id);
+ 
+   if (isCatInWishlist) {
+     // Cat is already in the wishlist, remove it
+     dispatch(deleteFromWishlist(product));
+   } else {
+     // Cat is not in the wishlist, add it
+     dispatch(addToWishlist(product));
+   }
+ };
 
   return (
     <div className="container text-center">
