@@ -28,7 +28,6 @@ const Cart = () => {
    const [totalPrice, setTotalPrice] = useState(0);
    const [totalQ, setTotalQ] = useState(0);
 
-   const navigate = useNavigate();
 
    const handleCheckout = () => {
       dispatch(checkoutCart());

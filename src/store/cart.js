@@ -37,17 +37,7 @@ const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
  }
 
  const handelNewRemoveFromCart = (visitorOrder,{product,quantityToRemove})=>{
-<<<<<<< Updated upstream
-  console.log('handelNewRemoveFromCart');
-  let lineItem = visitorOrder.find(lineItem =>{
-    console.log('lineItem.productId:',lineItem.productId,'=>product.id:',product.id);
-    return lineItem.productId === product.id;
-  })
-  console.log('lineItem:',lineItem);
-  if(lineItem){
-    lineItem.quantity-= quantityToRemove;
-  }
-=======
+
   // let lineItem = visitorOrder.find(lineItem =>{
   //   return lineItem.productId === product.id;
   // })
@@ -66,7 +56,7 @@ const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
     if(visitorOrder[index].quantity === 0){
       visitorOrder.splice(index,1);
     }
->>>>>>> Stashed changes
+
   
  }
 
