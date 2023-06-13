@@ -20,6 +20,7 @@ const Cart = () => {
    */
    const token = window.localStorage.getItem('token');
    const visitorOrder= JSON.parse(window.localStorage.getItem('visitorOrder'));
+   const navigate= useNavigate();
 
    const { cart } = useSelector((state) => state);
    const dispatch = useDispatch();
