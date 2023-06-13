@@ -14,6 +14,7 @@ import Checkout from "./Checkout";
 import Users from "./Users";
 import Profile from "./Profile";
 import Orders from "./Orders";
+import PaymentPage from "./PaymentPage";
 
 import Wishlist from "./Wishlist";
 
@@ -51,6 +52,7 @@ const App = () => {
                <Route path="/" element={<Home />} />
                <Route path="/login" element={<Login />} />
                <Route path="/cart" element={<Cart />} />
+               <Route path="/cart/payment" element={<PaymentPage />} />
                <Route path="/cart/checkout" element={<Checkout />} />
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
