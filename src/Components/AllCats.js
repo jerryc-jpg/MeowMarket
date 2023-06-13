@@ -16,6 +16,7 @@ const AllCats = ({ filter }) => {
    const handlePreviousPage = () => {
       setCurrentPage((Page) => Page - 1);
    };
+
    const handleNextPage = () => {
       setCurrentPage((Page) => Page + 1);
    };
@@ -55,6 +56,10 @@ const AllCats = ({ filter }) => {
       }
    };
 
+   const isProductInWishlist = (productId) => {
+      return wishlist.some((item) => item.product && item.product.id === productId);
+   };
+
    return (
       <div className="container text-center">
          <div className="row">
@@ -79,7 +84,11 @@ const AllCats = ({ filter }) => {
                            {cat.quantity > 0 ? <span>TAKE ME HOME</span> : <span>TAKEN</span>}
                         </button>
                         {user.username && (
-                           <button onClick={() => addToWishlistHandler(cat)} className="btn btn-outline-danger ms-3">
+                           <button
+                              onClick={() => addToWishlistHandler(cat)}
+                              className={`btn btn-outline-danger ms-3 ${
+                                 isProductInWishlist(cat.id) ? "wishlist-selected" : ""
+                              }`}>
                               <i className="far fa-heart"></i>
                            </button>
                         )}
