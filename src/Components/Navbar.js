@@ -159,11 +159,16 @@ const Navbar = () => {
                         </i>
                      </Link>
                   </li>
-                  <li>
-                     <Link to={"/wishlist"} className="nav-link">
-                        <i className="fas fa-heart fs-3 align-middle" style={{ color: "#ffffff" }}></i>
-                     </Link>
-                  </li>
+                  {user.username && (
+              <li>
+                <Link to={"/wishlist"} className="nav-link">
+                  <i
+                    className="fas fa-heart fs-3 align-middle"
+                    style={{ color: "#ffffff" }}
+                  ></i>
+                </Link>
+              </li>
+            )}
                   {renderAuthButtons()}
                </ul>
             </div>
