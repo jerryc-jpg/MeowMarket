@@ -13,21 +13,20 @@ const AllCats = ({ filter }) => {
   const dispatch = useDispatch();
   const { products, cart, wishlist } = useSelector((state) => state);
   const [allCats, setAllCats] = useState([]);
+  const user = useSelector((state) => state.auth);
 
   //new////
   const [currentPageCats, setCurrentPageCats] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  
-  const hanelPreviousPage = () =>{
-   setCurrentPage((Page) => Page - 1);
-  //  handelUpdatePageList(allCats,currentPage);
+  const hanelPreviousPage = () => {
+    setCurrentPage((Page) => Page - 1);
+    handelUpdatePageList(allCats, currentPage);
   };
   const handelNextPage = () => {
-   setCurrentPage((Page) => Page + 1);
-  //  handelUpdatePageList(allCats,currentPage);
-
+    setCurrentPage((Page) => Page + 1);
+    handelUpdatePageList(allCats, currentPage);
   };
   ///////
 
@@ -71,11 +70,11 @@ const AllCats = ({ filter }) => {
   const AllfilteredCats = allCats.filter((cat) =>
     cat.name.toLowerCase().includes(filter.toLowerCase())
   );
-
-  let filteredCats = [...AllfilteredCats].slice((currentPage-1)*itemsPerPage,currentPage*itemsPerPage);
-  let totalPages = Math.ceil(allCats.length/itemsPerPage);
-
-
+  let filteredCats = [...AllfilteredCats].slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  let totalPages = Math.ceil(allCats.length / 6);
 
   const addToWishlistHandler = (product) => {
     const isCatInWishlist = wishlist.some(
@@ -130,22 +129,20 @@ const AllCats = ({ filter }) => {
                     <span>TAKEN</span>
                   )}
                 </button>
-                <button
-                  onClick={() => addToWishlistHandler(cat)}
-                  className="btn btn-outline-danger"
-                >
-                  <i className="far fa-heart"></i>
-                </button>
+                {user.username && (
+                  <button
+                    onClick={() => addToWishlistHandler(cat)}
+                    className="btn btn-outline-danger"
+                  >
+                    <i className="far fa-heart"></i>
+                  </button>
+                )}
               </div>
             </div>
           </div>
         ))}
       </div>
-
-      <button 
-        onClick={hanelPreviousPage}
-        disabled={currentPage<=1}
-      >
+      <button onClick={hanelPreviousPage} disabled={currentPage <= 0}>
         previous
       </button>
       <span>{currentPage}</span>
