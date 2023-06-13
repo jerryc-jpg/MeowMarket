@@ -159,3 +159,7 @@
 .text-underline-hover:hover {
    text-decoration: underline;
 }
+
+.wishlist-selected {
+   color: red;
+}

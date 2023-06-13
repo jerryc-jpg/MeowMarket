@@ -14,7 +14,8 @@ const store = configureStore({
     cart: cart,
     products: products,
     orders: orders,
-    users: users
+    users: users,
+    wishlist: wishlist
   }
 });
 

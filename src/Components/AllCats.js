@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart, updateProductQuantity, addToWishlist } from "../store";
+import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist } from "../store";
 
 const AllCats = ({ filter }) => {
   const dispatch = useDispatch();
-  const { products, cart } = useSelector((state) => state);
+  const { products, cart, wishlist } = useSelector((state) => state);
   const [allCats, setAllCats] = useState([]);
 
   //new////
@@ -79,6 +79,19 @@ const AllCats = ({ filter }) => {
   let filteredCats = [...AllfilteredCats].slice((currentPage-1)*itemsPerPage,currentPage*itemsPerPage);
   let totalPages = Math.ceil(allCats.length/6);
 
+
+  const addToWishlistHandler = (product) => {
+   const isCatInWishlist = wishlist.some((item) => item.product.id === product.id);
+ 
+   if (isCatInWishlist) {
+     // Cat is already in the wishlist, remove it
+     dispatch(deleteFromWishlist(product));
+   } else {
+     // Cat is not in the wishlist, add it
+     dispatch(addToWishlist(product));
+   }
+ };
+
   
   
  
@@ -87,6 +100,7 @@ const AllCats = ({ filter }) => {
   console.log("AllCats.js allCats:", allCats)
   console.log("AllCats.js current page cats:",currentPageCats);
   
+
 
   return (
 
