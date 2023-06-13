@@ -5,6 +5,7 @@ import cart from './cart';
 import products from './productsSlice'
 import orders from './ordersSlice'
 import users from './usersSlice'
+import wishlist from './wishlist'
 
 const store = configureStore({
   middleware: (defaultMiddleware)=> defaultMiddleware().concat(logger),
@@ -23,4 +24,5 @@ export * from './cart';
 export * from './productsSlice';
 export * from './ordersSlice';
 export * from './usersSlice';
+export * from './wishlist';
 
