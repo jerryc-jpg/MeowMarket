@@ -86,6 +86,7 @@ const Cart = () => {
       }, 0);
       //console.log('visitorOrder:',visitorOrder)
       //console.log('did we update list:',list);
+
       setItems(list);
       setTotalPrice(sumPrice);
       setTotalQ(sumQ);
@@ -208,7 +209,7 @@ const Cart = () => {
                                  )}
                               </td>
                               <td className="text-right font-weight-semibold align-middle p-4">
-                                 ${item.product.price * item.quantity}
+                                 ${(item.product.price * item.quantity).toFixed(2)}
                               </td>
                               <td className="text-center align-middle px-0">
                                  <button
