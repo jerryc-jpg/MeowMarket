@@ -32,10 +32,12 @@ const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
   }else{
     visitorOrder.push({product,quantity,productId,id});
   }
+  
 
  }
 
  const handelNewRemoveFromCart = (visitorOrder,{product,quantityToRemove})=>{
+<<<<<<< Updated upstream
   console.log('handelNewRemoveFromCart');
   let lineItem = visitorOrder.find(lineItem =>{
     console.log('lineItem.productId:',lineItem.productId,'=>product.id:',product.id);
@@ -45,6 +47,26 @@ const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
   if(lineItem){
     lineItem.quantity-= quantityToRemove;
   }
+=======
+  // let lineItem = visitorOrder.find(lineItem =>{
+  //   return lineItem.productId === product.id;
+  // })
+  // if(lineItem){
+  //   lineItem.quantity-= quantityToRemove;
+  // }
+
+    let index = visitorOrder.findIndex(lineItem =>{
+      return lineItem.productId === product.id;
+    })
+    console.log("index",index,"visitorOrder[index].quantity",visitorOrder[index].quantity,"quantity to remove: ",quantityToRemove);
+    if(index!== -1){
+      visitorOrder[index].quantity -= quantityToRemove;
+    }
+    console.log("updated: index",index,"new visitorOrder[index].quantity",visitorOrder[index].quantity);
+    if(visitorOrder[index].quantity === 0){
+      visitorOrder.splice(index,1);
+    }
+>>>>>>> Stashed changes
   
  }
 
