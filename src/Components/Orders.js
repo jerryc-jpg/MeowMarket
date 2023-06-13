@@ -14,19 +14,18 @@ const Orders = () => {
 
    if (!auth.username) {
       return (
-         <p>
+         <h2 className="justify-content-center text-center mt-5">
             Please <Link to="/login">login</Link> to view the your orders.
-         </p>
+         </h2>
       );
    }
 
-   console.log(orders);
    return (
-      <div className="container bootdev order-history-container">
+      <div className="container bootdev order-history-container my-5">
          <div className="container bootdey">
             <div className="panel panel-default panel-order">
                <div className="panel-heading">
-                  <strong>Order history</strong>
+                  <strong>Order History</strong>
                </div>
 
                <div className="panel-body">
@@ -66,7 +65,11 @@ const Orders = () => {
                                              {order.status}
                                           </div>
                                           <span>
-                                             <strong>Order ID: {order.id}</strong>
+                                             <Link
+                                                to={`/order-history/${order.id}`}
+                                                className="text-decoration-none text-dark">
+                                                <strong>Order ID: {order.id}</strong>
+                                             </Link>
                                           </span>{" "}
                                           <br />
                                           Quantity: {totalQuantity}, cost: ${totalCost.toFixed(2)}
