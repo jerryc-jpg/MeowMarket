@@ -8,44 +8,49 @@ const AllCats = ({ filter }) => {
   const dispatch = useDispatch();
   const { products, cart } = useSelector((state) => state);
   const [allCats, setAllCats] = useState([]);
-  //new 
-  // const [currentPageCats, setCurrentPageCats] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const itemsPerPage = 6;
-  // const totalPages = Math.ceil(products.length/itemsPerPage);
-  // const hanelPreviousPage = () =>{
-  //  setCurrentPage((Page) => Page - 1);
-  // };
-  // const handelNextPage = () => {
-  //  setCurrentPage((Page) => Page + 1);
-  // };
-  // const updatePage = (list) =>{
-  //  const startIndex = (currentPage -1) * itemsPerPage;
-  //  const endIndex = startIndex + itemsPerPage;
-  //  setCurrentPage( products.slice(0,6));
-  // }
-  //new
 
+  //new////
+  const [currentPageCats, setCurrentPageCats] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+  
+  const hanelPreviousPage = () =>{
+   setCurrentPage((Page) => Page - 1);
+   handelUpdatePageList(allCats,currentPage);
+  };
+  const handelNextPage = () => {
+   setCurrentPage((Page) => Page + 1);
+   handelUpdatePageList(allCats,currentPage);
+  };
+  ///////
 
-  const sortProduct = (list) => {
-    if (list) {
-      list.sort(function (a, b) {
-        if (a.quantity > b.quantity) {
-          return -1;
-        }
-        if (a.quantity < b.quantity) {
-          return 1;
-        }
-        return 0;
-      });
-    }
+  // didn't use this sortProduct
+  // const sortProduct = (list) => {
+  //   if (list) {
+  //     list.sort(function (a, b) {
+  //       if (a.quantity > b.quantity) {
+  //         return -1;
+  //       }
+  //       if (a.quantity < b.quantity) {
+  //         return 1;
+  //       }
+  //       return 0;
+  //     });
+  //   }
+  // };
+
+  const addToWishlistHandler = (product) => {
+    dispatch(addToWishlist(product));
+    console.log("add to wishlist");
   };
   
 
   
-
+  
   React.useEffect(() => {
     let cats = products.filter((product) => product.productType === "cat");
+    //new///
+    //
     //console.log(cats,'cats');
     let catlist = [...cats];
     if (catlist) {
@@ -64,29 +69,27 @@ const AllCats = ({ filter }) => {
   }, [products, cart]);
 
 
-  console.log('allCats:',allCats);
-  const filteredCats = allCats.filter((cat) =>
+
+
+
+  //console.log('allCats:',allCats);
+  const AllfilteredCats = allCats.filter((cat) =>
     cat.name.toLowerCase().includes(filter.toLowerCase())
   );
+  let filteredCats = [...AllfilteredCats].slice((currentPage-1)*itemsPerPage,currentPage*itemsPerPage);
+  let totalPages = Math.ceil(allCats.length/6);
 
-  // //new
-  // console.log('filteredCats:', filteredCats);
-  // let currentCats = updatePage(filteredCats);
-  // //new
-
-  const addToWishlistHandler = (product) => {
-    dispatch(addToWishlist(product));
-    console.log("add to wishlist");
-  };
+  
+  
+ 
+  //new
+  console.log("AllCats.js totalPages:",totalPages);
+  console.log("AllCats.js allCats:", allCats)
+  console.log("AllCats.js current page cats:",currentPageCats);
+  
 
   return (
-        //  <div>
-        //     {currentCats.map((cat) =>{
-        //       <div key={cat.id}>{cat.name}</div>
 
-        //     })
-        //       }
-        //  </div>
     <div className="container text-center">
       <div className="row">
         {filteredCats.map((cat) => (
@@ -131,6 +134,20 @@ const AllCats = ({ filter }) => {
           </div>
         ))}
       </div>
+      <button 
+        onClick={hanelPreviousPage}
+        disabled={currentPage<=0}
+      >
+        previous
+      </button>
+      <span>{currentPage}</span>
+      <button 
+        onClick={handelNextPage}
+        disabled={currentPage>=totalPages}
+      >
+        next
+      </button>
+     
     </div>
   );
 };
