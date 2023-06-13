@@ -23,7 +23,7 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
 })
 
 const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
-  console.log('combine individual item');
+  //console.log('combine individual item');
   let lineItem = visitorOrder.find(lineItem =>{
     return lineItem.productId === productId;
   })
@@ -65,7 +65,6 @@ const handelNewAddToCart = (visitorOrder,{product,quantity,productId,id})=>{
 export const addToCart = createAsyncThunk('addToCart', async({product,quantity}) =>{
   try{
     const token = window.localStorage.getItem('token');
-    console.log('token line 56:', token);
     if(token){
       const response = await axios.post('/api/orders/cart',{product,quantity},{
         headers: {
@@ -146,7 +145,6 @@ export const checkoutCart = createAsyncThunk('checkoutCart', async()=>{
         authorization: token
       }
     })
-    console.log(response.data,'checkout')
   return response.data;
   }catch(err){
     console.log(err);

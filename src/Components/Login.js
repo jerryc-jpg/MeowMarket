@@ -29,7 +29,7 @@ const Login = () => {
         //yy: for visitor add to cart and then login, 
         
         
-        await navigate("/");
+        
         setTimeout(async() =>{ const visitorOrder = JSON.parse(window.localStorage.getItem('visitorOrder'));
         // console.log('after login visitorOrder:',visitorOrder);
           const token = window.localStorage.getItem('token');
@@ -44,6 +44,8 @@ const Login = () => {
           window.localStorage.removeItem('visitorOrder');
           }
          },500)
+
+         navigate("/");
        
        
         
