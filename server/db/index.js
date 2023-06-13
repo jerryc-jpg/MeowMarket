@@ -28,28 +28,11 @@ const syncAndSeed = async()=> {
         "https://images.pexels.com/photos/7725986/pexels-photo-7725986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       ],
       quantity:1,
-      price:113, 
+      price:175, 
       age: 1,
       breed:'Scottish Fold & Domestic Short Hair Mix',
       description: "While many know Marge as the mom on the animated series \"The Simpsons\", most do not know that she was once an avid disciple of Gandhi. Because of her disciplined approach to mindful meditation and her grounded philosophy on life, she has garnered a following of her own and has become somewhat of a guru herself in the spiritual community. Nicknamed by Gandhi himself, as \"the most chill kitten ever\", Marge prefers her simple nickname given to her by her siblings: Margie-moo.\n\nDespite her sudden rise to fame and quick ascent to critically acclaimed bestseller of books in the spiritual self-help genre, Marge is unbothered by fame and continues to practice meditation, afternoon naps, and sunbathing.\n\nLiving up to her nickname as the most chill kitten ever, Marge loves to cuddle on your lap, cuddle with her siblings, and play. We always prefer the kittens to be adopted out in pairs since they're still so young, have grown up together, and need the companionship of another kitten to help their development. She gets along with all her siblings and would like to be adopted with any one of the other Simpsons bunch: Homer, Bart, Lisa, or Maggie."}),
     
-    Product.create({ 
-      productType: 'cat', 
-      name: 'Homer', 
-      images:[
-        "https://petkeen.com/wp-content/uploads/2022/02/American-shorthair-kitten_Top-Photo-Engineer-Shutterstock.jpg",
-        "https://www.petful.com/wp-content/uploads/2016/06/american-shorthair-cat-750x434.jpg",
-        "https://www.bubblypet.com/wp-content/uploads/2022/09/American-Shorthair-price-and-expenses-how-much-does-an-American-Shorthair-cost.jpg",
-        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/3/?bust=1685904397&width=1080",
-        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/1/?bust=1685904396&width=1080",
-        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/2/?bust=1685904455&width=1080",
-      ],
-      quantity:1,
-      price:113, 
-      age: 1,
-      breed:'Domestic Short Hair Mix ',
-      description: "While Homer is best known for his role of the father on the \"Simpsons\", many do not know he was also a famous operatic singer in his past life and demonstrates his vocal technique when he is hungry, or to let you know when unwanted flies are in the home and that he will go chase them down for you.\n\nHomer did qualify for the 2020 Olympics in the sport of \"interactive-cat-toy-with-feather hunting\" but has chosen to remain a house cat and pursue this sport as a side hobby instead. If you bring out an interactive cat toy with a feather however, you may be lucky enough to witness his competitive, winning hunting moves.\n\nMost of all, Homer loves to cuddle on your lap, with his siblings, and to play. We always prefer the kittens to be adopted out in pairs, since they're still so young, have grown up together, and need the companionship of another kitten to help their development. Homer gets along with all his siblings and would like to be adopted with any one of the other Simpsons bunch: Bart, Marge, Lisa or Maggie."}),
-  
      Product.create({ 
       productType: 'cat', 
       name: 'Lisa', 
@@ -60,11 +43,26 @@ const syncAndSeed = async()=> {
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849348/3/?bust=1685903457&width=1080"
       ],
       quantity:1,
-      price:113, 
-      age: 1,
+      price:175, 
+      age: 2,
       breed:'Tabby & Domestic Short Hair Mix',
       description:"Lisa, also known as Lisa Lovebug, is one of the kittens from the \"Simpsons\" litter. Multitalented, Lisa was trained from a young age as a metalsmith, but has a fine appreciation for all types of metal arts, including jewelry design. While she used to be a consultant designer at Cartier and spent a few years working for Rolex, she has now taken her talents to Kitten Rescue, where she admires and plays with anything shiny and metal. She will likely sit right in your lap upon meeting you and start grooming your hand immediately. Lisa shows her love each morning by waking you up with some licks and letting you know she is ready to eat!\n\nLisa loves to cuddle on your lap, with her siblings, and play. We always prefer the kittens to be adopted out in pairs, since they're still so young, have grown up together, and need the companionship of another kitten to help their development. She gets along with all her siblings and would like to be adopted with any one of the other Simpsons bunch: Homer, Bart, Marge or Maggie."}),
    
+    Product.create({ 
+      productType: 'cat', 
+      name: 'Ellen', 
+      images:[
+          'https://petsnurturing.com/wp-content/uploads/2022/04/lynx-point-siamese-5.jpg',
+          'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/57428659/1/?bust=1685743719&width=1080',
+          'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/57428659/3/?bust=1686107976&width=1080'
+      ],
+      quantity:1,
+      age: 4,
+      price:113, 
+      breed:'Siamese Mix',
+      description:"Ellen is a pretty funky cat. She likes to lay around and just hang out all day. She is an older cat, so she's not too huge on toys or being held a lot. She likes to find really dark areas to hide out in until there isn't a lot going on. Unfortunately, Ellen doesn't have many teeth left, so she loves her wet food! \n\nEven though she is one of the most gorgeous cats we've had, she's just not your social butterfly. She likes to hide away and keep to herself when given the chance. With her lack of teeth and not so friendly demeanor, she's proven to be a difficult cat to adopt. All Ellen really needs is a loving home with people that have the time and patience to acclimate a scared, older cat. Does that sound like you?"}),
+  
+    
     Product.create({ 
       productType: 'cat', 
       name: 'Maggie', 
@@ -76,7 +74,7 @@ const syncAndSeed = async()=> {
       ],
       quantity:1,
       age: 1,
-      price:113, 
+      price:175, 
       breed:'Torbie & Domestic Short Hair Mix',
       description:"Maggie, known for her portrayal of the baby on the animated classic \"The Simpsons\", has brought her stardom to Kitten Rescue and is ready to be adopted! The runt of the \"Simpsons\" litter, Maggie is the littlest baby of the bunch. What many do not know about her, is in a past life, she was a V8 Ferrari Engine, and likes to demonstrate this with her constant purring.\n\nMaggie, a.k.a. Maggie Moo, is a very sweet and gentle kitten. While shy at first, once she warms up, she will want all the pets and snuggles. A true little sister, Maggie loves to follow her brothers and sisters around to play and cuddle!\n\nWe always prefer the kittens to be adopted out in pairs, since they're still so young, have grown up together, and need the companionship of another kitten to help their development. She gets along with all her siblings and would like to be adopted with any one of the other Simpsons bunch: Homer, Bart, Marge or Lisa, though she is most bonded with Bart."}),
 
@@ -90,25 +88,12 @@ const syncAndSeed = async()=> {
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64848945/2/?bust=1685901619&width=1080'
       ],
       quantity:1,
-      price:113, 
+      price:175, 
       age: 1,
       breed:'Tabby & Domestic Short Hair Mix',
       description:"Bart, known to his fans as Bartholamew or Bartimus the third, was once a squeak toy. However, he has decided to pursue his lifelong dream of being a house cat instead. If you're lucky though, you will hear the remnants of his past life in the form of his tiny, sweet squeaks.\n\nOften mistaken for a teddy bear, Bart loves to cuddle and constantly be in your lap. If he had it his way, he would be carried around like a baby the whole day. Upon being picked up, he transforms into a rag doll and calmly flops around happily in your arms.\n\nBart loves to cuddle on your lap, with his siblings, and play. We always prefer the kittens to be adopted out in pairs, since they're still so young, have grown up together, and need the companionship of another kitten to help their development. He gets along with all his siblings and would like to be adopted with any one of the other Simpsons bunch: Homer, Marge, Lisa or Maggie, though he is most bonded with Maggie."}),
 
-    Product.create({ 
-      productType: 'cat', 
-      name: 'Ellen', 
-      images:[
-        'https://petsnurturing.com/wp-content/uploads/2022/04/lynx-point-siamese-5.jpg',
-        'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/57428659/1/?bust=1685743719&width=1080',
-        'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/57428659/3/?bust=1686107976&width=1080'
-      ],
-      quantity:1,
-      age: 8,
-      price:113, 
-      breed:'Siamese Mix',
-      description:"Ellen is a pretty funky cat. She likes to lay around and just hang out all day. She is an older cat, so she's not too huge on toys or being held a lot. She likes to find really dark areas to hide out in until there isn't a lot going on. Unfortunately, Ellen doesn't have many teeth left, so she loves her wet food! \n\nEven though she is one of the most gorgeous cats we've had, she's just not your social butterfly. She likes to hide away and keep to herself when given the chance. With her lack of teeth and not so friendly demeanor, she's proven to be a difficult cat to adopt. All Ellen really needs is a loving home with people that have the time and patience to acclimate a scared, older cat. Does that sound like you?"}),
-
+    
     Product.create({ 
       productType: 'cat', 
       name: 'Morticia', 
@@ -119,10 +104,27 @@ const syncAndSeed = async()=> {
       ],
       quantity:1,
       price:113, 
-      age: 2,
+      age: 4,
       breed:'Munchkin & Domestic Short Hair Mix',
       description:"Hi, My name is Morticia! I'm an about 2-year-old female munchkin/ domestic shorthair mix. I weigh roughly 7 lbs right now and won't grow anymore. I am spayed and fully vaccinated. I lived outside under my foster mom's house since I was born, so adjusting to living in a house is hard for me. Don't worry, I don't tear anything up or pee all over (I am fully box trained!!) but I am very fearful of people. I do love food though so my foster moms have been able to win me over with treats and food. So far I don't love to cuddle and haven't learned to show affection yet and have been so focused on helping care for my babies and grandbabies that I haven't started playing yet."}),
-
+      
+    Product.create({ 
+      productType: 'cat', 
+      name: 'Homer', 
+      images:[
+          "https://petkeen.com/wp-content/uploads/2022/02/American-shorthair-kitten_Top-Photo-Engineer-Shutterstock.jpg",
+          "https://www.petful.com/wp-content/uploads/2016/06/american-shorthair-cat-750x434.jpg",
+          "https://www.bubblypet.com/wp-content/uploads/2022/09/American-Shorthair-price-and-expenses-how-much-does-an-American-Shorthair-cost.jpg",
+          "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/3/?bust=1685904397&width=1080",
+          "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/1/?bust=1685904396&width=1080",
+          "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849453/2/?bust=1685904455&width=1080",
+      ],
+      quantity:1,
+      price:175, 
+      age: 1,
+      breed:'Domestic Short Hair Mix ',
+      description: "While Homer is best known for his role of the father on the \"Simpsons\", many do not know he was also a famous operatic singer in his past life and demonstrates his vocal technique when he is hungry, or to let you know when unwanted flies are in the home and that he will go chase them down for you.\n\nHomer did qualify for the 2020 Olympics in the sport of \"interactive-cat-toy-with-feather hunting\" but has chosen to remain a house cat and pursue this sport as a side hobby instead. If you bring out an interactive cat toy with a feather however, you may be lucky enough to witness his competitive, winning hunting moves.\n\nMost of all, Homer loves to cuddle on your lap, with his siblings, and to play. We always prefer the kittens to be adopted out in pairs, since they're still so young, have grown up together, and need the companionship of another kitten to help their development. Homer gets along with all his siblings and would like to be adopted with any one of the other Simpsons bunch: Bart, Marge, Lisa or Maggie."}),
+    
     Product.create({ 
       productType: 'cat', 
       name: 'Fiona', 
@@ -134,7 +136,7 @@ const syncAndSeed = async()=> {
       ],
       quantity:1,
       price:113, 
-      age: 7,
+      age: 5,
       breed:'Tabby & Domestic Short Hair Mix',
       description:"Fiona was recently found with her deceased owner and sent to the shelter; they contacted us and she was reunited with her original foster.She is a very affectionate and well-behaved soul; a chubbette in beautiful condition, with lovely soft fur and lovely, huge sad green eyes like a Keane painting. After much love from her foster, she is finally healing from her trauma, and has become playful, friendly, and confident. She loves aggressive scritches, full body kitty massages, snuggling at bedtime, and greeting you in the morning with smiles, purrs, and a breath check.Fiona likes to be the queen of her domain, so she will need to be an only kitty. You will fall in love with this girl"}),
 
@@ -147,7 +149,7 @@ const syncAndSeed = async()=> {
       quantity:1,
       price:113, 
       breed:'Dilute Calico',
-      age: 3,
+      age: 5,
       description:"Prairie was trapped with her , mom, dad, bother and sisters july 4th weekend 2021. She and siblings were about 6 weeks and feral. They’ve slowly come around over 2 years but will require someone with extreme patience. Prairie is still the most timid of the bunch. "}),
 
       Product.create({ 
@@ -161,7 +163,7 @@ const syncAndSeed = async()=> {
         quantity:1,
         price:113, 
         breed:'Ragdoll',
-        age: 3,
+        age: 6,
         description:"Little Coco is a beautiful bicolor, mitted ragdoll. He is very playful and friendly. Someone backed out of adopting him. He will be a beauty as he grows. He’s eating dry food, drinking water, and using the litter box. He’s a little doll who deserves a loving family."}),
    
       Product.create({ 
@@ -189,11 +191,93 @@ const syncAndSeed = async()=> {
           quantity:1,
           price:113, 
           breed:'Domestic Longhair/Domestic Shorthair',
-          age: 3,
+          age: 5,
           description:"Meet Furball! Furball recently made it into our adoption program and staff is still getting to know her. Furball is one of our Special Care pets meaning she needs a bit more love. Furball has a chronic ear infection and scarring in her left year. She will require regular ear cleanings and management at a private vet. Furball is also a big gal, and will need to work on weight management.  "}),
-        
-        //accessories
+     
+    Product.create({ 
+      productType: 'cat', 
+      name: 'Daisy', 
+      images:[
+        "https://images.pexels.com/photos/15958817/pexels-photo-15958817/free-photo-of-close-up-of-a-white-and-orange-kitten.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/15958818/pexels-photo-15958818/free-photo-of-close-up-of-kitten.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/15958809/pexels-photo-15958809/free-photo-of-a-kitten-sitting-in-a-flower-pot.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      ],
+      quantity:1,
+      price:175, 
+      age: 1,
+      breed:'Domestic Short Hair Mix ',
+      description: " Daisy may be a little kitten but she is a curious mischievous little gal. She loves people and purrs up a storm.  She also likes respectful dogs a bunch!  Daisy also loves her siblings and would like to be adopted with one of them.  She believes, like we do, cats thrive better in pairs! Daisy is fully vetted."}),
+       
+    Product.create({ 
+      productType: 'cat', 
+      name: 'Tunnel', 
+      images:[
+        "https://images.pexels.com/photos/9484162/pexels-photo-9484162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/9484161/pexels-photo-9484161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      ],
+      quantity:1,
+      price:113, 
+      age: 6,
+      breed:'Domestic Short Hair Mix ',
+      description: " Playful, friendly Meatball is looking for a loving home and a BFF (best feline friend) for chasing toys, napping, wrestling, and general fun and games! Meatball hasn’t met a toy he doesn’t like, and enjoys playing alone or with his foster’s other cat, chirping softly to let them know it’s playtime. When he’s tuckered out, they’ll snuggle and snooze together, or he’ll find his own cozy hiding spot for a nap."}),
+    
+    Product.create({ 
+        productType: 'cat', 
+        name: 'Tootles', 
+        images:[
+          "https://images.pexels.com/photos/8076289/pexels-photo-8076289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "https://images.pexels.com/photos/6770732/pexels-photo-6770732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        ],
+        quantity:1,
+        price:175, 
+        age: 1,
+        breed:'Domestic Short Hair Mix ',
+        description: "Tootles, is very loving and purr when pet with his tail up. Tootles is very calm and can play and hang out by himself or loves to play and cuddle with people. He is a curious kitten who wants to know what you’re doing and be a part of it. He loves to chase and catch the elusive fly in the house. Tootles particularly loves cat tv."}),
+      
+    Product.create({ 
+        productType: 'cat', 
+        name: 'Latte', 
+        images:[
+          "https://images.pexels.com/photos/13782217/pexels-photo-13782217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "https://images.pexels.com/photos/16392613/pexels-photo-16392613/free-photo-of-o-n-g.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "https://images.pexels.com/photos/14572715/pexels-photo-14572715.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        ],
+        quantity:1,
+        price:175, 
+        age: 1,
+        breed:'Domestic Short Hair Mix ',
+        description: "This affectionate lady’s greatest wish is to be friends with everyone. Although she may be a bit shy when you first meet her, she quickly warms up and will be snuggling with you in no time. Ziti is also very enthusiastic with her kisses; her foster says to expect LOTS of licking! She can’t get enough of her people and will happily spend her days by your side."}),
+    
+      Product.create({ 
+        productType: 'cat', 
+        name: 'Wendy', 
+        images:[
+          "https://images.pexels.com/photos/209800/pexels-photo-209800.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "https://www.pexels.com/photo/close-up-shot-of-a-tabby-cat-6165724/",
+          "https://images.pexels.com/photos/731637/pexels-photo-731637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        ],
+        quantity:1,
+        price:175, 
+        age: 1,
+         breed:'Domestic Short Hair Mix ',
+        description: "Wendy is a fiend for pets and loves people. Wendy will happily follow you around everywhere and fall on her back to get your attention and pet her. She loves cuddles and will lie next to you for a cat nap. Wendy always seeks her foster parent out and wants pets and affection. Wendy loves to play in boxes and paper bags."}),
+      
+      Product.create({ 
+          productType: 'cat', 
+          name: 'Penny', 
+          images:[
+            "https://images.pexels.com/photos/13072359/pexels-photo-13072359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/13072362/pexels-photo-13072362.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/13072361/pexels-photo-13072361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          ],
+          quantity:1,
+          price:113, 
+          age: 3,
+          breed:'Domestic Short Hair Mix ',
+          description: "In 2 words, Penny is Simply Happy. It's rare to not find this sweet kitty as consistently positive and happy. Penny is the sort of cat that will choose to come to you, which she will bravely do, and if you are gentle, she will quickly decide that you are trustworthy. Once that happens, she will want pets. This can happen very quickly."}),
+      
 
+    // accessory
     Product.create({ 
       productType: 'accessory', 
       images: [
@@ -210,7 +294,7 @@ const syncAndSeed = async()=> {
     Product.create({ 
       productType: 'accessory', 
       images:["https://image.chewy.com/is/image/catalog/308889_PT3._AC_SL600_V1642688496_.jpg"],
-      name: 'BEE CAT TRACKS', 
+      name: 'TRACKS BEE', 
       price: 10.23,
       quantity: 10,  
       description:'If there was an amusement park for kitties, this toy would be the main attraction. That’s because this interactive triple-decker tower from Frisco by Chewy has everything cats love—a ball to bat and chase around the tracks, the excitement of hearing the sound of the balls roll along the tracks, and even a fluttery butterfly on top! There are three levels for even more play, each with its own rolling ball, so more than one kitty can get in on the fun. Go ahead, let them go wild. The nonskid pads keep the track from sliding around when playtime goes into overtime.'}),
@@ -343,11 +427,91 @@ const syncAndSeed = async()=> {
             "https://cdn.webshopapp.com/shops/289894/files/410835307/image.jpg",*/
         ],
         quantity: 20,
-        name: 'SARDINE SCRATCHER', 
+        name: 'CAN SCRATCHER', 
         price:64.95,  
         description:'SARDINE - Cardboard Cat Scratcher - 60 x 30 x 30 cm - White, Black and Pink. The SARDINE cat scratcher is covered with corrugated cardboard, perfect for your cat to scratch. The cat scratcher adds a funny touch to your interior.',
       }),
+
+      Product.create({ 
+        productType: 'accessory', 
+        images: ["https://cdn.webshopapp.com/shops/289894/files/388672967/image.jpg",
+            /*"https://cdn.webshopapp.com/shops/289894/files/388672999/image.jpg",
+            "https://cdn.webshopapp.com/shops/289894/files/388672984/image.jpg",
+            */
+        ],
+        quantity: 20,
+        name: 'MIXTAP SCRATCHER', 
+        price:66.95,  
+        description:'We all know our feline friends love to lounge around in cardboard boxes, but having lots of empty boxes in our home don’t really make for great interior design. Why spending an afternoon relaxing in a boring, plain and old box, when there is also the opportunity to scratch their own mix tape? Let your cat rewind to the 80s by sticking its paws into the small holes!',
+      }),
+
+      Product.create({ 
+        productType: 'accessory', 
+        images: ["https://cdn.shopify.com/s/files/1/0410/7180/4571/products/Cheshire_WainxKateWeltonStonewareCatBowlsFoodSaucersPair_900x.jpg?v=1676039464",
+            /*"https://cdn.shopify.com/s/files/1/0410/7180/4571/products/Cheshire_WainxKateWeltonStonewareCatBowlsFoodSaucerHandPaintedSittingCat_900x.jpg?v=1676039527",
+            "https://cdn.shopify.com/s/files/1/0410/7180/4571/products/Cheshire_WainxKateWeltonStonewarehandpainteddesign_900x.jpg?v=1676039527",
+            */
+        ],
+        quantity: 20,
+        name: 'STONEWARE FOOD DISH', 
+        price:66.95,  
+        description:'These beautiful food dishes are hand-painted in dark blue slip with two charming cat designs. Created for cats who struggle to eat from deep bowls (such as kittens and senior kitties) with straight sides to keep food from spilling over the edge and making a mess. Lovely on their own or as a set of two for kitties who enjoy wet and dry food. ',
+      }),
+
+      Product.create({ 
+        productType: 'accessory', 
+        images: ["https://cdn.shopify.com/s/files/1/0410/7180/4571/products/10_bfd5f2b1-931f-43fe-bc1b-c21acf07e914_540x.jpg?v=1671040837",
+            /*"https://cdn.shopify.com/s/files/1/0410/7180/4571/products/CatPlay-TypesofToys_1513cef6-ee18-4aea-b443-eaaf6a4a12b8_540x.jpg?v=1663768037",
+            "https://cdn.shopify.com/s/files/1/0410/7180/4571/products/Valerianforcats_540x.jpg?v=1671040835",
+            */
+        ],
+        quantity: 20,
+        name: 'CLOUD TOY', 
+        price:66.95,  
+        description:'Send your kitty\'s hunting instincts sky-high with our Valerian Cloud toy - the perfect playtime treat for cats that don\'t enjoy catnip or want to experience something new. Made using the same luxurious faux fur material as our Cat Cloud® collection, and filled with Organic Valerian to promote happy playtime, our new cloud toy is purrfect for cats to cuddle and stalk. ',
+      }),
       
+      Product.create({ 
+        productType: 'accessory', 
+        images: ["https://cdn.shopify.com/s/files/1/0636/6170/3386/products/JAG-Design-Cat-Carrier-Dark-Blue-Moshiqa-1602547258_1800x1800.jpg?v=1647689997",
+            /*"https://cdn.shopify.com/s/files/1/0636/6170/3386/products/JAG-Design-Cat-Carrier-Dark-Blue-Moshiqa-1602547232_77a61ea8-baa7-41b8-8e29-b21bdcc68d41_1800x1800.jpg?v=1647689997",
+            */
+        ],
+        quantity: 20,
+        name: 'CAT CARRIER', 
+        price:266.95,  
+        description:'If you are a business pet parent who always “on the go” or a classic style enthusiast who seek the brand new design approaches, then Moshiqa Jag Design Series is definitely the most perfect pet carrier for you! Moshiqa Jag Design Bleu Fonce is designed for the pet parents who embrace the minimalistic style. Jag Design Bleu Fonce is the ideal blend of the highly sophisticated design and maximum comfort to keep your pets happy during travels. Clean cuts, simple lines and the multitasking functionality... ',
+      }),
+
+      Product.create({ 
+        productType: 'accessory', 
+        images: ["https://cdn.shopify.com/s/files/1/1511/7434/products/Fishbone-PDP-Lifestyle-min.jpg?v=1651713099&width=1296",
+            /*"https://cdn.shopify.com/s/files/1/1511/7434/products/P1230018_437e6434-3359-4945-b1d2-88074fa7c219.jpg?v=1614049380&width=1296",
+            "https://cdn.shopify.com/s/files/1/1511/7434/products/Fish_Bone_Toy_c55cc379-17e1-4a0f-852a-1e26b1136b75.jpg?v=1614049419&width=1296",
+            */
+        ],
+        quantity: 20,
+        name: 'FISH BONE', 
+        price:26.95,  
+        description:'This cat toy resembles a fish skeleton and comes with a bag of catnip to relax and entice cats. The natural cotton and thick linen fabric is soft for cats to play with and is filled with polyester for a playful and dynamic shape. The fabric holds the scent of catnip for an active playtime. Created with simple and natural materials, this toy is durable enough rough play.',
+      }),
+
+
+      Product.create({ 
+        productType: 'accessory', 
+        images: ["https://cdn.webshopapp.com/shops/289894/files/387369224/image.jpg",
+            /*"https://cdn.webshopapp.com/shops/289894/files/412332220/image.jpg",
+            "https://cdn.webshopapp.com/shops/289894/files/388222629/image.jpg",
+            "https://cdn.shopify.com/s/files/1/1511/7434/products/07-Stellar-Bed-Ivory-11055-web.jpg?v=1647475326&width=1296",
+            "https://cdn.webshopapp.com/shops/289894/files/388222664/image.jpg",
+            */
+        ],
+        quantity: 20,
+        name: 'SCRATCHER WHIRL', 
+        price:12.95,  
+        description:'As you might know, cats can sleep up to 16 hours per day which may be nice, but what about those active hours when they are awake? Cats are curious creatures, they also seek and live for adventure. That is why the WHIRL is so important to encourage them to play and satisfy their instinctual needs at the same time. Just like its circular design, there will be no end to the fun your cat will have with this WHIRL.',
+      }),
+
       // Product.create({ 
       //   productType: 'accessory', 
       //   images: [
@@ -426,7 +590,7 @@ const syncAndSeed = async()=> {
     const order2 = await Order.create({ userId: lucy.id, isCart: false });
 
     await LineItem.bulkCreate([
-      { quantity: 3, productId: tunnel.id, orderId: order1.id },
+      { quantity: 1, productId: tunnel.id, orderId: order1.id },
       { quantity: 1, productId: homer.id, orderId: order1.id },
     ]);
 

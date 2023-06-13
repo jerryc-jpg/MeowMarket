@@ -14,7 +14,11 @@ import Checkout from "./Checkout";
 import Users from "./Users";
 import Profile from "./Profile";
 import Orders from "./Orders";
+
 import Wishlist from "./Wishlist";
+
+import OrderHistoryDetail from "./OrderHistoryDetail";
+
 
 const App = () => {
    const { auth } = useSelector((state) => state);
@@ -26,17 +30,17 @@ const App = () => {
       dispatch(fetchProducts());
    }, []);
 
-   useEffect( () => {
-      async function fetchData(){
+   useEffect(() => {
+      async function fetchData() {
          if (auth.id) {
             await dispatch(fetchCart());
          }
       }
-      console.log("app useEffect fetchData")
+      console.log("app useEffect fetchData");
       fetchData();
       //if (auth.id) {
       //   dispatch(fetchCart());
-     // }
+      // }
    }, [auth]);
 
    return (
@@ -51,11 +55,11 @@ const App = () => {
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
                <Route path="/register" element={<RegisterAcc />} />
-               <Route path="/users" element={<Users />} /> 
+               <Route path="/users" element={<Users />} />
                <Route path="/profile" element={<Profile />} />
                <Route path="/orders" element={<Orders />} />
                <Route path="/wishlist" element={<Wishlist />} />
-
+               <Route path="/order-history/:orderId" element={<OrderHistoryDetail />} />
                <Route path="/:id" element={<SingleProduct />} />
                <Route path="*" element={<Home />} />
             </Routes>
