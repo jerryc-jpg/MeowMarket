@@ -8,8 +8,24 @@ const AllCats = ({ filter }) => {
   const dispatch = useDispatch();
   const { products, cart } = useSelector((state) => state);
   const [allCats, setAllCats] = useState([]);
+  //new 
+  // const [currentPageCats, setCurrentPageCats] = useState([]);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const itemsPerPage = 6;
+  // const totalPages = Math.ceil(products.length/itemsPerPage);
+  // const hanelPreviousPage = () =>{
+  //  setCurrentPage((Page) => Page - 1);
+  // };
+  // const handelNextPage = () => {
+  //  setCurrentPage((Page) => Page + 1);
+  // };
+  // const updatePage = (list) =>{
+  //  const startIndex = (currentPage -1) * itemsPerPage;
+  //  const endIndex = startIndex + itemsPerPage;
+  //  setCurrentPage( products.slice(0,6));
+  // }
+  //new
 
-  //console.log(cart.lineItems,"allcats line11");
 
   const sortProduct = (list) => {
     if (list) {
@@ -24,6 +40,9 @@ const AllCats = ({ filter }) => {
       });
     }
   };
+  
+
+  
 
   React.useEffect(() => {
     let cats = products.filter((product) => product.productType === "cat");
@@ -44,9 +63,16 @@ const AllCats = ({ filter }) => {
     setAllCats(catlist);
   }, [products, cart]);
 
+
+  console.log('allCats:',allCats);
   const filteredCats = allCats.filter((cat) =>
     cat.name.toLowerCase().includes(filter.toLowerCase())
   );
+
+  // //new
+  // console.log('filteredCats:', filteredCats);
+  // let currentCats = updatePage(filteredCats);
+  // //new
 
   const addToWishlistHandler = (product) => {
     dispatch(addToWishlist(product));
@@ -54,6 +80,13 @@ const AllCats = ({ filter }) => {
   };
 
   return (
+        //  <div>
+        //     {currentCats.map((cat) =>{
+        //       <div key={cat.id}>{cat.name}</div>
+
+        //     })
+        //       }
+        //  </div>
     <div className="container text-center">
       <div className="row">
         {filteredCats.map((cat) => (
