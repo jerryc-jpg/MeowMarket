@@ -9,7 +9,6 @@ const fetchWishlist = createAsyncThunk("fetchWishlist", async () => {
             authorization: token,
         },
         });
-        console.log(response.data);
         return response.data;
     } catch (err) {
         console.log(err);
