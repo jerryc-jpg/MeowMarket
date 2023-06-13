@@ -197,6 +197,7 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Daisy', 
       images:[
+        "https://images.pexels.com/photos/17055519/pexels-photo-17055519/free-photo-of-sox.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "https://images.pexels.com/photos/15958817/pexels-photo-15958817/free-photo-of-close-up-of-a-white-and-orange-kitten.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "https://images.pexels.com/photos/15958818/pexels-photo-15958818/free-photo-of-close-up-of-kitten.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "https://images.pexels.com/photos/15958809/pexels-photo-15958809/free-photo-of-a-kitten-sitting-in-a-flower-pot.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -237,9 +238,7 @@ const syncAndSeed = async()=> {
         productType: 'cat', 
         name: 'Latte', 
         images:[
-          "https://images.pexels.com/photos/13782217/pexels-photo-13782217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          "https://images.pexels.com/photos/16392613/pexels-photo-16392613/free-photo-of-o-n-g.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          "https://images.pexels.com/photos/14572715/pexels-photo-14572715.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+          "https://images.pexels.com/photos/2061057/pexels-photo-2061057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         ],
         quantity:1,
         price:175, 
@@ -249,7 +248,7 @@ const syncAndSeed = async()=> {
     
       Product.create({ 
         productType: 'cat', 
-        name: 'Wendy', 
+        name: 'Tiger', 
         images:[
           "https://images.pexels.com/photos/209800/pexels-photo-209800.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           "https://www.pexels.com/photo/close-up-shot-of-a-tabby-cat-6165724/",
@@ -259,7 +258,7 @@ const syncAndSeed = async()=> {
         price:175, 
         age: 1,
          breed:'Domestic Short Hair Mix ',
-        description: "Wendy is a fiend for pets and loves people. Wendy will happily follow you around everywhere and fall on her back to get your attention and pet her. She loves cuddles and will lie next to you for a cat nap. Wendy always seeks her foster parent out and wants pets and affection. Wendy loves to play in boxes and paper bags."}),
+        description: "Tiger is a fiend for pets and loves people. Tiger will happily follow you around everywhere and fall on her back to get your attention and pet her. She loves cuddles and will lie next to you for a cat nap. Tiger always seeks her foster parent out and wants pets and affection. Tiger loves to play in boxes and paper bags."}),
       
       Product.create({ 
           productType: 'cat', 
@@ -275,6 +274,113 @@ const syncAndSeed = async()=> {
           breed:'Domestic Short Hair Mix ',
           description: "In 2 words, Penny is Simply Happy. It's rare to not find this sweet kitty as consistently positive and happy. Penny is the sort of cat that will choose to come to you, which she will bravely do, and if you are gentle, she will quickly decide that you are trustworthy. Once that happens, she will want pets. This can happen very quickly."}),
       
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Melon', 
+            images:[
+              "https://images.pexels.com/photos/2286016/pexels-photo-2286016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 1,
+            breed:'Domestic Short Hair Mix ',
+            description: "come back later for more bio"}),
+          
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Ginger', 
+            images:[
+              "https://images.pexels.com/photos/2181171/pexels-photo-2181171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 1,
+            breed:'Domestic Short Hair Mix ',
+            description: "come back later for more bio"}),
+
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Emma', 
+            images:[
+                "https://images.pexels.com/photos/1444321/pexels-photo-1444321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 1,
+            breed:'Domestic Short Hair Mix ',
+            description: "come back later for more bio"}),
+          
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Inky', 
+            images:[
+                "https://images.pexels.com/photos/596590/pexels-photo-596590.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 1,
+            breed:'siamese Mix ',
+            description: "come back later for more bio"}),
+
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Sandy', 
+            images:[
+                "https://images.pexels.com/photos/1900747/pexels-photo-1900747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 2,
+            breed:'Domestic Short Hair Mix  ',
+            description: "come back later for more bio"}),
+
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Meatball', 
+            images:[
+                "https://images.pexels.com/photos/2942325/pexels-photo-2942325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 2,
+            breed:'Domestic Short Hair Mix ',
+            description: "come back later for more bio"}),
+
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Lucy & Charlie', 
+            images:[
+                "https://images.pexels.com/photos/7725998/pexels-photo-7725998.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 2,
+            breed:'Domestic Short Hair Mix ',
+            description: "come back later for more bio"}),
+
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Chloe', 
+            images:[
+                "https://images.pexels.com/photos/5469705/pexels-photo-5469705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 2,
+            breed:'Ragdoll ',
+            description: "come back later for more bio"}),
+          
+          Product.create({ 
+            productType: 'cat', 
+            name: 'Smokey', 
+            images:[
+                "https://images.pexels.com/photos/14045196/pexels-photo-14045196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            ],
+            quantity:1,
+            price:175, 
+            age: 1,
+            breed:'siamese Mix ',
+            description: "come back later for more bio"}),
 
     // accessory
     Product.create({ 
