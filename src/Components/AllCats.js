@@ -77,7 +77,7 @@ const AllCats = ({ filter }) => {
     cat.name.toLowerCase().includes(filter.toLowerCase())
   );
   let filteredCats = [...AllfilteredCats].slice((currentPage-1)*itemsPerPage,currentPage*itemsPerPage);
-  let totalPages = Math.ceil(allCats.length/6);
+  let totalPages = Math.ceil(allCats.length/itemsPerPage);
 
 
   const addToWishlistHandler = (product) => {
