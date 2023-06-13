@@ -16,11 +16,11 @@ const AllCats = ({ filter }) => {
   
   const hanelPreviousPage = () =>{
    setCurrentPage((Page) => Page - 1);
-   handelUpdatePageList(allCats,currentPage);
+  //  handelUpdatePageList(allCats,currentPage);
   };
   const handelNextPage = () => {
    setCurrentPage((Page) => Page + 1);
-   handelUpdatePageList(allCats,currentPage);
+  //  handelUpdatePageList(allCats,currentPage);
   };
   ///////
 
@@ -150,7 +150,7 @@ const AllCats = ({ filter }) => {
       </div>
       <button 
         onClick={hanelPreviousPage}
-        disabled={currentPage<=0}
+        disabled={currentPage<=1}
       >
         previous
       </button>

@@ -8,14 +8,33 @@ const AllAccess = ({filter}) => {
    const dispatch = useDispatch();
    const { products } = useSelector((state) => state);
    const [allAccess,setAllAccess] = useState([]);
-   
 
-   const isActiveAdd = (id) => {
-      const activeAdd = cart.lineItems.reduce((acc, curr) => {
-         return acc && curr.productId !== id;
-      }, true);
-      return activeAdd;
+   ///pagination
+   const [currentPageCats, setCurrentPageCats] = useState([]);
+   const [currentPage, setCurrentPage] = useState(1);
+   const itemsPerPage = 9;
+
+   const hanelPreviousPage = () =>{
+      setCurrentPage((Page) => Page - 1);
+
    };
+     
+   const handelNextPage = () => {
+      setCurrentPage((Page) => Page + 1);
+   
+   };
+     ///////
+   
+   //not used
+   // const isActiveAdd = (id) => {
+   //    const activeAdd = cart.lineItems.reduce((acc, curr) => {
+   //       return acc && curr.productId !== id;
+   //    }, true);
+   //    return activeAdd;
+   // };
+
+
+   
 
 
    React.useEffect(()=>{
@@ -35,9 +54,11 @@ const AllAccess = ({filter}) => {
       setAllAccess(accesslist);
    },[products]);
 
-   const filteredAccess = allAccess.filter((access) =>
+   const AllfilteredAccess = allAccess.filter((access) =>
       access.name.toLowerCase().includes(filter.toLowerCase())
    );
+   let filteredAccess = [...AllfilteredAccess].slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+   let totalPages = Math.ceil(allAccess.length/itemsPerPage);
 
 
    return (
@@ -71,6 +92,21 @@ const AllAccess = ({filter}) => {
                );
             })}
          </div>
+         <>
+            <button 
+               onClick={hanelPreviousPage}
+               disabled={currentPage<=1}
+            >
+               previous
+            </button>
+            <span>{currentPage}</span>
+            <button 
+               onClick={handelNextPage}
+               disabled={currentPage>=totalPages}
+            >
+               next
+            </button>
+         </>
       </div>
    );
 };
