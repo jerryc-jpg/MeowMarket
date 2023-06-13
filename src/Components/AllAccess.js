@@ -2,12 +2,13 @@ import React,{useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart, updateProductQuantity } from "../store";
+import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist } from "../store";
 
 const AllAccess = ({filter}) => {
    const dispatch = useDispatch();
-   const { products } = useSelector((state) => state);
+   const { products, cart, wishlist } = useSelector((state) => state);
    const [allAccess,setAllAccess] = useState([]);
+   const user = useSelector((state) => state.auth);
 
    ///pagination
    const [currentPageCats, setCurrentPageCats] = useState([]);
@@ -23,15 +24,18 @@ const AllAccess = ({filter}) => {
       setCurrentPage((Page) => Page + 1);
    
    };
-     ///////
-   
-   //not used
-   // const isActiveAdd = (id) => {
-   //    const activeAdd = cart.lineItems.reduce((acc, curr) => {
-   //       return acc && curr.productId !== id;
-   //    }, true);
-   //    return activeAdd;
-   // };
+     
+   const addToWishlistHandler = (product) => {
+      const isProductInWishlist = wishlist.some(
+        (item) => item.product.id === product.id
+      );
+    
+      if (isProductInWishlist) {
+        dispatch(deleteFromWishlist(product));
+      } else { 
+        dispatch(addToWishlist(product));
+      }
+    };
 
 
    
@@ -86,6 +90,11 @@ const AllAccess = ({filter}) => {
                                     access.quantity>0?(<span>Add to Cart</span>):(<span>Opps! Sold</span>)
                                  }
                            </button>
+                           {user.username && (
+                           <button onClick={() => addToWishlistHandler(access)} className="btn btn-outline-danger ms-3">
+                              <i className="far fa-heart"></i>
+                           </button>
+                        )}
                         </div>
                      </div>
                   </div>
