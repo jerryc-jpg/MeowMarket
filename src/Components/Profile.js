@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchOrders, updateUserProfile, loginWithToken } from "../store";
+import { updateUserProfile, loginWithToken } from "../store";
 
 const Profile = () => {
    const dispatch = useDispatch();
@@ -44,65 +44,64 @@ const Profile = () => {
          </h2>
       );
    }
-
+   console.log(auth);
    return (
-      <div className="container">
-         <h1 className="mt-3">Profile Page for {auth.username}</h1>
-         <div className="mt-4">
-            <h2>Edit Profile</h2>
-            <form onSubmit={handleSubmit}>
-               <div className="mb-3">
-                  <label htmlFor="username" className="form-label">
-                     Username:
-                  </label>
-                  <input
-                     type="text"
-                     className="form-control"
-                     id="username"
-                     value={username}
-                     onChange={(e) => handleChange(e, setUsername)}
-                  />
-               </div>
-               <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                     Email:
-                  </label>
-                  <input
-                     type="email"
-                     className="form-control"
-                     id="email"
-                     value={email}
-                     onChange={(e) => handleChange(e, setEmail)}
-                  />
-               </div>
-               <div className="mb-3">
-                  <label htmlFor="password" className="form-label">
-                     Password:
-                  </label>
-                  <input
-                     type={showPassword ? "text" : "password"}
-                     className="form-control"
-                     id="password"
-                     value={password}
-                     onChange={(e) => handleChange(e, setPassword)}
-                  />
-               </div>
-               <div className="form-check mb-3">
-                  <input
-                     type="checkbox"
-                     className="form-check-input"
-                     id="showPassword"
-                     checked={showPassword}
-                     onChange={handleShowPasswordChange}
-                  />
-                  <label className="form-check-label" htmlFor="showPassword">
-                     Show Password
-                  </label>
-               </div>
-               <button type="submit" className="btn btn-primary">
+      <div className="registration-form">
+         <form onSubmit={handleSubmit}>
+            <div className="form-icon">
+               <span className="fs-3">{auth.username.toUpperCase()}</span>
+            </div>
+            <div className="form-group">
+               <label htmlFor="username" className="form-label"></label>
+               <input
+                  type="text"
+                  className="form-control item"
+                  id="username"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => handleChange(e, setUsername)}
+               />
+            </div>
+            <div className="form-group">
+               <input
+                  type={showPassword ? "text" : "password"}
+                  className="form-control item"
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => handleChange(e, setPassword)}
+               />
+            </div>
+            <div className="form-group">
+               <input
+                  type="text"
+                  className="form-control item"
+                  id="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => handleChange(e, setEmail)}
+               />
+            </div>
+            <div className="form-group form-check">
+               <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="showPassword"
+                  checked={showPassword}
+                  onChange={handleShowPasswordChange}
+               />
+               <label className="form-check-label" htmlFor="showPassword">
+                  Show Password
+               </label>
+            </div>
+            <div className="form-group">
+               <button type="submit" className="btn btn-block save-changes">
                   Save Changes
                </button>
-            </form>
+            </div>
+         </form>
+         <div className="social-media">
+            <div className="social-icons"></div>
          </div>
       </div>
    );
