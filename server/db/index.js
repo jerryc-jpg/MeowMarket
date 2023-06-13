@@ -684,7 +684,13 @@ const syncAndSeed = async()=> {
       //   quantity: 20,
       //   description:'Give your kitty the catnip she craves! Raw Paws Compressed Catnip Ball Cat Toy is made with 100% natural, fully digestible catnip with no preservatives, chemicals or toxins. When your favorite feline smells the solid catnip ball, it acts as a stimulant that encourages her to exercise and play. But when she licks and ingests it, the ball becomes a sedative that calms and relaxes her, melting away her stress. The compressed, purr-fectly safe to eat, catnip ball can also serve as a digestive aid reducing discomfort and helping your fur-iend feel her best.'}),
       
-
+      //
+      /*
+      https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2021/04/720/405/iStock-1204822640.jpg?ve=1&tl=1
+      https://cutewallpaper.org/27/cat-wallpaper-background/401010563.jpg
+      https://as1.ftcdn.net/v2/jpg/04/50/73/64/1000_F_450736437_F8W9UdrSUZNcYC2Eb18HLZT14wrBHY1w.jpg
+      https://as1.ftcdn.net/v2/jpg/05/39/70/30/1000_F_539703067_O2N2WMJdrWnnXo9KI5OEPEP6vy2fumqA.jpg
+      */
       //
 
   ]);
