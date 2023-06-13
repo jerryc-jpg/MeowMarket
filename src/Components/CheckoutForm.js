@@ -45,27 +45,27 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit} className="w-50 m-auto">
-      <div className="form-group">
+    <form id="payment-form" onSubmit={handleSubmit} className="w-50 mx-auto">
+      <div className="form-group mb-3">
         <LinkAuthenticationElement
           id="link-authentication-element"
           onChange={handleEmailChange}
           className="form-control"
         />
       </div>
-      <div className="form-group">
+      <div className="form-group mb-3">
         <PaymentElement id="payment-element" className="form-control" />
       </div>
       <button
         disabled={isLoading}
         id="submit"
-        className="btn btn-primary btn-block"
+        className="btn btn-primary btn-block mb-3"
       >
         <span id="button-text">
           {isLoading ? <div className="spinner-border spinner-border-sm" role="status"></div> : "Pay now"}
         </span>
       </button>
-      {message && <div id="payment-message" className="text-center mt-2">{message}</div>}
+      {message && <div id="payment-message" className="text-center">{message}</div>}
     </form>
   );
 }

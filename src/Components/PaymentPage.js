@@ -54,8 +54,6 @@ const PaymentPage = () => {
     });
   }, []);
 
-  console.log(totalPrice);
-
   useEffect(() => {
     if(totalPrice > 0){
         fetch("/api/payment/create-payment-intent", {
