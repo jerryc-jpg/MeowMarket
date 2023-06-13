@@ -25,4 +25,10 @@ Wishlist.belongsTo(User);
 Product.hasMany(Wishlist);
 Wishlist.belongsTo(Product);
 
+User.prototype.addToWishlist = async function (product) {
+    const wishlist = await Wishlist.create({ userId: this.id, productId: product.id });
+    return wishlist;
+};
+
+
 module.exports = Wishlist;

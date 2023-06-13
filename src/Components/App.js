@@ -6,7 +6,7 @@ import Cart from "./Cart";
 import About from "./About";
 import { useSelector, useDispatch } from "react-redux";
 import { loginWithToken, fetchCart, fetchProducts, Register } from "../store";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import SingleProduct from "./SingleProduct";
 import SingleProductAdmin from "./SingleProductAdmin";
@@ -14,10 +14,12 @@ import Checkout from "./Checkout";
 import Users from "./Users";
 import Profile from "./Profile";
 import Orders from "./Orders";
+import Wishlist from "./Wishlist";
 
 const App = () => {
    const { auth } = useSelector((state) => state);
    const dispatch = useDispatch();
+   const { userId } = useParams();
 
    useEffect(() => {
       dispatch(loginWithToken());
@@ -52,6 +54,7 @@ const App = () => {
                <Route path="/users" element={<Users />} /> 
                <Route path="/profile" element={<Profile />} />
                <Route path="/orders" element={<Orders />} />
+               <Route path="/wishlist" element={<Wishlist />} />
 
                <Route path="/:id" element={<SingleProduct />} />
                <Route path="*" element={<Home />} />

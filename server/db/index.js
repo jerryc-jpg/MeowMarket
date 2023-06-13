@@ -3,6 +3,7 @@ const User = require('./User');
 const Product = require('./Product');
 const Order = require('./Order');
 const LineItem  = require('./LineItem');
+const Wishlist = require('./Wishlist');
 
 Order.belongsTo(User);
 LineItem.belongsTo(Order);
@@ -455,6 +456,7 @@ module.exports = {
   User,
   Product,
   Order,
-  LineItem
+  LineItem,
+  Wishlist
 };
 
