@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutHideCart, logout } from "../store";
 
@@ -11,6 +11,7 @@ const Navbar = () => {
    const cart = useSelector((state) => state.cart);
    const dispatch = useDispatch();
    const [sum, setSum] = useState(0);
+   const { userId } = useParams();
 
    React.useEffect(() => {
       //
@@ -158,6 +159,11 @@ const Navbar = () => {
                               </span>
                            ) : null}
                         </i>
+                     </Link>
+                  </li>
+                  <li>
+                     <Link to={"/wishlist"} className="nav-link">
+                        <i className="fas fa-heart fs-3 align-middle" style={{ color: "#ffffff" }}></i>
                      </Link>
                   </li>
                   {renderAuthButtons()}

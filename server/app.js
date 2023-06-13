@@ -13,6 +13,7 @@ app.use("/api/auth", require("./api/auth"));
 app.use("/api/orders", require("./api/orders"));
 app.use("/api/products", require("./api/products"));
 app.use("/api/admin", require("./api/admin"));
+app.use("/api/wishlist", require("./api/wishlist"));
 
 app.use((req, res, next) => {
    res.status(404).send("Page not found");
