@@ -1,32 +1,19 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchOrders } from '../store';
-import { Link } from "react-router-dom";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch,  } from 'react-redux';
+import { checkoutCart } from "../store";
 const Checkout = () => {
+
     const dispatch = useDispatch();
-    const { orders, auth } = useSelector((state) => state);
-    const [closedOrder,setClosedOrder] = useState({});
 
-    React.useEffect(() => {
-        if(orders){
-            const currentClosed = orders[orders.length-1];
-            setClosedOrder(currentClosed);
-        }
-      }, [orders]);
-    
+    useEffect(() => {
+        dispatch(checkoutCart());
+    }, [])
 
-      console.log('closedOrder',closedOrder);
-      
-    if (closedOrder){
-        return (
+    return (
         <div>    
-            <p>Thanks for shopping with us.</p>
-            <p>Your order number: {closedOrder.id}</p>
+            <h1>Thanks for shopping with us.</h1>
         </div>    
-)
-
-    }
+    )
     
 }
 
