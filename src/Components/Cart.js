@@ -28,20 +28,15 @@ const Cart = () => {
    const [totalPrice, setTotalPrice] = useState(0);
    const [totalQ, setTotalQ] = useState(0);
 
-   const navigate = useNavigate();
 
-   const handleCheckout = () => {
-      dispatch(checkoutCart());
 
-      navigate("/cart/checkout");
-   };
-
-   
    const handleClearLocalStorage = () => {
       window.localStorage.clear(); 
       navigate("/cart")// Remove all items from window.localStorage
       console.log('empty');
    };
+
+   
 
    React.useEffect(() => {
       let list;
@@ -89,8 +84,8 @@ const Cart = () => {
          acc = acc + curr.quantity;
          return acc;
       }, 0);
-      console.log('visitorOrder:',visitorOrder)
-      console.log('did we update list:',list);
+      //console.log('visitorOrder:',visitorOrder)
+      //console.log('did we update list:',list);
       setItems(list);
       setTotalPrice(sumPrice);
       setTotalQ(sumQ);
@@ -249,9 +244,9 @@ const Cart = () => {
                         Back to shopping
                      </Link>
                   </button>
-                  <button type="button" className="btn btn-lg btn-primary mt-2" onClick={() => handleCheckout()}>
+                  <Link to={{ pathname: "/cart/payment", state: { totalPrice: totalPrice } }} className="btn btn-lg btn-primary mt-2">
                      Checkout
-                  </button>
+                  </Link>
                </div>
             </div>
          </div>
