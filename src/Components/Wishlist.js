@@ -9,7 +9,6 @@ const Wishlist = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-
   React.useEffect(() => {
     dispatch(fetchWishlist(id));
   }, [dispatch, id]);
@@ -25,7 +24,9 @@ const Wishlist = () => {
         wishlist.map((item) => (
           <div key={item.id}>
             <h3>{item.product && item.product.name}</h3>
-            <p>{item.product && item.product.image}</p>
+            {item.product && (
+              <img src={item.product.images[0]} alt={item.product.name} />
+            )}
             <button onClick={() => deleteFromWishlistHandler(item.product)}>
               Remove from Wishlist
             </button>
