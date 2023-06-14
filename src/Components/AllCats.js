@@ -104,7 +104,7 @@ const AllCats = ({ filter }) => {
                               handleAddToCart(cat);
                            }}
                            disabled={cat.quantity === 0}
-                           className="btn btn-outline-dark">
+                           className="btn btn-outline-dark my-2">
                            {cat.quantity > 0 ? <span>Take Me Home</span> : <span>Taken</span>}
                         </button>
                         {user.username && (
