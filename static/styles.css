@@ -354,3 +354,11 @@
    color: white;
    border-color: black;
  }
+
+ @media (max-width: 768px) {
+  /* CSS rules for mobile devices */
+  .rotating-Element img {
+    width: 50%; /* Adjust the width as needed */
+    height: auto; /* Allow the height to adjust proportionally */
+  }
+}
