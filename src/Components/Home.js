@@ -86,7 +86,7 @@ const Home = () => {
             fontSize: "5rem",
             opacity: "0.80",
             letterSpacing: "3px",
-            color:"white"
+            color:"white",
           }}
         >
           Meow Market
