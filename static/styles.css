@@ -275,7 +275,7 @@
 .rotating-Element span {
   position: absolute;
   display: block;
-  width: 70px;
+  width: 5%;
   pointer-events: visible;
   cursor: pointer;
   transform: translate(-50%, 50%);
@@ -291,16 +291,16 @@
 }
 
 .rotating-Element span:first-child {
-  top: 25%; /* Adjust vertical position for the first image */
-  left: 15%; /* Adjust horizontal position for the first image */
+  top: 10%; /* Adjust vertical position for the first image */
+  left: 10%; /* Adjust horizontal position for the first image */
 }
 
 .rotating-Element span:nth-child(2) {
-  top: 15%;
+  top: 8%;
   left: 40%;
 }
 .rotating-Element span:nth-child(3) {
-  top: 20%;
+  top: 10%;
   left: 80%;
 }
 
@@ -310,7 +310,7 @@
 }
 .rotating-Element span:nth-child(5) {
   top: 45%;
-  left: 55%;
+  left: 45%;
 }
 .rotating-Element span:nth-child(6) {
   top: 60%;
@@ -319,13 +319,15 @@
 .rotating-Element span:nth-child(7) {
   top: 90%;
   left: 10%;
+  filter: brightness(0) invert(1);
 }
 .rotating-Element span:nth-child(8) {
   top: 90%;
   left: 40%;
+  filter: brightness(0) invert(1);
 }
 .rotating-Element span:last-child {
-  top: 90%; /* Adjust vertical position for the second image */
+  top: 93%; /* Adjust vertical position for the second image */
   left: 80%; /* Adjust horizontal position for the second image */
 }
 
@@ -355,10 +357,11 @@
    border-color: black;
  }
 
- @media (max-width: 768px) {
-  /* CSS rules for mobile devices */
+ /* @media (max-width: 768px) {
+  
   .rotating-Element img {
-    width: 50%; /* Adjust the width as needed */
-    height: auto; /* Allow the height to adjust proportionally */
+    width: 30%; 
+    height: auto;
   }
-}
+
+} */
