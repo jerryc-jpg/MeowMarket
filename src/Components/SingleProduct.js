@@ -135,7 +135,7 @@ const SingleProduct = () => {
                      // )
                      <div className="d-flex justify-content-start">
                         <button
-                           className="btn btn-success mt-3"
+                           className="btn btn-outline-dark mt-3"
                            onClick={() => {
                               dispatch(updateProductQuantity({ product: oneProd, quantity }));
                               dispatch(addToCart({ product: oneProd, quantity }));
@@ -143,8 +143,8 @@ const SingleProduct = () => {
                            disabled={oneProd.quantity === 0}>
                            {oneProd.quantity > 0 ? <span>TAKE ME HOME</span> : <span>LIMIT EXCEEDED</span>}
                         </button>
-                        <button className="btn btn-primary mt-3 ms-3">
-                           <Link to="/" className="text-decoration-none text-white">
+                        <button className="btn btn-outline-dark mt-3 ms-3">
+                           <Link to="/" className="text-decoration-none text-dark">
                               CONTINUE SHOPPING
                            </Link>
                         </button>
@@ -209,15 +209,15 @@ const SingleProduct = () => {
                         </div>
                         <div className="d-flex justify-content-start">
                            <button
-                              className="btn mt-3 btn-success me-2 ms-2"
+                              className="btn btn-outline-dark mt-3 me-2 ms-2"
                               onClick={() => {
                                  dispatch(updateProductQuantity({ product: oneProd, quantity: quantity }));
                                  dispatch(addToCart({ product: oneProd, quantity }));
                               }}>
                               Add to Cart
                            </button>
-                           <button className="btn btn-primary mt-3">
-                              <Link to="/" className="text-decoration-none text-white">
+                           <button className="btn btn-outline-dark mt-3">
+                              <Link to="/" className="text-decoration-none text-dark">
                                  CONTINUE SHOPPING
                               </Link>
                            </button>

@@ -89,8 +89,8 @@ const AllCats = ({ filter }) => {
                         <img className="card-img-top img-fluid" src={cat.images[0]} alt={cat.name} />
                      </div>
                      <div className="card-body">
-                        <h5 className="card-title">{cat.name}</h5>
-                        <Link to={`/${cat.id}`} className="btn btn-primary me-2">
+                        <h5 className="card-title fw-bold">{cat.name}</h5>
+                        <Link to={`/${cat.id}`} className="btn btn-outline-dark me-2">
                            Details
                         </Link>
                         <button
@@ -98,8 +98,8 @@ const AllCats = ({ filter }) => {
                               handleAddToCart(cat);
                            }}
                            disabled={cat.quantity === 0}
-                           className="btn btn-primary">
-                           {cat.quantity > 0 ? <span>TAKE ME HOME</span> : <span>TAKEN</span>}
+                           className="btn btn-outline-dark">
+                           {cat.quantity > 0 ? <span>Take Me Home</span> : <span>Taken</span>}
                         </button>
                         {user.username && (
                            <button
