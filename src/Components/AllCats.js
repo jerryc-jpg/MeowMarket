@@ -84,9 +84,9 @@ const AllCats = ({ filter }) => {
          <div className="row">
             {filteredCats.map((cat) => (
                <div key={cat.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                  <div className="card h-100"   onClick={(ev)=>handleGoToSingleItem(ev,cat.id)}>
+                  <div className="card h-100">
                      <div className="ratio ratio-4x3">
-                        <img className="card-img-top img-fluid" src={cat.images[0]} alt={cat.name} />
+                        <img className="card-img-top img-fluid" src={cat.images[0]} alt={cat.name} onClick={(ev)=>handleGoToSingleItem(ev,cat.id)}/>
                      </div>
                      <div className="card-body">
                         <h5 className="card-title fw-bold">{cat.name}</h5>
