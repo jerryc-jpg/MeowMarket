@@ -94,7 +94,7 @@ const Cart = () => {
       <div className="container px-3 my-5 clearfix">
          <div className="card custom-card">
             <div className="card-header">
-               <h2>Shopping Cart</h2>
+               <h2 className="text-center">Shopping Cart</h2>
                {!token ? <button onClick={handleClearLocalStorage}>internal test,empty visitor history</button> : null}
             </div>
             <div className="card-body">

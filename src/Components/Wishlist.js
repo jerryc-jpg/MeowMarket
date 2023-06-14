@@ -18,14 +18,16 @@ const Wishlist = () => {
       dispatch(deleteFromWishlist(product));
    };
 
+   console.log(wishlist);
+
    return (
       <div className="container px-3 my-5 clearfix">
          <div className="card custom-card">
             <div className="card-header">
-               <h2 className="mb-4 mt-4 text-center">Wishlist</h2>
+               <h2 className="text-center">Wishlist</h2>
             </div>
 
-            {wishlist.length > 0 ? (
+            {wishlist.length ? (
                wishlist.map((item) => (
                   <div key={item.id} className="card-body mb-3">
                      <div className="row g-0">
@@ -38,7 +40,7 @@ const Wishlist = () => {
                            <div className="card-body">
                               <h3 className="card-title">
                                  <Link
-                                    to={`/${item.product.id}`}
+                                    to={`/${item.productId}`}
                                     href="#"
                                     className="d-block text-dark text-underline-hover">
                                     {item.product && item.product.name}
