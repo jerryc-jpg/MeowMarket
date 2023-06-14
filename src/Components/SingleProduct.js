@@ -102,7 +102,13 @@ const SingleProduct = () => {
                      <strong>Description:</strong>
                   </p>
 
-                  <p className="description">{oneProd.description}</p>
+                  <p 
+                  className="description"
+                  style={{
+                     fontSize: "1rem",
+                     color: "dark grey"
+                  }}
+                  >{oneProd.description}</p>
                   {oneProd.quantity === 0 ? <p>Not Availale</p> : null}
                   <p className="cat-detail">
                      <strong>Price:</strong> ${oneProd.price}
@@ -169,7 +175,13 @@ const SingleProduct = () => {
                   <p className="product-detail">
                      <strong>Description:</strong>
                   </p>
-                  <p className="description">{oneProd.description}</p>
+                  <p 
+                  className="description"
+                  style={{
+                     fontSize: "1rem",
+                     color: "dark grey"
+                  }}
+                  >{oneProd.description}</p>
                   <p className="product-detail">
                      <strong>Price:</strong> ${oneProd.price}
                   </p>
