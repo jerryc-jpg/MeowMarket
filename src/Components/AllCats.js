@@ -48,7 +48,7 @@ const AllCats = ({ filter }) => {
    const totalPages = Math.ceil(allCats.length / itemsPerPage);
 
    const addToWishlistHandler = (product) => {
-      const isCatInWishlist = wishlist.some((item) => item.product.id === product.id);
+      const isCatInWishlist = wishlist.some((item) => item.productId === product.id);
 
       if (isCatInWishlist) {
          // Cat is already in the wishlist, remove it
