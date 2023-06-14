@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist } from "../store";
+import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist, fetchWishlist } from "../store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const AllCats = ({ filter }) => {
    const dispatch = useDispatch();
@@ -22,6 +23,10 @@ const AllCats = ({ filter }) => {
 
    const handleNextPage = () => {
       setCurrentPage((Page) => Page + 1);
+   };
+
+   const changeColor = (catId) => {
+      return wishlist.some((item) => item.productId === catId);
    };
 
    React.useEffect(() => {
@@ -47,20 +52,20 @@ const AllCats = ({ filter }) => {
 
    const totalPages = Math.ceil(allCats.length / itemsPerPage);
 
-   const addToWishlistHandler = (product) => {
-      const isCatInWishlist = wishlist.some((item) => item.productId === product.id);
+   const addToWishlistHandler = (cat) => {
+      const isCatInWishlist = wishlist.some((item) => item.productId === cat.id);
 
       if (isCatInWishlist) {
          // Cat is already in the wishlist, remove it
-         dispatch(deleteFromWishlist(product));
+         dispatch(deleteFromWishlist(cat));
       } else {
          // Cat is not in the wishlist, add it
-         dispatch(addToWishlist(product));
+         dispatch(addToWishlist(cat));
       }
    };
 
    const isProductInWishlist = (productId) => {
-      return wishlist.some((item) => item.product && item.product.id === productId);
+      return wishlist.some((item) => item.productId === productId);
    };
 
    const handleAddToCart = (cat) => {
@@ -79,6 +84,8 @@ const AllCats = ({ filter }) => {
       }
    };
 
+   console.log(wishlist);
+
    return (
       <div className="container text-center">
          <div className="row">
@@ -96,6 +103,15 @@ const AllCats = ({ filter }) => {
                      </div>
                      <div className="card-body">
                         <h5 className="card-title fw-bold">{cat.name}</h5>
+                        {user.username && (
+                           <div className="mb-2">
+                              {isProductInWishlist(cat.id) ? (
+                                 <AiFillHeart className="heart active" onClick={() => addToWishlistHandler(cat)} />
+                              ) : (
+                                 <AiOutlineHeart className="heart" onClick={() => addToWishlistHandler(cat)} />
+                              )}
+                           </div>
+                        )}
                         <Link to={`/${cat.id}`} className="btn btn-outline-dark me-2">
                            Details
                         </Link>
@@ -107,15 +123,6 @@ const AllCats = ({ filter }) => {
                            className="btn btn-outline-dark my-2">
                            {cat.quantity > 0 ? <span>Take Me Home</span> : <span>Taken</span>}
                         </button>
-                        {user.username && (
-                           <button
-                              onClick={() => addToWishlistHandler(cat)}
-                              className={`btn btn-outline-danger ms-3 ${
-                                 isProductInWishlist(cat.id) ? "wishlist-selected" : ""
-                              }`}>
-                              <i className="far fa-heart"></i>
-                           </button>
-                        )}
                      </div>
                   </div>
                </div>
