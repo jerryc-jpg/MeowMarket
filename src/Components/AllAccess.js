@@ -85,14 +85,14 @@ const AllAccess = ({ filter }) => {
                         </div>
                         <div className="card-body">
                            <h5 className="card-title">{access.name}</h5>
-                           <Link to={`/${access.id}`} className="btn btn-primary me-2">
+                           <Link to={`/${access.id}`} className="btn btn-outline-dark me-2">
                               Details
                            </Link>
                            <button
                               onClick={() => {
                                  handleAddToCart(access);
                               }}
-                              className="btn btn-primary">
+                              className="btn btn-outline-dark">
                               {access.quantity > 0 ? <span>Add to Cart</span> : <span>Opps! Sold</span>}
                            </button>
                            {user.username && (
