@@ -70,12 +70,12 @@ const AllCats = ({ filter }) => {
       toast.success(`${cat.name} added to cart!`);
    };
 
-   const handleGoToSingleItem = (ev,id) => {
-      const isButton = ev.target.closest('.btn-primary');
-      const isHeartIcon = ev.target.closest('.btn-outline-danger.ms-3');
-    
+   const handleGoToSingleItem = (ev, id) => {
+      const isButton = ev.target.closest(".btn-primary");
+      const isHeartIcon = ev.target.closest(".btn-outline-danger.ms-3");
+
       if (!isButton && !isHeartIcon) {
-        navigate(`/${id}`);
+         navigate(`/${id}`);
       }
    };
 
@@ -86,7 +86,13 @@ const AllCats = ({ filter }) => {
                <div key={cat.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
                   <div className="card h-100">
                      <div className="ratio ratio-4x3">
-                        <img className="card-img-top img-fluid" src={cat.images[0]} alt={cat.name} onClick={(ev)=>handleGoToSingleItem(ev,cat.id)}/>
+                        <img
+                           className="card-img-top img-fluid"
+                           src={cat.images[0]}
+                           alt={cat.name}
+                           onClick={(ev) => handleGoToSingleItem(ev, cat.id)}
+                           style={{ cursor: "pointer" }}
+                        />
                      </div>
                      <div className="card-body">
                         <h5 className="card-title fw-bold">{cat.name}</h5>
