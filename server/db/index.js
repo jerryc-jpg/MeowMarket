@@ -67,6 +67,7 @@ const syncAndSeed = async()=> {
       productType: 'cat', 
       name: 'Maggie', 
       images:[
+        "https://images.pexels.com/photos/220876/pexels-photo-220876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         'https://www.thehappycatsite.com/wp-content/uploads/2017/06/tabby-kitten.jpg',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849146/2/?bust=1685903008&width=1080',
         'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64849146/1/?bust=1685903008&width=1080',
@@ -690,6 +691,23 @@ const syncAndSeed = async()=> {
       https://cutewallpaper.org/27/cat-wallpaper-background/401010563.jpg
       https://as1.ftcdn.net/v2/jpg/04/50/73/64/1000_F_450736437_F8W9UdrSUZNcYC2Eb18HLZT14wrBHY1w.jpg
       https://as1.ftcdn.net/v2/jpg/05/39/70/30/1000_F_539703067_O2N2WMJdrWnnXo9KI5OEPEP6vy2fumqA.jpg
+      https://images.pexels.com/photos/1323256/pexels-photo-1323256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/5263851/pexels-photo-5263851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/2125614/pexels-photo-2125614.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/6001196/pexels-photo-6001196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/6001442/pexels-photo-6001442.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/2294533/pexels-photo-2294533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/3218833/pexels-photo-3218833.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/1643348/pexels-photo-1643348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/1643474/pexels-photo-1643474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/10018249/pexels-photo-10018249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/8640437/pexels-photo-8640437.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/6562372/pexels-photo-6562372.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/4697153/pexels-photo-4697153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/4697154/pexels-photo-4697154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/11069853/pexels-photo-11069853.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/9952108/pexels-photo-9952108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+      https://images.pexels.com/photos/14852427/pexels-photo-14852427.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
       */
       //
 
