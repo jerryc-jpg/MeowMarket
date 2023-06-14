@@ -275,7 +275,7 @@
 .rotating-Element span {
   position: absolute;
   display: block;
-  width: 5%;
+  width: 6%;
   pointer-events: visible;
   cursor: pointer;
   transform: translate(-50%, 50%);
@@ -296,7 +296,7 @@
 }
 
 .rotating-Element span:nth-child(2) {
-  top: 8%;
+  top: 7%;
   left: 40%;
 }
 .rotating-Element span:nth-child(3) {
@@ -317,17 +317,17 @@
    left: 90%;
 }
 .rotating-Element span:nth-child(7) {
-  top: 90%;
+  top: 92%;
   left: 10%;
   filter: brightness(0) invert(1);
 }
 .rotating-Element span:nth-child(8) {
-  top: 90%;
+  top: 92%;
   left: 40%;
   filter: brightness(0) invert(1);
 }
 .rotating-Element span:last-child {
-  top: 93%; /* Adjust vertical position for the second image */
+  top: 95%; /* Adjust vertical position for the second image */
   left: 80%; /* Adjust horizontal position for the second image */
 }
 
