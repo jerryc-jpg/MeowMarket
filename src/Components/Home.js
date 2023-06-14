@@ -5,6 +5,8 @@ import AllCats from "./AllCats";
 import Profile from "./Profile";
 import AllAccess from "./AllAccess";
 
+
+
 const Home = () => {
 
    //test window.localStorage whether behave correctly, (stored item able to be retrieval between pages)
@@ -37,6 +39,44 @@ const Home = () => {
 
   return (
     <div>
+      <div className="rotating-Element" >
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913281.png" alt="Cereal Box"/>
+          </span>
+
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="Cereal Box"/>
+          </span>
+
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/6630/6630399.png" alt="Cereal Box"/>
+          </span>
+
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/7966/7966003.png" alt="Cereal Box"/>
+          </span>
+
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="Cereal Box"/>
+          </span>
+          
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913281.png" alt="Cereal Box"/>
+          </span>
+
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="Cereal Box"/>
+          </span>
+
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/7966/7966003.png" alt="Cereal Box"/>
+          </span>
+
+          <span aria-hidden="true" data-multiply="2">
+            <img src="https://cdn-icons-png.flaticon.com/512/6630/6630399.png" alt="Cereal Box"/>
+          </span>
+          
+        </div>
       <div className="text-center position-relative">
         <h1
           className="fas fa-cat position-absolute start-50"
@@ -46,15 +86,22 @@ const Home = () => {
             fontSize: "5rem",
             opacity: "0.80",
             letterSpacing: "3px",
+            color:"white"
           }}
         >
           Meow Market
         </h1>
-        <img
+        {/*<img
           src="https://img.freepik.com/free-photo/cute-group-animals_23-2150104514.jpg?w=2000&t=st=1686176344~exp=1686176944~hmac=51a031621c81b9d653ddd7fc5c37d4b7f3b552e929eab4e98dfa584004fdd70a"
           alt="#"
           className="img-fluid w-100 opacity-85 mb-5"
+        /> */}
+        <img
+          src="https://cdn.pixabay.com/photo/2017/08/01/08/53/cat-2563681_1280.jpg"
+          alt="#"
+          className="img-fluid w-100 opacity-85 mb-5"
         />
+        
       </div>
       <br />
       <div className="d-flex justify-content-center mb-3">
@@ -85,6 +132,7 @@ const Home = () => {
         />
       </div>
       {activeTab === 0 ? <AllCats filter={filter}/> : <AllAccess filter={filter}/>}
+        
     </div>
   );
 };
