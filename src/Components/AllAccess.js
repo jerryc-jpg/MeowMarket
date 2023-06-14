@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addToCart, updateProductQuantity, addToWishlist, deleteFromWishlist } from "../store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const AllAccess = ({ filter }) => {
    const dispatch = useDispatch();
@@ -73,18 +74,40 @@ const AllAccess = ({ filter }) => {
       }
    };
 
+   const isProductInWishlist = (productId) => {
+      return wishlist.some((item) => item.productId === productId);
+   };
+
    return (
       <div className="container text-center">
          <div className="row">
             {filteredAccess.map((access) => {
                return (
                   <div key={access.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                     <div className="card h-100" onClick={(ev) => handleGoToSingleItem(ev, access.id)}>
+                     <div className="card h-100">
                         <div className="ratio ratio-4x3">
-                           <img src={access.images} className="card-img-top img-fluid" alt={access.name} />
+                           <img
+                              src={access.images}
+                              className="card-img-top img-fluid"
+                              alt={access.name}
+                              onClick={(ev) => handleGoToSingleItem(ev, access.id)}
+                              style={{ cursor: "pointer" }}
+                           />
                         </div>
                         <div className="card-body">
                            <h5 className="card-title">{access.name}</h5>
+                           {user.username && (
+                              <div className="mb-2">
+                                 {isProductInWishlist(access.id) ? (
+                                    <AiFillHeart
+                                       className="heart active"
+                                       onClick={() => addToWishlistHandler(access)}
+                                    />
+                                 ) : (
+                                    <AiOutlineHeart className="heart" onClick={() => addToWishlistHandler(access)} />
+                                 )}
+                              </div>
+                           )}
                            <Link to={`/${access.id}`} className="btn btn-outline-dark me-2">
                               Details
                            </Link>
@@ -95,13 +118,6 @@ const AllAccess = ({ filter }) => {
                               className="btn btn-outline-dark">
                               {access.quantity > 0 ? <span>Add to Cart</span> : <span>Opps! Sold</span>}
                            </button>
-                           {user.username && (
-                              <button
-                                 onClick={() => addToWishlistHandler(access)}
-                                 className="btn btn-outline-danger ms-3">
-                                 <i className="far fa-heart"></i>
-                              </button>
-                           )}
                         </div>
                      </div>
                   </div>

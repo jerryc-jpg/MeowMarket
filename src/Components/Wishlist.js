@@ -8,7 +8,6 @@ const Wishlist = () => {
    const { wishlist } = useSelector((state) => state);
    const dispatch = useDispatch();
    const { id } = useParams();
-   const navigate = useNavigate();
 
    React.useEffect(() => {
       dispatch(fetchWishlist(id));
@@ -18,7 +17,7 @@ const Wishlist = () => {
       dispatch(deleteFromWishlist(product));
    };
 
-   console.log(wishlist);
+  
 
    return (
       <div className="container px-3 my-5 clearfix">
