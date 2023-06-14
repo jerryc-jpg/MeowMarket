@@ -248,7 +248,7 @@
 }
 
 
-
+/* ----- Home Page -----*/
 
  @keyframes rotatingElement {
    0% {
@@ -279,13 +279,12 @@
    cursor: pointer;
    transform: translate(-50%, 50%);
    transition: 2s linear;
-
+   opacity: 0.6;
  }
  
  .rotating-Element img {
-   width: 70px;
+   width: 80%;
    height: auto;
-   
    position: absolute;
    animation: rotatingElement 8s linear infinite;
  }
