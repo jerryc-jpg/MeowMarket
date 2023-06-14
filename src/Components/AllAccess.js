@@ -25,7 +25,7 @@ const AllAccess = ({ filter }) => {
    };
 
    const addToWishlistHandler = (product) => {
-      const isProductInWishlist = wishlist.some((item) => item.product.id === product.id);
+      const isProductInWishlist = wishlist.some((item) => item.productId === product.id);
 
       if (isProductInWishlist) {
          dispatch(deleteFromWishlist(product));
@@ -64,12 +64,12 @@ const AllAccess = ({ filter }) => {
       toast.success(`${access.name} added to cart!`);
    };
 
-   const handleGoToSingleItem = (ev,id) => {
-      const isButton = ev.target.closest('.btn-primary');
-      const isHeartIcon = ev.target.closest('.btn-outline-danger.ms-3');
-    
+   const handleGoToSingleItem = (ev, id) => {
+      const isButton = ev.target.closest(".btn-primary");
+      const isHeartIcon = ev.target.closest(".btn-outline-danger.ms-3");
+
       if (!isButton && !isHeartIcon) {
-        navigate(`/${id}`);
+         navigate(`/${id}`);
       }
    };
 
@@ -79,7 +79,7 @@ const AllAccess = ({ filter }) => {
             {filteredAccess.map((access) => {
                return (
                   <div key={access.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                     <div className="card h-100" onClick={(ev)=>handleGoToSingleItem(ev,access.id)}>
+                     <div className="card h-100" onClick={(ev) => handleGoToSingleItem(ev, access.id)}>
                         <div className="ratio ratio-4x3">
                            <img src={access.images} className="card-img-top img-fluid" alt={access.name} />
                         </div>
