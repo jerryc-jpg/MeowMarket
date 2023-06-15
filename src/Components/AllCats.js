@@ -84,7 +84,7 @@ const AllCats = ({ filter }) => {
       }
    };
 
-   console.log(wishlist);
+   //console.log(wishlist);
 
    return (
       <div className="container text-center">
