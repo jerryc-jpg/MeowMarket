@@ -8,11 +8,12 @@
 }
 
 .about-page.bg-image {
-   background-image: url("https://img.freepik.com/free-psd/beautiful-cat-portrait-isolated_23-2150186004.jpg?w=2000&t=st=1686159153~exp=1686159753~hmac=55cacc987ed5649f31f537a3ee80ee494f1e725719fa01098512919b67fc0e30");
+   background-image: url("https://img.freepik.com/free-photo/closeup-shot-one-ginger-cat-hugging-licking-other-isolated-white-wall_181624-32893.jpg?w=2000&t=st=1686803580~exp=1686804180~hmac=70fff4f3264d68daa4702fa45ad2f9d12c71d9fc2fd28ffeef555bc34886cdd0");
    background-repeat: no-repeat;
    background-position: center;
-   background-size: cover;
+   background-size: contain;
    background-attachment: fixed; /* Optional: Ensures the background stays fixed while scrolling */
+   opacity: 90%;
 }
 
 .about-page h1 {
@@ -273,14 +274,14 @@
 }
 
 .rotating-Element span {
-  position: absolute;
-  display: block;
-  width: 6%;
-  pointer-events: visible;
-  cursor: pointer;
-  transform: translate(-50%, 50%);
-  transition: 2s linear;
-  opacity: 0.5;
+   position: absolute;
+   display: block;
+   width: 6%;
+   pointer-events: visible;
+   cursor: pointer;
+   transform: translate(-50%, 50%);
+   transition: 2s linear;
+   opacity: 0.5;
 }
 
 .rotating-Element img {
