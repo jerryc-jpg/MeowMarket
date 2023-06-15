@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutHideCart, logout } from "../store";
 
@@ -7,6 +7,7 @@ const Navbar = () => {
    const token = window.localStorage.getItem("token");
    const visitorOrder = JSON.parse(window.localStorage.getItem("visitorOrder"));
 
+   const navigate = useNavigate();
    const user = useSelector((state) => state.auth);
    const cart = useSelector((state) => state.cart);
    const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const Navbar = () => {
       const logouttoken = window.localStorage.getItem("token");
       // addition to logout(), I think we also need to reset the state in the cart so we will not see the order user previous order after the user log out.
       dispatch(logoutHideCart());
+      navigate("/");
    };
 
    const renderAuthButtons = () => {
