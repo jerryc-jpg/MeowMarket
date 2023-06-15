@@ -23,7 +23,7 @@ const Sitefooter = () => {
                   </p>
                 </div>
                 <div className="col-auto">
-                  <button onClick={handleSignUp} type="submit" className="btn btn-primary mb-4 bg-black text-white">
+                  <button onClick={handleSignUp} type="submit" className="btn btn-dark mb-4 bg-black text-white">
                     Sign Up
                   </button>
                 </div>
