@@ -76,8 +76,6 @@ const SingleProduct = () => {
       navigate("/");
    };
 
- 
-
    if (oneProd.productType === "cat") {
       return (
          <div className="container vertical-center">
@@ -102,13 +100,14 @@ const SingleProduct = () => {
                      <strong>Description:</strong>
                   </p>
 
-                  <p 
-                  className="description"
-                  style={{
-                     fontSize: "1rem",
-                     color: "dark grey"
-                  }}
-                  >{oneProd.description}</p>
+                  <p
+                     className="description"
+                     style={{
+                        fontSize: "1rem",
+                        color: "dark grey"
+                     }}>
+                     {oneProd.description}
+                  </p>
                   {oneProd.quantity === 0 ? <p>Not Availale</p> : null}
                   <p className="cat-detail">
                      <strong>Price:</strong> ${oneProd.price}
@@ -175,13 +174,14 @@ const SingleProduct = () => {
                   <p className="product-detail">
                      <strong>Description:</strong>
                   </p>
-                  <p 
-                  className="description"
-                  style={{
-                     fontSize: "1rem",
-                     color: "dark grey"
-                  }}
-                  >{oneProd.description}</p>
+                  <p
+                     className="description"
+                     style={{
+                        fontSize: "1rem",
+                        color: "dark grey"
+                     }}>
+                     {oneProd.description}
+                  </p>
                   <p className="product-detail">
                      <strong>Price:</strong> ${oneProd.price}
                   </p>
@@ -228,11 +228,9 @@ const SingleProduct = () => {
                               }}>
                               Add to Cart
                            </button>
-                           <button className="btn btn-outline-dark mt-3">
-                              <Link to="/" className="text-decoration-none text-dark">
-                                 CONTINUE SHOPPING
-                              </Link>
-                           </button>
+                           <Link to="/">
+                              <button className="btn btn-outline-dark mt-3">Continue Shopping</button>
+                           </Link>
                         </div>
                      </div>
                   )}
