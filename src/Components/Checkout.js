@@ -1,28 +1,59 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { checkoutCart, fetchOrders } from "../store";
-import { Link } from "react-router-dom";
+import { checkoutCart, fetchCart } from "../store";
+import { useElements, useStripe } from "@stripe/react-stripe-js";
 
 const Checkout = () => {
-   const dispatch = useDispatch();
-   const { cart, orders } = useSelector((state) => state);
-   const [closedOrder, setClosedOrder] = useState(null);
+  const dispatch = useDispatch();
+  const stripe = useStripe();
+  const elements = useElements();
 
-   useEffect(() => {
-      dispatch(fetchOrders());
-   }, [dispatch]);
+  const { cart, orders } = useSelector((state) => state);
+  const [message, setMessage] = useState(null);
 
-   useEffect(() => {
-      if (cart.lineItems.length > 0) {
-         dispatch(checkoutCart());
+  useEffect(() => {
+    console.log("FETCHING CART !!!!!!!!...");
+    dispatch(fetchCart());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!stripe) {
+      return;
+    }
+
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      "payment_intent_client_secret"
+    );
+
+    if (!clientSecret) {
+      return;
+    }
+
+    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+      switch (paymentIntent.status) {
+        case "succeeded":
+          if (cart.lineItems.length > 0) {
+            console.log(cart);
+            console.log(cart.lineItems);
+            console.log("CHECKING OUT CART!!!!!");
+            dispatch(checkoutCart());
+          }
+          break;
+        case "processing":
+          setMessage("Your payment is processing.");
+          break;
+        case "requires_payment_method":
+          setMessage("Your payment was not successful, please try again.");
+          break;
+        default:
+          setMessage("Something went wrong.");
+          break;
       }
-   }, [cart, dispatch]);
 
-   useEffect(() => {
-      const currentCartOrder = orders.find((order) => order.isCart === true);
+      window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+    });
+  }, [stripe]);
 
-      setClosedOrder(currentCartOrder);
-   }, [orders]);
 
    return (
       <div className="vh-100 d-flex justify-content-center align-items-center">
@@ -39,7 +70,6 @@ const Checkout = () => {
             </div>
             <div className="text-center">
                <h1>Thank You!</h1>
-               {closedOrder && <p>Your order number: {closedOrder.id}</p>}
                <button className="btn btn-outline-dark">
                   <Link to="/" className="text-decoration-none text-dark">
                      Back Home

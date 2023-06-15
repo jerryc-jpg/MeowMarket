@@ -11,6 +11,9 @@ export default function CheckoutForm() {
    const [message, setMessage] = useState(null);
    const [isLoading, setIsLoading] = useState(false);
 
+    
+   const handleSubmit = async (e) => {
+
    const handleSubmit = async (e) => {
       e.preventDefault();
 
@@ -35,6 +38,7 @@ export default function CheckoutForm() {
 
       if (error) {
          setMessage(error.message);
+
       } else {
          setMessage("Payment successful!");
 
@@ -45,6 +49,7 @@ export default function CheckoutForm() {
    };
 
    const handleEmailChange = (e) => {
+
       const newEmail = e.target.value;
       setEmail(newEmail);
    };

@@ -94,6 +94,21 @@ export const addToCart = createAsyncThunk("addToCart", async ({ product, quantit
 
          return { lineItems: visitorOrder };
       }
+    });
+    return response.data;
+    
+  }catch(ex){
+    console.log(err);
+  }
+  
+})
+
+export const checkoutCart = createAsyncThunk('checkoutCart', async()=>{
+  try{
+    const token = window.localStorage.getItem('token');
+    const response = await axios.put('/api/orders/checkout',null,{
+      headers: {
+        authorization: token
    } catch (err) {
       console.log(err);
    }

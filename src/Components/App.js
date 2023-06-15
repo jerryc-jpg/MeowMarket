@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./Home";
 import Login from "./Login";
 import RegisterAcc from "./Register";
@@ -15,16 +15,26 @@ import Users from "./Users";
 import Profile from "./Profile";
 import Orders from "./Orders";
 import PaymentPage from "./PaymentPage";
-
 import Wishlist from "./Wishlist";
-
 import OrderHistoryDetail from "./OrderHistoryDetail";
+import { Elements } from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js'
+
+
 
 
 const App = () => {
    const { auth } = useSelector((state) => state);
    const dispatch = useDispatch();
    const { userId } = useParams();
+   const [stripePromise, setStripePromise] = useState(null);
+
+   useEffect(() => {
+      fetch("/config").then(async (r) => {
+         const { publishableKey } = await r.json();
+         setStripePromise(loadStripe(publishableKey));
+      });
+   }, []);
 
    useEffect(() => {
       dispatch(loginWithToken());
@@ -55,7 +65,11 @@ const App = () => {
                <Route path="/login" element={<Login />} />
                <Route path="/cart" element={<Cart />} />
                <Route path="/cart/payment" element={<PaymentPage />} />
-               <Route path="/cart/checkout" element={<Checkout />} />
+               <Route path="/cart/checkout" element={ 
+                  <Elements stripe={stripePromise}>
+                     <Checkout />
+                  </Elements>} />
+
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
                <Route path="/register" element={<RegisterAcc />} />
