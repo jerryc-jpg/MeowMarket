@@ -37,39 +37,39 @@ const Home = () => {
          <div className="text-center position-relative">
             <div className="rotating-Element">
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/2913/2913281.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/2913/2913281.png" alt="catIcon Box" />
                </span>
 
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="catIcon Box" />
                </span>
 
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/6630/6630399.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/6630/6630399.png" alt="catIcon Box" />
                </span>
 
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/7966/7966003.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/7966/7966003.png" alt="catIcon Box" />
                </span>
 
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="catIcon Box" />
                </span>
 
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/2913/2913281.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/2913/2913281.png" alt="catIcon Box" />
                </span>
 
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/8036/8036753.png" alt="catIcon Box" />
                </span>
 
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/7966/7966003.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/7966/7966003.png" alt="catIcon Box" />
                </span>
 
                <span aria-hidden="true" data-multiply="2">
-                  <img src="https://cdn-icons-png.flaticon.com/512/6630/6630399.png" alt="Cereal Box" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/6630/6630399.png" alt="catIcon Box" />
                </span>
             </div>
             <h1
