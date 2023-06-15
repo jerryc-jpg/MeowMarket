@@ -108,7 +108,11 @@ const Wishlist = () => {
 
                                           <a
                                              className="trash-icon"
-                                             style={{ cursor: "pointer" }}
+                                             style={{
+                                                cursor: "pointer",
+                                                fontSize: "20px",
+                                                color: "#212529"
+                                             }}
                                              onClick={() => deleteFromWishlistHandler(item.product)}>
                                              <i className="far fa-trash-alt"></i>
                                           </a>
