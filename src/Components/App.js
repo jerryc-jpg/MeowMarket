@@ -69,7 +69,7 @@ const App = () => {
                <Route path="*" element={<Home />} />
             </Routes>
          </div>
-         <Sitefooter />
+         
       </div>
    );
 };
