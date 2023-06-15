@@ -6,7 +6,7 @@ import Cart from "./Cart";
 import About from "./About";
 import { useSelector, useDispatch } from "react-redux";
 import { loginWithToken, fetchCart, fetchProducts, Register } from "../store";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import SingleProduct from "./SingleProduct";
 import SingleProductAdmin from "./SingleProductAdmin";
@@ -19,6 +19,8 @@ import Wishlist from "./Wishlist";
 import OrderHistoryDetail from "./OrderHistoryDetail";
 import { Elements } from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js'
+
+
 
 
 const App = () => {
@@ -40,9 +42,18 @@ const App = () => {
    }, []);
 
    useEffect(() => {
-      if (auth.id) {
-         dispatch(fetchCart());
+      async function fetchData() {
+         if (auth.id) {
+            await dispatch(fetchCart());
+         }
       }
+
+      //console.log("app useEffect fetchData")
+
+      fetchData();
+      //if (auth.id) {
+      //   dispatch(fetchCart());
+      // }
    }, [auth]);
 
    return (
@@ -58,13 +69,15 @@ const App = () => {
                   <Elements stripe={stripePromise}>
                      <Checkout />
                   </Elements>} />
+
                <Route path="/about" element={<About />} />
                <Route path="/admin/:id" element={<SingleProductAdmin />} />
                <Route path="/register" element={<RegisterAcc />} />
-               <Route path="/users" element={<Users />} /> 
+               <Route path="/users" element={<Users />} />
                <Route path="/profile" element={<Profile />} />
                <Route path="/orders" element={<Orders />} />
-
+               <Route path="/wishlist" element={<Wishlist />} />
+               <Route path="/order-history/:orderId" element={<OrderHistoryDetail />} />
                <Route path="/:id" element={<SingleProduct />} />
                <Route path="*" element={<Home />} />
             </Routes>

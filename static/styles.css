@@ -1,3 +1,6 @@
+* {
+   font-family: "quiche-stencil", sans-serif;
+}
 /* -----About Page -----*/
 .about-page {
    min-height: 100vh;
@@ -5,11 +8,12 @@
 }
 
 .about-page.bg-image {
-   background-image: url("https://img.freepik.com/free-psd/beautiful-cat-portrait-isolated_23-2150186004.jpg?w=2000&t=st=1686159153~exp=1686159753~hmac=55cacc987ed5649f31f537a3ee80ee494f1e725719fa01098512919b67fc0e30");
+   background-image: url("https://img.freepik.com/free-photo/closeup-shot-one-ginger-cat-hugging-licking-other-isolated-white-wall_181624-32893.jpg?w=2000&t=st=1686803580~exp=1686804180~hmac=70fff4f3264d68daa4702fa45ad2f9d12c71d9fc2fd28ffeef555bc34886cdd0");
    background-repeat: no-repeat;
    background-position: center;
-   background-size: cover;
+   background-size: contain;
    background-attachment: fixed; /* Optional: Ensures the background stays fixed while scrolling */
+   opacity: 90%;
 }
 
 .about-page h1 {
@@ -75,4 +79,306 @@
    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
    vertical-align: middle;
+}
+
+/* ----- Order History Page -----*/
+
+.order-history-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 40vh;
+}
+.order-history-container .panel-heading {
+   border-bottom: 1px solid #ccc;
+   font-size: 22px;
+}
+
+.order-history-container .panel-order {
+   outline: 2px solid #ccc;
+   padding: 10px;
+}
+
+.order-history-container .panel-order .row {
+   border-bottom: 1px solid #ccc;
+}
+
+.order-history-container .panel-order .row:last-child {
+   border: 0px;
+}
+
+.order-history-container .panel-order .row .col-md-1 {
+   text-align: center;
+   padding-top: 15px;
+}
+
+.order-history-container .panel-order .row .col-md-1 img {
+   width: 80px;
+   max-height: 80px;
+}
+
+.order-history-container .panel-order .row .row {
+   border-bottom: 0;
+}
+
+.order-history-container .panel-order .row .col-md-11 {
+   border-left: 1px solid #ccc;
+}
+
+.order-history-container .panel-order .row .row .col-md-12 {
+   padding-top: 7px;
+   padding-bottom: 7px;
+}
+
+.order-history-container .panel-order .row .row .col-md-12:last-child {
+   font-size: 11px;
+   color: #555;
+   background: #efefef;
+}
+
+.order-history-container .panel-order .btn-group {
+   margin: 0px;
+   padding: 0px;
+}
+
+.order-history-container .panel-order .panel-body {
+   padding-top: 0px;
+   padding-bottom: 0px;
+}
+
+.order-history-container .panel-order .panel-heading {
+   margin-bottom: 0;
+}
+
+.search-bar-container {
+   width: 100%;
+   margin: 0 auto;
+   width: 350px;
+}
+
+.text-underline-hover {
+   text-decoration: none;
+}
+
+.text-underline-hover:hover {
+   text-decoration: underline;
+}
+
+/* ----- Edit Profile Page -----*/
+.form-check-input:checked {
+   background-color: black;
+   border: 1px solid black;
+}
+
+.registration-form {
+   padding: 50px 0;
+}
+
+.registration-form form {
+   background-color: #fff;
+   max-width: 600px;
+   margin: auto;
+   padding: 50px 70px;
+   border-top-left-radius: 30px;
+   border-top-right-radius: 30px;
+   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .form-icon {
+   text-align: center;
+   background-color: white;
+   border-radius: 50%;
+   font-size: 40px;
+   color: black;
+   border: 2px solid black;
+   width: 100px;
+   height: 100px;
+   margin: auto;
+   margin-bottom: 50px;
+   line-height: 100px;
+}
+
+.registration-form .item {
+   border-radius: 20px;
+   margin-bottom: 25px;
+   padding: 10px 20px;
+}
+
+.registration-form .save-changes {
+   border-radius: 30px;
+   padding: 10px 20px;
+   font-size: 18px;
+   font-weight: bold;
+   background-color: white;
+   color: black;
+   margin-top: 20px;
+}
+
+.registration-form .social-media {
+   max-width: 600px;
+   background-color: #fff;
+   margin: auto;
+   padding: 35px 0;
+   text-align: center;
+   border-bottom-left-radius: 30px;
+   border-bottom-right-radius: 30px;
+   color: #9fadca;
+   border-top: 1px solid #dee9ff;
+   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .social-icons {
+   margin-top: 30px;
+   margin-bottom: 16px;
+}
+
+.registration-form .social-icons a {
+   font-size: 23px;
+   margin: 0 3px;
+   color: #5691ff;
+   border: 1px solid;
+   border-radius: 50%;
+   width: 45px;
+   display: inline-block;
+   height: 45px;
+   text-align: center;
+   background-color: #fff;
+   line-height: 45px;
+}
+
+.registration-form .social-icons a:hover {
+   text-decoration: none;
+   opacity: 0.6;
+}
+
+/* ----- Home Page -----*/
+
+@keyframes rotatingElement {
+   0% {
+      transform: rotate(0);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+.rotating-Element {
+   display: block;
+   position: absolute;
+   width: 100%;
+   height: 80%;
+   top: 0;
+   left: 0;
+   pointer-events: none;
+   z-index: 50;
+}
+
+.rotating-Element span {
+   position: absolute;
+   display: block;
+   width: 6%;
+   pointer-events: visible;
+   cursor: pointer;
+   transform: translate(-50%, 50%);
+   transition: 2s linear;
+   opacity: 0.5;
+}
+
+.rotating-Element img {
+   width: 80%;
+   height: auto;
+   position: absolute;
+   animation: rotatingElement 8s linear infinite;
+}
+
+.rotating-Element span:first-child {
+   top: 10%; /* Adjust vertical position for the first image */
+   left: 10%; /* Adjust horizontal position for the first image */
+}
+
+.rotating-Element span:nth-child(2) {
+   top: 7%;
+   left: 40%;
+}
+.rotating-Element span:nth-child(3) {
+   top: 10%;
+   left: 80%;
+}
+
+.rotating-Element span:nth-child(4) {
+   top: 55%;
+   left: 25%;
+}
+.rotating-Element span:nth-child(5) {
+   top: 45%;
+   left: 45%;
+}
+.rotating-Element span:nth-child(6) {
+   top: 60%;
+   left: 90%;
+}
+.rotating-Element span:nth-child(7) {
+   top: 92%;
+   left: 10%;
+   filter: brightness(0) invert(1);
+}
+.rotating-Element span:nth-child(8) {
+   top: 92%;
+   left: 40%;
+   filter: brightness(0) invert(1);
+}
+.rotating-Element span:last-child {
+   top: 95%; /* Adjust vertical position for the second image */
+   left: 80%; /* Adjust horizontal position for the second image */
+}
+
+/* custom-pagination */
+
+.pagination .page-link {
+   background-color: white;
+   color: black;
+   border-color: white;
+}
+
+.pagination .page-link:hover {
+   background-color: black;
+   color: white;
+   border-color: black;
+}
+
+.pagination .page-item.disabled .page-link {
+   background-color: white;
+   color: gray;
+   border-color: white;
+}
+
+.pagination .page-item.active .page-link {
+   background-color: black;
+   color: white;
+   border-color: black;
+}
+
+.heart {
+   font-size: 40px;
+   margin-top: 7px;
+   width: 70px;
+   outline: none;
+   text-transform: uppercase;
+   cursor: pointer;
+   font-weight: bold;
+   &:hover {
+      color: rgb(0, 0, 0);
+   }
+   &.active {
+      color: rgb(0, 0, 0);
+      outline-color: black;
+   }
+}
+
+/* Admin Mange user page */
+
+.card-small {
+   /* Customize the size of the card */
+   width: 100%;
+   max-width: 350px;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PaymentElement, useStripe, LinkAuthenticationElement, useElements } from "@stripe/react-stripe-js";
 import { useDispatch } from "react-redux";
+import emailValidator from "email-validator";
 
 export default function CheckoutForm() {
    const stripe = useStripe();
@@ -12,11 +13,18 @@ export default function CheckoutForm() {
 
     
    const handleSubmit = async (e) => {
+
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+
       if (!stripe || !elements) {
          return;
       }
 
-      e.preventDefault();
+      if (!emailValidator.validate(email)) {
+         setMessage("Please enter a valid email address.");
+         return;
+      }
 
       setIsLoading(true);
 
@@ -30,26 +38,34 @@ export default function CheckoutForm() {
 
       if (error) {
          setMessage(error.message);
+
+      } else {
+         setMessage("Payment successful!");
+
+         setEmail("");
       }
 
       setIsLoading(false);
    };
 
    const handleEmailChange = (e) => {
-      if (e.target && e.target.value) {
-         setEmail(e.target.value);
-      }
+
+      const newEmail = e.target.value;
+      setEmail(newEmail);
    };
 
    return (
-      <div className="container mt-5">
+      <div className="container-md mt-5">
          <h2 className="text-center mb-3">Payment</h2>
          <form id="payment-form" onSubmit={handleSubmit} className="w-50 mx-auto">
             <div className="form-group mb-3">
-               <LinkAuthenticationElement
-                  id="link-authentication-element"
-                  onChange={handleEmailChange}
+               <input
+                  type="email"
+                  id="email-input"
                   className="form-control"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={handleEmailChange}
                />
             </div>
             <div className="form-group mb-3">

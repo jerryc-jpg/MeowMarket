@@ -54,23 +54,29 @@ export const deleteProduct = createAsyncThunk("deleteProduct", async (product, {
 
 export const updateProductQuantity = createAsyncThunk("updateProductQuantity", async ({ product, quantity }) => {
    try {
-      // const token = window.localStorage.getItem("token");
-      // const response = await axios.put(
-      //    `/api/products/${product.id}`,
-      //    { product, quantity },
-      //    {
-      //       headers: {
-      //          authorization: token
-      //       }
-      //    }
-      // );
-      // return response.data;
-     
+      const token = window.localStorage.getItem("token");
+      console.log('token:',token);
+      if(token){
+         const response = await axios.put(
+            `/api/products/${product.id}`,
+            { product, quantity },
+            {
+               headers: {
+                  authorization: token
+               }
+            }
+         );
+         return response.data;
+
+      }else{
+         console.log('this prove we are going to check cart with no token:')
          const response = await axios.put(
             `/api/products/${product.id}`,
             { product, quantity },
          );
+         console.log('response.data:',response.data)
          return response.data;
+      }
       
    } catch (err) {
       console.log(err);
