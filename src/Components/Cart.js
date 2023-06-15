@@ -95,6 +95,7 @@ const Cart = () => {
          <div className="card custom-card">
             <div className="card-header">
                <h2 className="text-center">Shopping Cart</h2>
+               <button onClick={handleClearLocalStorage}>internal test, clean localStorage</button>
             </div>
             <div className="card-body">
                {items.length === 0 ? (
