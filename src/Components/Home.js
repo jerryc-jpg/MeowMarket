@@ -83,7 +83,7 @@ const Home = () => {
           style={{
             top: "10%",
             transform: "translateX(-50%)",
-            fontSize: "5rem",
+            fontSize: "5.5rem",
             opacity: "0.80",
             letterSpacing: "3px",
             color:"white",

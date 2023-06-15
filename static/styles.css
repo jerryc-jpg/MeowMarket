@@ -275,12 +275,12 @@
 .rotating-Element span {
   position: absolute;
   display: block;
-  width: 5%;
+  width: 6%;
   pointer-events: visible;
   cursor: pointer;
   transform: translate(-50%, 50%);
   transition: 2s linear;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .rotating-Element img {
