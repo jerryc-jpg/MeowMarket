@@ -21,10 +21,10 @@ const OrderHistoryDetail = () => {
    }
 
    return (
-      <div className="container-fluid">
-         <div className="container">
-            <div className="text-center">
-               <h2 className="mt-3">Details</h2>
+      <div className="container px-3 my-5 clearfix">
+         <div className="card custom-card">
+            <div className="card-header">
+               <h2>Details</h2>
             </div>
             <div className="d-flex justify-content-center align-items-center py-3">
                <h2 className="h5 mb-0">
