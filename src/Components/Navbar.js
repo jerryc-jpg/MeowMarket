@@ -79,9 +79,6 @@ const Navbar = () => {
                         </div>
                      ) : (
                         <div>
-                           <Link to="/users" className="dropdown-item">
-                              Manage Users
-                           </Link>
                            <Link to="/profile" className="dropdown-item">
                               Profile
                            </Link>
