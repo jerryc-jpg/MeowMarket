@@ -373,3 +373,11 @@
       outline-color: black;
    }
 }
+
+/* Admin Mange user page */
+
+.card-small {
+   /* Customize the size of the card */
+   width: 100%;
+   max-width: 350px;
+}

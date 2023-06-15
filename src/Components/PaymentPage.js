@@ -79,10 +79,12 @@ const PaymentPage = () => {
 
    return (
       <div>
-         {stripePromise && clientSecret && (
+         {stripePromise && clientSecret ? (
             <Elements stripe={stripePromise} options={options}>
                <CheckoutForm />
             </Elements>
+         ) : (
+            <div>Loading...</div>
          )}
       </div>
    );

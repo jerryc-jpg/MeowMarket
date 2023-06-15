@@ -95,7 +95,6 @@ const Cart = () => {
          <div className="card custom-card">
             <div className="card-header">
                <h2 className="text-center">Shopping Cart</h2>
-               {!token ? <button onClick={handleClearLocalStorage}>internal test,empty visitor history</button> : null}
             </div>
             <div className="card-body">
                {items.length === 0 ? (
@@ -259,7 +258,7 @@ const Cart = () => {
                         </button>
                         <Link
                            to={{ pathname: "/cart/payment", state: { totalPrice: totalPrice } }}
-                           className="btn btn-lg btn-primary mt-2">
+                           className="btn btn-lg btn-outline-dark mt-2">
                            Checkout
                         </Link>
                      </div>
