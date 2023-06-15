@@ -6,8 +6,8 @@ import { updateUserProfile, loginWithToken } from "../store";
 const Profile = () => {
    const dispatch = useDispatch();
    const { auth } = useSelector((state) => state);
-   const [username, setUsername] = useState(auth.username);
-   const [email, setEmail] = useState(auth.email);
+   const [username, setUsername] = useState(auth.username || "");
+   const [email, setEmail] = useState(auth.email || "");
    const [password, setPassword] = useState("");
    const [showPassword, setShowPassword] = useState(false);
 
@@ -37,19 +37,19 @@ const Profile = () => {
       dispatch(loginWithToken());
    }, [dispatch]);
 
-   if (!auth.username) {
+   if (!auth.username || !auth.email) {
       return (
          <h2 className="text-center mt-5">
             Please <Link to="/login">login</Link> to view the profile
          </h2>
       );
    }
-   console.log(auth);
+
    return (
       <div className="registration-form">
          <form onSubmit={handleSubmit}>
             <div className="form-icon">
-               <span className="fs-3">{auth.username.toUpperCase()}</span>
+               <span className="username">{auth.username.slice(0, 1).toUpperCase()}</span>
             </div>
             <div className="form-group">
                <label htmlFor="username" className="form-label"></label>
@@ -95,7 +95,7 @@ const Profile = () => {
                </label>
             </div>
             <div className="form-group">
-               <button type="submit" className="btn btn-block save-changes">
+               <button type="submit" className="btn btn-outline-dark save-changes">
                   Save Changes
                </button>
             </div>

@@ -164,6 +164,10 @@
 }
 
 /* ----- Edit Profile Page -----*/
+.form-check-input:checked {
+   background-color: black;
+   border: 1px solid black;
+}
 
 .registration-form {
    padding: 50px 0;
@@ -181,10 +185,11 @@
 
 .registration-form .form-icon {
    text-align: center;
-   background-color: #5891ff;
+   background-color: white;
    border-radius: 50%;
    font-size: 40px;
-   color: white;
+   color: black;
+   border: 2px solid black;
    width: 100px;
    height: 100px;
    margin: auto;
@@ -203,9 +208,8 @@
    padding: 10px 20px;
    font-size: 18px;
    font-weight: bold;
-   background-color: #5791ff;
-   border: none;
-   color: white;
+   background-color: white;
+   color: black;
    margin-top: 20px;
 }
 
