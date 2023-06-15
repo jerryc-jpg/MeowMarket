@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { checkoutCart, fetchOrders } from "../store";
+import { checkoutCart, fetchCart } from "../store";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
    const dispatch = useDispatch();
    const { cart, orders } = useSelector((state) => state);
    const [closedOrder, setClosedOrder] = useState(null);
+   
 
-   useEffect(() => {
-      dispatch(fetchOrders());
-   }, [dispatch]);
+   // query params 
+    useEffect(() => {
+        
+        console.log("cart lineItems ==== " + cart.lineItems.length);
+        if(cart.lineItems.length > 0) {
+        console.log("====== ABOUT TO CHECKOUT CART =======");
+        dispatch(checkoutCart());
+        }
+        //window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+    }, [dispatch, cart]);
 
-   useEffect(() => {
-      if (cart.lineItems.length > 0) {
-         dispatch(checkoutCart());
-      }
-   }, [cart, dispatch]);
-
-   useEffect(() => {
-      const currentCartOrder = orders.find((order) => order.isCart === true);
-
-      setClosedOrder(currentCartOrder);
-   }, [orders]);
-
+  
    return (
       <div className="vh-100 d-flex justify-content-center align-items-center">
          <div>

@@ -138,7 +138,7 @@ export const removeFromCart = createAsyncThunk("removeFromCart", async ({ produc
 export const checkoutCart = createAsyncThunk("checkoutCart", async () => {
    try {
       const token = window.localStorage.getItem("token");
-      const response = await axios.post("/api/orders/", null, {
+      const response = await axios.put("/api/orders/checkout", null, {
          headers: {
             authorization: token
          }
