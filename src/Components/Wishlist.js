@@ -93,18 +93,16 @@ const Wishlist = () => {
                                           </h6>
                                        </td>
                                        <td className="align-middle">
-                                          {item.product && item.product.quantity && (
-                                             <a
-                                                onClick={() => handleAddToCart(item.product, item.product.name)}
-                                                disabled={item.product.quantity === 0}
-                                                style={{
-                                                   fontSize: "25px",
-                                                   marginRight: "15px",
-                                                   cursor: "pointer"
-                                                }}>
-                                                <AiOutlineShoppingCart />
-                                             </a>
-                                          )}
+                                          <a
+                                             onClick={() => handleAddToCart(item.product, item.product.name)}
+                                             disabled={item.product.quantity === 0}
+                                             style={{
+                                                fontSize: "25px",
+                                                marginRight: "15px",
+                                                cursor: "pointer"
+                                             }}>
+                                             <AiOutlineShoppingCart />
+                                          </a>
 
                                           <a
                                              className="trash-icon"
