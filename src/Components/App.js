@@ -19,6 +19,7 @@ import PaymentPage from "./PaymentPage";
 import Wishlist from "./Wishlist";
 
 import OrderHistoryDetail from "./OrderHistoryDetail";
+import Sitefooter from "./Sitefooter";
 
 
 const App = () => {
@@ -68,6 +69,7 @@ const App = () => {
                <Route path="*" element={<Home />} />
             </Routes>
          </div>
+         <Sitefooter />
       </div>
    );
 };
