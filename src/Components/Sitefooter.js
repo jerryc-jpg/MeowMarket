@@ -1,9 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Sitefooter = () => {
+    const navigate = useNavigate();
     const footerStyle = {
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
     };
+
+    const handleSignUp = () =>{
+        navigate('/register');
+    }
   
     return (
       <footer className="bg-light text-center">
@@ -17,7 +23,7 @@ const Sitefooter = () => {
                   </p>
                 </div>
                 <div className="col-auto">
-                  <button type="submit" className="btn btn-primary mb-4 bg-black text-white">
+                  <button onClick={handleSignUp} type="submit" className="btn btn-primary mb-4 bg-black text-white">
                     Sign Up
                   </button>
                 </div>
@@ -27,8 +33,8 @@ const Sitefooter = () => {
         </div>
         <div className="text-center p-3" style={footerStyle}>
           © {new Date().getFullYear()} Copyright:
-          <a className="text-dark" href="https://mdbootstrap.com/">
-            MDBootstrap.com
+          <a className="text-dark" href="https://meowmarket-gjjv.onrender.com">
+            meowmarket-gjjv.onrender.com
           </a>
         </div>
       </footer>

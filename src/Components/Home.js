@@ -4,6 +4,7 @@ import { logout } from "../store";
 import AllCats from "./AllCats";
 import Profile from "./Profile";
 import AllAccess from "./AllAccess";
+import Sitefooter from "./Sitefooter";
 
 const Home = () => {
    //test window.localStorage whether behave correctly, (stored item able to be retrieval between pages)
@@ -124,6 +125,7 @@ const Home = () => {
             />
          </div>
          {activeTab === 0 ? <AllCats filter={filter} /> : <AllAccess filter={filter} />}
+         <Sitefooter />
       </div>
    );
 };
