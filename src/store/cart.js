@@ -20,7 +20,6 @@ export const fetchCart = createAsyncThunk("fetchCart", async () => {
 });
 
 const handelNewAddToCart = (visitorOrder, { product, quantity, productId, id }) => {
-   //console.log('combine individual item');
    let lineItem = visitorOrder.find((lineItem) => {
       return lineItem.productId === productId;
    });
