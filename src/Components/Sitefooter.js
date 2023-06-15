@@ -19,7 +19,7 @@ const Sitefooter = () => {
               <div className="row d-flex justify-content-center">
                 <div className="col-auto">
                   <p className="pt-2">
-                    <strong>Sign up with us! </strong>
+                    <strong>Sign up with us! Connect with our meow family!</strong>
                   </p>
                 </div>
                 <div className="col-auto">
@@ -32,9 +32,9 @@ const Sitefooter = () => {
           </section>
         </div>
         <div className="text-center p-3" style={footerStyle}>
-          © {new Date().getFullYear()} Copyright:
+          © {new Date().getFullYear()} Copyright: 
           <a className="text-dark" href="https://meowmarket-gjjv.onrender.com">
-            meowmarket-gjjv.onrender.com
+            meow market
           </a>
         </div>
       </footer>
