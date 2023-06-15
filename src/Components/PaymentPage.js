@@ -78,13 +78,15 @@ const PaymentPage = () => {
    };
 
    return (
-      <div>
+      <div className="d-flex justify-content-center my-5">
          {stripePromise && clientSecret ? (
             <Elements stripe={stripePromise} options={options}>
                <CheckoutForm />
             </Elements>
          ) : (
-            <div>Loading...</div>
+            <div className="spinner-border" role="status">
+               <span className="visually-hidden">Loading...</span>
+            </div>
          )}
       </div>
    );
