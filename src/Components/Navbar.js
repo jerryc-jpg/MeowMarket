@@ -68,17 +68,28 @@ const Navbar = () => {
                      {!user.isAdmin ? `Welcome Back, ${user.username.toUpperCase()}` : user.username.toUpperCase()}
                   </a>
                   <div className="dropdown-menu text-center">
-                     {user.isAdmin && (
-                        <Link to="/users" className="dropdown-item">
-                           Manage Users
-                        </Link>
+                     {user.isAdmin ? (
+                        <div>
+                           <Link to="/users" className="dropdown-item">
+                              Manage Users
+                           </Link>
+                           <Link to="/orders" className="dropdown-item">
+                              Orders
+                           </Link>
+                        </div>
+                     ) : (
+                        <div>
+                           <Link to="/users" className="dropdown-item">
+                              Manage Users
+                           </Link>
+                           <Link to="/profile" className="dropdown-item">
+                              Profile
+                           </Link>
+                           <Link to="/orders" className="dropdown-item">
+                              Orders
+                           </Link>
+                        </div>
                      )}
-                     <Link to="/profile" className="dropdown-item" href="#">
-                        Profile
-                     </Link>
-                     <Link to="/orders" className="dropdown-item" href="#">
-                        Orders
-                     </Link>
                   </div>
                </div>
                <li className="nav-item">
