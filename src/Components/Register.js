@@ -30,20 +30,20 @@ const Register = () => {
       const loginResult = await dispatch(attemptLogin(credentials));
       if (loginResult.payload) {
 
-        // setTimeout(async() =>{ const visitorOrder = JSON.parse(window.localStorage.getItem('visitorOrder'));
-        // // console.log('after login visitorOrder:',visitorOrder);
-        //   const token = window.localStorage.getItem('token');
-        //   // console.log('after login token:',token)
-        //   if(visitorOrder){
-        //   //await visitorOrder.forEach(async(ele)=>{console.log('element:',ele); await dispatch(addToCart(ele));});
+        setTimeout(async() =>{ const visitorOrder = JSON.parse(window.localStorage.getItem('visitorOrder'));
+        // console.log('after login visitorOrder:',visitorOrder);
+          const token = window.localStorage.getItem('token');
+          // console.log('after login token:',token)
+          if(visitorOrder){
+          //await visitorOrder.forEach(async(ele)=>{console.log('element:',ele); await dispatch(addToCart(ele));});
           
-        //   for (const ele of visitorOrder) {
-        //     console.log('element:', ele);
-        //     await dispatch(addToCart(ele));
-        //   }
-        //   window.localStorage.removeItem('visitorOrder');
-        //   }
-        //  },500)
+          for (const ele of visitorOrder) {
+            console.log('element:', ele);
+            await dispatch(addToCart(ele));
+          }
+          window.localStorage.removeItem('visitorOrder');
+          }
+         },500)
 
         navigate("/");
 
