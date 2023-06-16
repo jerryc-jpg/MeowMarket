@@ -5,19 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { addToCart, removeFromCart, checkoutCart, updateProductQuantity } from "../store";
 
 const Cart = () => {
-   //test window.localStorage whether behave correctly, (stored item able to be retrieval between pages)
-   /*
-   console.log('try to find visitor order and token')
-   const visitorOrderString=window.localStorage.getItem('visitorOrder');
-   const token=window.localStorage.getItem('toekn');
-   if(visitorOrderString){
-      console.log('line12 visitor order:',JSON.parse(visitorOrderString));
-   }
-   if(token){
-      console.log('line15 token:',token)
-   }
-   console.log('line17,already check token and visitor order');}
-   */
+
    const token = window.localStorage.getItem("token");
    const visitorOrder = JSON.parse(window.localStorage.getItem("visitorOrder"));
    const navigate = useNavigate();
@@ -58,18 +46,7 @@ const Cart = () => {
             return 0;
          });
       }
-      // let list = [...cart.lineItems];
-      // if (list) {
-      //    list.sort(function (a, b) {
-      //       if (a.product.name < b.product.name) {
-      //          return -1;
-      //       }
-      //       if (a.product.name > b.product.name) {
-      //          return 1;
-      //       }
-      //       return 0;
-      //    });
-      // }
+ 
 
       const sumPrice = list.reduce((acc, curr) => {
          acc = acc + curr.product.price * curr.quantity;
@@ -79,9 +56,6 @@ const Cart = () => {
          acc = acc + curr.quantity;
          return acc;
       }, 0);
-      //console.log('visitorOrder:',visitorOrder)
-      //console.log('did we update list:',list);
-
       setItems(list);
       setTotalPrice(sumPrice);
       setTotalQ(sumQ);
@@ -95,7 +69,6 @@ const Cart = () => {
          <div className="card custom-card">
             <div className="card-header">
                <h2>My Shopping Cart</h2>
-               <button onClick={handleClearLocalStorage}>internal test, clean localStorage</button>
             </div>
             <div className="card-body">
                {items.length === 0 ? (
