@@ -22,29 +22,6 @@ const SingleProduct = () => {
    const handleTakeMeHomeClick = () => {
       setLimiteExceeded(true);
    };
-
-   // // I wrote the code that fetch the product data from the server inside of 'useEffect' instead of doing it on redux store, this fix the bug where refreshing page takes user back to home page
-
-   // useEffect(() => {
-   //    const fetchProducts = async () => {
-   //       try {
-   //          const response = await fetch(`/api/products/${id}`);
-   //          if (response.ok) {
-   //             const product = await response.json();
-   //             setOneProd(product);
-   //             setInventory(product.quantity);
-   //          } else {
-   //             navigate("/");
-   //          }
-   //       } catch (error) {
-   //          console.log(error);
-   //          navigate("/");
-   //       }
-   //    };
-
-   //    fetchProducts();
-   // }, [id, navigate]);
-
    React.useEffect(() => {
       const foundProd = products.find((product) => product.id === id);
       if (foundProd) {
@@ -125,21 +102,7 @@ const SingleProduct = () => {
                            </button>
                         </div>
                      ) : (
-                        // (
-                        //    <div className="d-flex justify-content-start">
-                        //       <button
-                        //          className={`btn mt-3 ${limitExceeded ? "btn-secondary" : "btn-success"} me-2`}
-                        //          onClick={handleTakeMeHomeClick}
-                        //          disabled={limitExceeded}>
-                        //          {limitExceeded ? <span>Limit Exceeded</span> : <span>Take Me Home</span>}
-                        //       </button>
-                        //       <button className="btn btn-primary mt-3">
-                        //          <Link to="/" className="text-decoration-none text-white">
-                        //             CONTINUE SHOPPING
-                        //          </Link>
-                        //       </button>
-                        //    </div>
-                        // )
+
                         <div className="d-flex justify-content-start">
                            <button
                               className="btn btn-outline-dark mt-3"

@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
-   // const currentvisitorOrder = JSON.parse(window.localStorage.getItem('visitorOrder'));
-   // console.log('before login visitorOrder:',currentvisitorOrder);
    const dispatch = useDispatch();
    const navigate = useNavigate();
    const [credentials, setCredentials] = useState({
@@ -25,16 +23,12 @@ const Login = () => {
          const resultAction = await dispatch(attemptLogin(credentials));
          const success = resultAction.type.endsWith("/fulfilled");
          if (success) {
-            //yy: for visitor add to cart and then login,
-
             setTimeout(async () => {
                const visitorOrder = JSON.parse(window.localStorage.getItem("visitorOrder"));
-               // console.log('after login visitorOrder:',visitorOrder);
-               const token = window.localStorage.getItem("token");
-               // console.log('after login token:',token)
-               if (visitorOrder) {
-                  //await visitorOrder.forEach(async(ele)=>{console.log('element:',ele); await dispatch(addToCart(ele));});
 
+               const token = window.localStorage.getItem("token");
+
+               if (visitorOrder) {
                   for (const ele of visitorOrder) {
                      console.log("element:", ele);
                      await dispatch(addToCart(ele));

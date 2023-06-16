@@ -36,19 +36,12 @@ const Navbar = () => {
          setSum(totalQ);
       }
 
-      // let list =[... cart.lineItems];
-      // if(list){
-      //    const totalQ = list.reduce((acc,curr)=>{
-      //       return acc = acc+curr.quantity;
-      //    },0)
-      //    setSum(totalQ);
-      // }
    }, [cart, user]);
 
    const handleLogout = () => {
       dispatch(logout());
       const logouttoken = window.localStorage.getItem("token");
-      // addition to logout(), I think we also need to reset the state in the cart so we will not see the order user previous order after the user log out.
+
       dispatch(logoutHideCart());
       navigate("/");
    };

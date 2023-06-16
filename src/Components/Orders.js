@@ -34,7 +34,7 @@ const Orders = () => {
                ) : (
                   <div>
                      {orders
-                        .filter((order) => order.lineItems.length > 0) // Filter out orders with no items
+                        .filter((order) => order.lineItems.length > 0)
                         .map((order) => {
                            let totalQuantity = 0;
                            let totalCost = 0;

@@ -7,17 +7,6 @@ import AllAccess from "./AllAccess";
 import Sitefooter from "./Sitefooter";
 
 const Home = () => {
-   //test window.localStorage whether behave correctly, (stored item able to be retrieval between pages)
-   // console.log('home:try to find visitor order and token ')
-   // const visitorOrderString=window.localStorage.getItem('visitorOrder');
-   // const token=window.localStorage.getItem('toekn');
-   // if(visitorOrderString){
-   //    console.log('home:line13.home visitor order:',JSON.parse(visitorOrderString));
-   // }
-   // if(token){
-   //    console.log('line16 token:',token)
-   // }
-   // console.log('line17,already check token and visitor order');
 
    const { auth } = useSelector((state) => state);
    const dispatch = useDispatch();
@@ -91,11 +80,6 @@ const Home = () => {
                   Meow Market
                </span>
             </h1>
-            {/*<img
-          src="https://img.freepik.com/free-photo/cute-group-animals_23-2150104514.jpg?w=2000&t=st=1686176344~exp=1686176944~hmac=51a031621c81b9d653ddd7fc5c37d4b7f3b552e929eab4e98dfa584004fdd70a"
-          alt="#"
-          className="img-fluid w-100 opacity-85 mb-5"
-        /> */}
             <img
                src="https://cdn.pixabay.com/photo/2017/08/01/08/53/cat-2563681_1280.jpg"
                alt="#"
