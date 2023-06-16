@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+   mode: "development",
    devtool: "source-map",
    module: {
       rules: [
@@ -15,8 +16,7 @@ module.exports = {
          {
             test: /\.css$/,
             use: ["style-loader", "css-loader"]
-         },
-         
+         }
       ]
    },
    resolve: {
@@ -24,5 +24,10 @@ module.exports = {
       alias: {
          "@": path.resolve(__dirname, "src")
       }
+   },
+   performance: {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
    }
 };

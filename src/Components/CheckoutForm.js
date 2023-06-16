@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PaymentElement, useStripe, LinkAuthenticationElement, useElements } from "@stripe/react-stripe-js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import emailValidator from "email-validator";
 
 export default function CheckoutForm() {
@@ -10,6 +10,9 @@ export default function CheckoutForm() {
    const [email, setEmail] = useState("");
    const [message, setMessage] = useState(null);
    const [isLoading, setIsLoading] = useState(false);
+   const {cart} = useSelector((state) => state);
+
+   console.log(cart.id);
 
    const handleSubmit = async (e) => {
       e.preventDefault();

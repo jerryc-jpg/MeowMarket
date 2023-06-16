@@ -40,6 +40,19 @@ app.get('/cart', async(req, res, next)=> {
   }
 });
 
+app.put('/checkout', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const cart = await user.getCart();
+    cart.isCart = false;
+    await cart.save();
+    res.send(cart);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+
 app.post('/cart', async(req, res, next)=> {
   try {
     const user = await User.findByToken(req.headers.authorization);

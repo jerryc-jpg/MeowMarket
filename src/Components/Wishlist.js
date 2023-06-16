@@ -95,7 +95,6 @@ const Wishlist = () => {
                                        <td className="align-middle">
                                           <a
                                              onClick={() => handleAddToCart(item.product, item.product.name)}
-                                             disabled={item.product.quantity === 0}
                                              style={{
                                                 fontSize: "25px",
                                                 marginRight: "15px",

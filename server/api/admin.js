@@ -75,14 +75,20 @@ app.get('/users', async (req, res, next) => {
 
 app.delete('/users/:id', checkIsAdmin, async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.id);
-    console.log("admin.js find id : ",req.params.id);
-    user.destroy();
-    res.send(user)
+
+    const userId = req.params.id;
+    const user = await User.findByPk(userId);
+    await user.destroy();
+    
+    res.send(user);
+
   } catch (e) {
+    console.log("==== ERROR =============")
+    console.log(e);
     next(e);
   }
 });
+
 
 app.get('/users/:id', checkIsAdmin, async (req, res, next) => {
   try {
