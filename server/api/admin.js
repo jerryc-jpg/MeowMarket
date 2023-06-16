@@ -75,11 +75,13 @@ app.get('/users', async (req, res, next) => {
 
 app.delete('/users/:id', checkIsAdmin, async (req, res, next) => {
   try {
+
     const userId = req.params.id;
     const user = await User.findByPk(userId);
     await user.destroy();
     
     res.send(user);
+
   } catch (e) {
     console.log("==== ERROR =============")
     console.log(e);
