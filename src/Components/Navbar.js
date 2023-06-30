@@ -35,7 +35,6 @@ const Navbar = () => {
          }, 0);
          setSum(totalQ);
       }
-
    }, [cart, user]);
 
    const handleLogout = () => {
@@ -131,6 +130,11 @@ const Navbar = () => {
                      <li className="nav-item">
                         <Link className="nav-link" to="/about">
                            About
+                        </Link>
+                     </li>
+                     <li className="nav-item">
+                        <Link className="nav-link" to="/team">
+                           Team
                         </Link>
                      </li>
                   </ul>
