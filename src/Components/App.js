@@ -15,12 +15,11 @@ import Users from "./Users";
 import Profile from "./Profile";
 import Orders from "./Orders";
 import PaymentPage from "./PaymentPage";
-
+import Team from "./Team";
 import Wishlist from "./Wishlist";
 
 import OrderHistoryDetail from "./OrderHistoryDetail";
 import Sitefooter from "./Sitefooter";
-
 
 const App = () => {
    const { auth } = useSelector((state) => state);
@@ -66,10 +65,10 @@ const App = () => {
                <Route path="/wishlist" element={<Wishlist />} />
                <Route path="/order-history/:orderId" element={<OrderHistoryDetail />} />
                <Route path="/:id" element={<SingleProduct />} />
+               <Route path="/team" element={<Team />} />
                <Route path="*" element={<Home />} />
             </Routes>
          </div>
-         
       </div>
    );
 };
