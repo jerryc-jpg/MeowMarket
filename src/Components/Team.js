@@ -5,7 +5,7 @@ const Team = () => {
       <div className="container bootdey mt-4">
          <div className="row">
             <div className="col-12 text-center">
-               <div className="section-title mb-4 pb-2">
+               <div className="section-title pb-2">
                   <h3 className="title mb-4">Meow Market Team</h3>
                </div>
             </div>
