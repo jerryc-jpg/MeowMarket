@@ -114,7 +114,7 @@ const SingleProduct = () => {
                               {oneProd.quantity > 0 ? <span>TAKE ME HOME</span> : <span>LIMIT EXCEEDED</span>}
                            </button>
                            <Link to="/">
-                              <button className="btn btn-outline-dark mt-3 ms-3">CONTINUE shopping</button>
+                              <button className="btn btn-outline-dark mt-3 ms-3">CONTINUE SHOPPING</button>
                            </Link>
                         </div>
                      )}
@@ -195,7 +195,7 @@ const SingleProduct = () => {
                                  Add to Cart
                               </button>
                               <Link to="/">
-                                 <button className="btn btn-outline-dark mt-3">Continue shopping</button>
+                                 <button className="btn btn-outline-dark mt-3">CONTINUE SHOPPING</button>
                               </Link>
                            </div>
                            
